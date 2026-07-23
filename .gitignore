@@ -1,0 +1,7 @@
+# Ignore macOS noise and editor junk in this docs repo
+.DS_Store
+**/.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

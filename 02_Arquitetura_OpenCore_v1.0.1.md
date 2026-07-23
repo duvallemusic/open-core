@@ -1,0 +1,1751 @@
+# Arquitetura OpenCore — Versão 1.0.1
+
+**Status:** histórico — supersedida pela Versão 1.0.2  
+**Base estratégica:** Manifesto OpenCore v1.1  
+**Roadmap relacionado:** OpenCore — Roadmap Revisado v2  
+**Finalidade:** snapshot da primeira incorporação do ADR-015 (v1)  
+**Observação:** preservada para histórico de decisões. Não usar como base de implementação.  
+**ADR relacionado:** ADR-015 v1 — módulos nativos, módulos em processo e protocolo neutro de linguagem.
+
+---
+
+## 1. Objetivo deste documento
+
+Este documento traduz os compromissos do Manifesto OpenCore em uma arquitetura inicial verificável.
+
+Seu objetivo não é definir antecipadamente todos os detalhes da plataforma, congelar um SDK público ou projetar infraestrutura para necessidades ainda não comprovadas. Seu objetivo é estabelecer:
+
+- os requisitos arquiteturais obrigatórios;
+- as fronteiras entre runtime, módulos e distribuições;
+- as dependências permitidas e proibidas;
+- o contrato interno inicial de módulos;
+- os princípios de persistência, migração, backup e exportação;
+- os mecanismos iniciais de comunicação entre componentes;
+- as fronteiras de segurança e licenciamento;
+- as hipóteses que deverão ser validadas antes da implementação definitiva.
+
+A arquitetura deverá permanecer simples o suficiente para ser compreendida, testada e mantida por uma comunidade em formação, sem reduzir os padrões profissionais de segurança, documentação, qualidade e continuidade.
+
+---
+
+## 2. Escopo
+
+Esta versão cobre a arquitetura inicial necessária para:
+
+1. construir e validar o runtime mínimo do OpenCore;
+2. registrar e executar módulos com fronteiras claras;
+3. criar a primeira distribuição de referência, o OpenCore Portaria;
+4. permitir uma segunda combinação experimental de módulos;
+5. extrair futuramente um SDK v0 a partir de contratos reais;
+6. preparar o projeto para contribuições externas e adoção educacional.
+
+Esta versão não define de forma definitiva:
+
+- ABI pública para plugins binários;
+- carregamento arbitrário de bibliotecas dinâmicas;
+- marketplace de módulos;
+- execução de código não confiável;
+- sandbox completa de plugins;
+- microserviços;
+- infraestrutura obrigatória de nuvem;
+- geração pública e arbitrária de builds;
+- sincronização distribuída entre múltiplas unidades;
+- política final de certificação de módulos;
+- suporte definitivo a múltiplos bancos de dados.
+
+Esses recursos somente deverão ser projetados quando houver evidência técnica, operacional ou institucional de necessidade.
+
+---
+
+## 3. Princípios arquiteturais
+
+### 3.1 Soberania do usuário
+
+O funcionamento essencial da plataforma não poderá depender de assinatura, ativação recorrente, serviço central ou autorização remota da entidade OpenCore.
+
+O usuário ou a organização responsável pela instalação deverá manter controle sobre:
+
+- execução local;
+- dados operacionais;
+- backups;
+- exportações;
+- logs locais;
+- configurações;
+- atualizações;
+- integrações externas habilitadas.
+
+### 3.2 Offline-first
+
+O runtime, as distribuições e os módulos instalados deverão executar localmente todas as funções que não dependam, por sua própria natureza, de um serviço externo.
+
+A conexão poderá ser necessária para:
+
+- baixar atualizações;
+- instalar novos componentes;
+- sincronizar dispositivos ou unidades;
+- acessar integrações remotas escolhidas pelo usuário;
+- utilizar serviços externos explicitamente contratados.
+
+A ausência de conexão não poderá bloquear artificialmente funções locais já instaladas nem impedir o acesso aos dados armazenados localmente.
+
+### 3.3 Modularidade com fronteiras claras
+
+Uma capacidade somente deverá pertencer ao runtime quando for necessária à inicialização, integridade, segurança ou coordenação fundamental da plataforma.
+
+Regras específicas de negócio deverão permanecer fora do runtime.
+
+Cada componente deverá possuir:
+
+- responsabilidade identificável;
+- dependências declaradas;
+- interfaces documentadas;
+- testes proporcionais ao risco;
+- política de evolução;
+- licença explicitamente identificada.
+
+### 3.4 Simplicidade proporcional
+
+O OpenCore deverá preferir a solução mais simples que preserve corretamente:
+
+- integridade de dados;
+- segurança;
+- extensibilidade necessária;
+- portabilidade;
+- testabilidade;
+- manutenção.
+
+Abstrações, serviços, filas, bancos adicionais e infraestrutura distribuída não deverão ser adicionados apenas por expectativa de crescimento futuro.
+
+### 3.5 Robustez sem excesso
+
+A arquitetura deverá permitir evolução para cenários maiores sem exigir que a primeira versão opere como um sistema distribuído complexo.
+
+Escalabilidade deverá ser tratada como uma propriedade progressiva, guiada por medições e necessidades reais.
+
+### 3.6 Contratos e formatos abertos
+
+Os contratos públicos, os dados essenciais, os processos de migração e os formatos de exportação deverão ser documentados.
+
+Nenhuma distribuição oficial poderá depender de conhecimento privado da entidade central para:
+
+- instalar;
+- operar;
+- recuperar;
+- exportar;
+- migrar;
+- reconstruir;
+- auditar os componentes abertos.
+
+### 3.7 Documentação como parte do produto
+
+Uma funcionalidade não será considerada concluída sem documentação proporcional ao seu impacto.
+
+Mudanças arquiteturais relevantes deverão ser registradas por ADR ou RFC, conforme a política de governança.
+
+### 3.8 Segurança por padrão
+
+Componentes deverão receber apenas o acesso necessário para sua função.
+
+Operações sensíveis deverão possuir controles de autorização, rastreabilidade e tratamento explícito de falhas.
+
+A arquitetura não deverá presumir que todo módulo é confiável apenas por estar instalado.
+
+---
+
+## 4. Requisitos arquiteturais obrigatórios
+
+### 4.1 Portabilidade
+
+A plataforma deverá ser validada em:
+
+- Windows;
+- Linux;
+- macOS.
+
+Os builds deverão buscar:
+
+- comportamento consistente;
+- instaladores reproduzíveis;
+- baixa dependência de componentes exclusivos de um sistema operacional;
+- diagnóstico claro quando uma funcionalidade não for suportada;
+- funcionamento adequado em hardware modesto quando o domínio permitir.
+
+### 4.2 Persistência local
+
+SQLite será a hipótese inicial de banco local padrão.
+
+A persistência deverá permitir:
+
+- transações;
+- migrações versionadas;
+- backup consistente;
+- restauração validada;
+- identificação do módulo responsável por cada estrutura;
+- exportação de dados em formato portátil;
+- evolução futura para adaptadores alternativos, sem exigir essa abstração prematuramente.
+
+### 4.3 Integridade e recuperação
+
+Falhas em módulos, migrações ou atualizações não poderão corromper silenciosamente o estado da distribuição.
+
+O sistema deverá registrar:
+
+- etapa em execução;
+- versão anterior;
+- versão pretendida;
+- módulo afetado;
+- resultado da operação;
+- erro recuperável ou não recuperável;
+- instruções de diagnóstico quando aplicável.
+
+### 4.4 Privacidade e telemetria
+
+Logs técnicos locais poderão existir para diagnóstico, segurança e auditoria.
+
+A transmissão de telemetria para servidores externos deverá permanecer desativada por padrão.
+
+Quando uma integração externa exigir transmissão de dados, ela deverá possuir:
+
+- finalidade documentada;
+- dados transmitidos identificados;
+- base de configuração explícita;
+- possibilidade de revogação quando tecnicamente aplicável;
+- tratamento proporcional de segurança e privacidade.
+
+### 4.5 Portabilidade dos dados
+
+A arquitetura deverá diferenciar:
+
+1. **backup técnico**, destinado a restaurar integralmente uma instalação compatível;
+2. **exportação portátil**, destinada a permitir leitura, migração e reutilização dos dados essenciais fora da instalação original.
+
+Um backup opaco não substitui uma exportação portátil.
+
+---
+
+## 5. Modelo arquitetural de referência
+
+O OpenCore será organizado inicialmente como um **monólito modular**, com quatro níveis principais:
+
+1. runtime;
+2. módulos-base;
+3. módulos de domínio;
+4. distribuições.
+
+Esse modelo busca preservar simplicidade operacional, desempenho local e facilidade de empacotamento, mantendo fronteiras suficientes para evolução futura.
+
+---
+
+## 6. Runtime OpenCore
+
+### 6.1 Definição
+
+O runtime é a parte mínima, estrutural e não removível da plataforma.
+
+Ele coordena a execução, mas não conhece regras específicas de portaria, academia, oficina, biblioteca ou qualquer outro domínio.
+
+### 6.2 Responsabilidades
+
+O runtime deverá ser responsável por:
+
+- inicialização e encerramento da aplicação;
+- carregamento e validação da configuração;
+- descoberta ou registro dos módulos disponíveis;
+- validação dos manifestos;
+- resolução de dependências;
+- ordenação do ciclo de vida;
+- coordenação das migrações;
+- acesso controlado à persistência;
+- barramento local de eventos;
+- logs e diagnóstico;
+- contratos mínimos de integridade;
+- infraestrutura comum de tratamento de erros;
+- disponibilização de contexto e serviços autorizados aos módulos.
+
+### 6.3 O que não pertence ao runtime
+
+O runtime não deverá conter:
+
+- regras de visitantes;
+- regras de moradores ou unidades;
+- regras de entregas;
+- regras de estoque;
+- agendamentos;
+- caixa e faturamento;
+- relatórios específicos de um segmento;
+- telas específicas de uma distribuição;
+- integrações específicas de um cliente;
+- fluxos educacionais;
+- dependência obrigatória de serviços da entidade OpenCore.
+
+### 6.4 Critério para entrada no runtime
+
+Uma capacidade somente poderá entrar no runtime quando atender a pelo menos uma das seguintes condições:
+
+- ser necessária para inicialização, integridade ou segurança da plataforma;
+- precisar de comportamento uniforme entre distribuições;
+- ser independente de um domínio de negócio;
+- não poder ser implementada de forma segura e sustentável como módulo;
+- demonstrar utilidade recorrente e estrutural para a maioria das distribuições.
+
+A entrada de uma nova capacidade no runtime deverá exigir justificativa arquitetural registrada.
+
+---
+
+## 7. Módulos-base
+
+### 7.1 Definição
+
+Módulos-base oferecem capacidades reutilizáveis por diferentes distribuições, mas não são necessariamente obrigatórios em todas elas.
+
+### 7.2 Exemplos iniciais
+
+- autenticação;
+- permissões;
+- backup e restauração;
+- relatórios genéricos;
+- auditoria;
+- internacionalização;
+- atualização;
+- sincronização opcional;
+- notificações locais;
+- gerenciamento de usuários.
+
+### 7.3 Regras
+
+Módulos-base:
+
+- poderão depender de serviços do runtime;
+- poderão depender de outros módulos-base quando a dependência for explícita e justificada;
+- não poderão conhecer regras internas de módulos de domínio;
+- deverão expor contratos estáveis o suficiente para uso pelas distribuições;
+- deverão informar as permissões e recursos solicitados;
+- deverão possuir migrações próprias quando armazenarem dados.
+
+---
+
+## 8. Módulos de domínio
+
+### 8.1 Definição
+
+Módulos de domínio implementam capacidades específicas de um tipo de operação ou negócio.
+
+### 8.2 Exemplos
+
+Para o OpenCore Portaria:
+
+- unidades;
+- moradores;
+- visitantes;
+- entregas;
+- prestadores;
+- ocorrências.
+
+Para distribuições futuras:
+
+- estoque;
+- clientes;
+- caixa;
+- agenda;
+- biblioteca;
+- estacionamento;
+- matrículas;
+- ordens de serviço.
+
+### 8.3 Regras
+
+Módulos de domínio:
+
+- poderão depender do runtime por meio de contratos autorizados;
+- poderão depender de módulos-base;
+- poderão declarar dependências de outros módulos de domínio quando necessário;
+- não poderão alterar diretamente dados privados de outro módulo;
+- não poderão exigir mudanças no runtime apenas para acomodar uma regra específica;
+- deverão publicar ou consumir eventos quando a comunicação indireta reduzir acoplamento;
+- deverão manter sua lógica de negócio testável sem depender da interface gráfica.
+
+---
+
+## 9. Distribuições
+
+### 9.1 Definição
+
+Uma distribuição é uma combinação testada, documentada e empacotada de runtime, módulos, configurações e identidade de produto.
+
+A distribuição não é apenas uma lista livre de plugins. Ela representa uma composição cuja compatibilidade foi verificada.
+
+### 9.2 Conteúdo mínimo de uma distribuição
+
+Cada distribuição deverá declarar:
+
+- identificador;
+- nome;
+- versão;
+- runtime compatível;
+- módulos incluídos;
+- versões dos módulos;
+- dependências obrigatórias;
+- configurações iniciais;
+- identidade visual;
+- sistemas operacionais suportados;
+- política de atualização;
+- matriz de testes;
+- documentação de instalação e operação;
+- componentes e respectivas licenças;
+- formato de backup e exportação suportado.
+
+### 9.3 Distribuição de referência
+
+O **OpenCore Portaria** será a primeira distribuição de referência.
+
+Seu objetivo é validar o OpenCore como plataforma, e não transformar regras de portaria em capacidades do runtime.
+
+### 9.4 Segunda composição experimental
+
+Antes de considerar a plataforma validada, a mesma infraestrutura deverá executar uma segunda composição experimental de módulos.
+
+Essa composição poderá ser pequena, mas deverá provar que:
+
+- o runtime não depende do domínio de portaria;
+- módulos podem ser combinados de forma diferente;
+- as configurações da distribuição não exigem alterações estruturais no núcleo;
+- os contratos possuem reutilização real.
+
+---
+
+## 10. Regras de dependência
+
+### 10.1 Dependências permitidas
+
+```text
+Distribuição → Runtime
+Distribuição → Módulos-base
+Distribuição → Módulos de domínio
+Módulo de domínio → Runtime, por contratos públicos
+Módulo de domínio → Módulos-base, por contratos públicos
+Módulo de domínio → Outro módulo de domínio, quando declarado
+Módulo-base → Runtime, por contratos públicos
+Módulo-base → Outro módulo-base, quando declarado
+Runtime → bibliotecas internas estruturais
+```
+
+### 10.2 Dependências proibidas
+
+```text
+Runtime → regras ou tipos internos de um domínio específico
+Runtime → uma distribuição específica
+Módulo-base → implementação interna de módulo de domínio
+Módulo A → tabelas privadas ou estado interno do Módulo B
+Módulo → serviço externo não declarado
+Módulo → acesso irrestrito ao sistema sem permissão explícita
+Distribuição oficial → componente proprietário essencial
+```
+
+### 10.3 Dependências circulares
+
+Dependências circulares entre módulos deverão ser rejeitadas durante a validação da distribuição.
+
+Quando dois módulos parecerem depender mutuamente, a solução deverá considerar:
+
+- extração de um contrato compartilhado;
+- publicação de eventos;
+- criação de um módulo-base apropriado;
+- revisão da divisão de responsabilidades.
+
+---
+
+## 11. Contrato interno de módulos v0
+
+### 11.1 Objetivo
+
+O contrato interno v0 permitirá validar o modelo modular antes de publicar um SDK estável.
+
+Ele poderá evoluir durante as primeiras distribuições.
+
+### 11.2 Manifesto mínimo
+
+Cada módulo deverá declarar, no mínimo:
+
+```yaml
+id: org.opencore.exemplo
+name: Módulo de Exemplo
+version: 0.1.0
+license: MPL-2.0
+type: base | domain | integration | tool
+execution: native | process
+language: rust | python | typescript | other
+runtime_requirement: ">=0.1.0 <0.2.0"
+protocol: null | opencore-module-v1
+entrypoint: null
+dependencies:
+  required: []
+  optional: []
+permissions: []
+events:
+  publishes: []
+  consumes: []
+migrations: []
+configuration_schema: null
+ui_schema: null
+```
+
+Exemplos ilustrativos:
+
+```yaml
+# Módulo nativo (Rust, in-process controlado)
+execution: native
+language: rust
+protocol: null
+entrypoint: null
+```
+
+```yaml
+# Módulo externo (processo isolado)
+execution: process
+language: python
+protocol: opencore-module-v1
+entrypoint: "python main.py"
+```
+
+O formato acima é ilustrativo. YAML, TOML ou outro formato somente será confirmado após validação técnica. A classe `process` e o protocolo neutro de linguagem estão condicionados ao ADR-015 e ao Spike 10.
+
+### 11.3 Campos obrigatórios
+
+O contrato deverá representar:
+
+- identificador único;
+- nome legível;
+- versão;
+- licença;
+- tipo do módulo;
+- modo de execução (`native` ou `process`);
+- linguagem de implementação;
+- versão de runtime compatível;
+- protocolo utilizado, quando `execution: process`;
+- dependências obrigatórias;
+- dependências opcionais;
+- permissões solicitadas;
+- eventos publicados;
+- eventos consumidos;
+- migrações;
+- esquema de configuração;
+- esquema declarativo de interface, quando aplicável;
+- ponto de inicialização;
+- ponto de encerramento;
+- estado de compatibilidade.
+
+### 11.4 Ciclo de vida preliminar
+
+```text
+Descoberto
+→ Manifesto validado
+→ Compatibilidade validada
+→ Dependências resolvidas
+→ Permissões avaliadas
+→ Migrações aplicadas
+→ Inicializado
+→ Ativo
+→ Encerrado
+```
+
+Estados de falha deverão ser registrados de forma explícita.
+
+### 11.5 Falha de ativação
+
+Sempre que a integridade da distribuição permitir, uma falha deverá impedir apenas a ativação do módulo afetado e de seus dependentes.
+
+A aplicação deverá interromper completamente a inicialização quando a falha envolver:
+
+- runtime incompatível;
+- migração estrutural incompleta;
+- corrupção detectada;
+- módulo obrigatório ausente;
+- violação de integridade;
+- configuração essencial inválida;
+- dependência circular não resolvida.
+
+### 11.6 Estratégia inicial de carregamento
+
+A primeira versão distinguirá duas classes técnicas de módulo, conforme ADR-015:
+
+1. **Módulos nativos (`execution: native`)** — componentes Rust conhecidos no momento da compilação ou registrados estaticamente na distribuição, executados no processo do runtime.
+2. **Módulos em processo (`execution: process`)** — processos isolados que conversam com o runtime por protocolo local versionado. Hipótese a validar no Spike 10; não será tratada como aceita antes das evidências.
+
+Módulos nativos permanecerão a regra para o caminho crítico de segurança, integridade, autenticação e capacidades estruturais.
+
+Módulos em processo serão a preferência inicial para domínio educacional e para módulos de domínio que não exijam integração profunda, desde que o spike seja aceito. A distribuição de referência deverá incluir pelo menos um módulo de domínio real em processo se essa classe for adotada — evitando relegar o modelo multilíngue a exemplos puramente didáticos.
+
+A primeira versão não deverá assumir:
+
+- ABI binária estável;
+- bibliotecas dinâmicas arbitrárias in-process;
+- interpretador Python, JavaScript ou Wasm embutido no runtime;
+- download e execução automática de módulos não verificados;
+- compatibilidade ilimitada entre versões;
+- execução segura de código não confiável sem permissões;
+- suporte oficial simultâneo a múltiplas linguagens externas na Etapa 1.
+
+A existência de um contrato de módulo não implica, por si só, um sistema público de plugins dinâmicos in-process. O protocolo neutro de linguagem é o contrato público; os SDKs (Rust, e posteriormente Python ou TypeScript) são bindings desse protocolo, licenciados sob Apache 2.0 conforme o Manifesto v1.1.
+
+### 11.7 Empacotamento de módulos em processo
+
+Distribuições que incluam módulos `process` deverão declarar uma estratégia explícita:
+
+- runtime do interpretador embutido na distribuição;
+- runtime detectado no ambiente, com versão mínima documentada; ou
+- habilitação apenas em modo desenvolvimento, com equivalente nativo na distribuição publicada, enquanto o empacotamento amadurece.
+
+Nenhuma dessas estratégias poderá violar o offline-first: um módulo já instalado não dependerá de download de interpretador ou de serviço remoto para executar funções locais.
+
+---
+
+## 12. Comunicação entre módulos
+
+A comunicação deverá utilizar duas estratégias principais:
+
+1. chamadas por contratos explícitos, quando houver necessidade de resposta imediata;
+2. eventos, quando a comunicação representar um fato ocorrido ou puder ser desacoplada.
+
+### 12.1 Contratos explícitos
+
+São apropriados para:
+
+- consultar uma autorização;
+- solicitar uma operação que precisa retornar resultado;
+- validar uma dependência obrigatória;
+- acessar um serviço-base documentado.
+
+Contratos não deverão expor estruturas internas ou permitir mutação irrestrita do estado de outro módulo.
+
+### 12.2 Barramento de eventos
+
+A primeira versão deverá utilizar um barramento:
+
+- local;
+- em processo;
+- sem serviço externo;
+- observável;
+- testável;
+- com tipos ou esquemas identificáveis.
+
+A implementação poderá ser síncrona ou assíncrona conforme a categoria do evento, desde que o comportamento seja documentado.
+
+### 12.3 Categorias de eventos
+
+#### Eventos de domínio
+
+Representam fatos relevantes do negócio:
+
+```text
+VisitanteRegistrado
+EntregaRecebida
+MoradorAtualizado
+OcorrenciaCriada
+```
+
+#### Eventos técnicos
+
+Representam fatos operacionais:
+
+```text
+ModuloInicializado
+MigracaoConcluida
+BackupConcluido
+FalhaDeMigracao
+AtualizacaoDisponivel
+```
+
+### 12.4 Requisitos dos eventos
+
+Cada evento deverá possuir:
+
+- nome estável;
+- versão ou esquema identificável;
+- origem;
+- horário;
+- identificador de correlação quando necessário;
+- payload documentado;
+- política de falha;
+- classificação como técnico ou de domínio.
+
+### 12.5 Comunicação com módulos em processo
+
+Quando `execution: process` estiver habilitado, a comunicação entre runtime e módulo externo deverá usar o mesmo modelo lógico de contratos e eventos, transportado pelo protocolo local versionado.
+
+Requisitos iniciais:
+
+- handshake de registro e declaração de capacidades;
+- request/response para comandos e consultas;
+- publicação e consumo de eventos;
+- encerramento e reinício controlados;
+- correlação de requisições e diagnóstico de falhas;
+- ausência de transação distribuída entre processos na v0.
+
+A semântica de entrega (por exemplo, at-most-once ou at-least-once) deverá ser documentada no protocolo. Consistência entre módulos continuará baseada em um proprietário claro dos dados e em orquestração por comandos/eventos, não em commit distribuído.
+
+### 12.6 Limites iniciais
+
+A primeira versão não exigirá:
+
+- Kafka;
+- RabbitMQ;
+- broker externo;
+- entrega distribuída;
+- garantia global de ordenação;
+- persistência obrigatória de todos os eventos;
+- transações ACID atravessando processos de módulos.
+
+Essas capacidades somente deverão ser consideradas mediante necessidade comprovada.
+
+---
+
+## 13. Persistência e arquitetura de dados
+
+### 13.1 Banco inicial
+
+SQLite será utilizado inicialmente como banco local padrão, condicionado à validação dos spikes.
+
+### 13.2 Propriedade de dados por módulo
+
+Cada tabela ou conjunto de dados deverá possuir um módulo responsável claramente identificável.
+
+Um módulo não deverá:
+
+- alterar diretamente tabelas privadas de outro módulo;
+- depender de detalhes internos não documentados;
+- executar migrações sobre estruturas que não controla.
+
+Quando dados de outro módulo forem necessários, o acesso deverá ocorrer por:
+
+- contrato público;
+- projeção de leitura autorizada;
+- evento;
+- estrutura compartilhada formalmente definida.
+
+### 13.3 Convenção inicial de identificação
+
+Durante os spikes, deverá ser avaliado o uso de:
+
+- prefixos por módulo;
+- registro central de migrações;
+- namespaces lógicos;
+- metadados de propriedade de tabelas.
+
+SQLite não oferece schemas independentes da mesma forma que outros bancos. Portanto, o isolamento inicial será principalmente contratual, estrutural e validado por testes.
+
+### 13.4 Migrações
+
+Cada módulo com persistência deverá fornecer suas próprias migrações.
+
+As migrações deverão possuir:
+
+- identificador único;
+- versão de origem;
+- versão de destino;
+- ordem determinística;
+- módulo proprietário;
+- verificação de pré-condições;
+- resultado registrado;
+- teste automatizado;
+- estratégia de recuperação.
+
+### 13.5 Transações
+
+Migrações deverão ser transacionais quando tecnicamente possível.
+
+Quando uma operação não puder ser revertida integralmente, isso deverá ser documentado e acompanhado de:
+
+- backup prévio;
+- validação adicional;
+- procedimento de recuperação;
+- mensagem explícita ao operador.
+
+### 13.6 Desativação e remoção de módulos
+
+Desativar um módulo não deverá apagar automaticamente seus dados.
+
+A remoção definitiva deverá ser uma operação separada e explícita, com:
+
+- confirmação;
+- backup recomendado;
+- impacto documentado;
+- verificação de dependentes;
+- opção de exportação quando aplicável.
+
+### 13.7 Banco compartilhado versus banco por módulo
+
+A primeira versão utilizará, por simplicidade, um banco SQLite compartilhado pela distribuição, com propriedade lógica de estruturas por módulo.
+
+Banco separado por módulo poderá ser reavaliado se os testes demonstrarem necessidade de:
+
+- isolamento superior;
+- portabilidade independente;
+- redução de contenção;
+- ciclo de vida separado;
+- requisitos específicos de segurança.
+
+### 13.8 Acesso a dados por módulos em processo
+
+Módulos com `execution: process` não deverão abrir diretamente o arquivo SQLite da distribuição.
+
+O acesso ocorrerá exclusivamente por APIs autorizadas do runtime (leitura, escrita, transação e migração declarada), limitadas às permissões do manifesto. Essa regra reforça a propriedade de dados por módulo e reduz o risco de isolamento apenas aparente entre componentes.
+
+---
+
+## 14. Backup, restauração e exportação
+
+### 14.1 Backup técnico
+
+O backup técnico deverá preservar o estado necessário para restaurar uma instalação compatível.
+
+Deverá incluir, conforme o caso:
+
+- banco de dados;
+- versão do runtime;
+- versões dos módulos;
+- configurações necessárias;
+- metadados da distribuição;
+- anexos e arquivos relacionados;
+- checksum ou mecanismo de integridade;
+- data e versão do formato de backup.
+
+### 14.2 Restauração
+
+Antes de restaurar, o sistema deverá validar:
+
+- integridade do arquivo;
+- versão do formato;
+- compatibilidade do runtime;
+- módulos exigidos;
+- espaço disponível;
+- impacto sobre a instalação atual.
+
+A restauração deverá evitar sobrescrever silenciosamente dados existentes.
+
+### 14.3 Exportação portátil
+
+Dados essenciais deverão ser exportáveis em formatos documentados e legíveis, como:
+
+- JSON;
+- CSV;
+- arquivos anexos acompanhados de metadados;
+- outro formato aberto apropriado ao domínio.
+
+A exportação deverá informar:
+
+- esquema;
+- codificação;
+- relações entre entidades;
+- data de geração;
+- versão do exportador;
+- limitações conhecidas.
+
+### 14.4 Exclusão de dados
+
+Módulos que armazenem dados pessoais ou operacionais deverão oferecer mecanismos documentados para exclusão quando o usuário autorizado possuir legitimidade para realizá-la.
+
+A exclusão deverá considerar:
+
+- dependências;
+- auditoria;
+- retenção legal aplicável;
+- backups existentes;
+- anexos;
+- sincronizações externas configuradas.
+
+---
+
+## 15. Configuração
+
+### 15.1 Princípios
+
+Configurações deverão ser:
+
+- documentadas;
+- validadas;
+- versionadas quando necessário;
+- separadas de segredos;
+- exportáveis quando não sensíveis;
+- recuperáveis por padrão seguro.
+
+### 15.2 Escopos
+
+A arquitetura deverá distinguir:
+
+- configuração do runtime;
+- configuração da distribuição;
+- configuração do módulo;
+- configuração por organização ou unidade;
+- preferência individual do usuário;
+- segredo ou credencial.
+
+### 15.3 Segredos
+
+Credenciais e tokens não deverão ser armazenados em texto simples quando houver mecanismo seguro disponível no sistema operacional.
+
+A estratégia de armazenamento de segredos deverá ser validada em Windows, Linux e macOS.
+
+---
+
+## 16. Logs, diagnóstico e auditoria
+
+### 16.1 Logs técnicos
+
+O runtime deverá fornecer infraestrutura comum de logs com:
+
+- níveis de severidade;
+- origem identificada;
+- horário;
+- identificador de correlação quando necessário;
+- proteção contra exposição indevida de dados sensíveis;
+- rotação ou limite de armazenamento;
+- exportação para suporte.
+
+### 16.2 Auditoria de operações
+
+Operações relevantes ao domínio poderão exigir trilha de auditoria própria, distinta dos logs técnicos.
+
+A auditoria deverá registrar, quando aplicável:
+
+- ator;
+- operação;
+- recurso afetado;
+- data e hora;
+- resultado;
+- origem da solicitação;
+- justificativa ou contexto.
+
+### 16.3 Privacidade
+
+Logs não deverão incluir automaticamente:
+
+- senhas;
+- tokens completos;
+- documentos pessoais completos;
+- conteúdo sensível desnecessário;
+- dados enviados a integrações externas sem necessidade de diagnóstico.
+
+---
+
+## 17. Segurança e permissões
+
+### 17.1 Princípio de menor privilégio
+
+Cada módulo deverá declarar as capacidades de que necessita.
+
+Exemplos de permissões futuras:
+
+- leitura de configuração;
+- gravação em armazenamento próprio;
+- publicação de eventos;
+- consumo de eventos específicos;
+- acesso a arquivos selecionados;
+- acesso à rede;
+- uso de integração externa;
+- execução de tarefa em segundo plano;
+- acesso a dados de outro módulo por contrato.
+
+### 17.2 Confiança inicial
+
+Na primeira etapa:
+
+- módulos nativos oficiais compilados com a distribuição serão considerados componentes de alta confiança, mas ainda deverão respeitar fronteiras e declarar capacidades;
+- módulos em processo, mesmo oficiais, operarão com menor confiança implícita: permissões explícitas, isolamento de processo e mediação de storage pelo runtime.
+
+Essa disciplina permitirá evolução futura para níveis diferentes de confiança (por exemplo: oficial, verificado, independente), sem redesenhar o modelo de permissões.
+
+### 17.3 Código externo
+
+Código externo não deverá ser baixado e executado automaticamente na primeira versão.
+
+Um futuro sistema de módulos distribuídos deverá considerar:
+
+- assinatura de artefatos;
+- origem verificável;
+- checksum;
+- política de revogação;
+- compatibilidade;
+- permissões;
+- isolamento;
+- auditoria;
+- resposta a vulnerabilidades.
+
+### 17.4 Política de segurança
+
+O repositório deverá possuir um processo separado para:
+
+- relato privado de vulnerabilidades;
+- triagem;
+- correção;
+- divulgação coordenada;
+- versões afetadas;
+- publicação de avisos de segurança.
+
+---
+
+## 18. Interface gráfica
+
+### 18.1 Hipótese inicial
+
+Slint será avaliado como tecnologia principal para a interface gráfica.
+
+Essa escolha permanece provisória até a conclusão dos spikes em Windows, Linux e macOS.
+
+### 18.2 Separação de responsabilidades
+
+A lógica de negócio não deverá depender diretamente da interface.
+
+A interface deverá consumir:
+
+- casos de uso;
+- contratos;
+- estados de apresentação;
+- eventos apropriados.
+
+Módulos deverão evitar incorporar regras essenciais exclusivamente em componentes visuais.
+
+### 18.3 Composição da interface
+
+A Etapa 1 deverá avaliar como módulos contribuem com:
+
+- rotas ou páginas;
+- menus;
+- permissões de acesso;
+- formulários;
+- componentes visuais;
+- traduções;
+- ações globais.
+
+A solução deverá evitar que um módulo modifique livremente qualquer parte da interface sem contrato.
+
+Módulos nativos poderão contribuir com componentes Slint sob contratos da distribuição.
+
+Módulos em processo, na fase inicial, deverão contribuir apenas por **esquemas declarativos de UI** (por exemplo tabelas, formulários, ações e rotas), renderizados por componentes oficiais. Injeção arbitrária de código de interface a partir de Python, JavaScript ou outra linguagem externa permanecerá fora do escopo até ADR e evidência específicos.
+
+### 18.4 Acessibilidade e internacionalização
+
+As distribuições oficiais deverão evoluir com suporte a:
+
+- navegação por teclado;
+- contraste adequado;
+- textos escaláveis;
+- mensagens de erro compreensíveis;
+- tradução por recursos externos ao código quando possível;
+- formatos locais de data, número e moeda.
+
+---
+
+## 19. Atualizações
+
+### 19.1 Princípios
+
+Atualizações não poderão tornar a conexão obrigatória para continuar utilizando a versão já instalada.
+
+O mecanismo futuro deverá considerar:
+
+- verificação de integridade;
+- assinatura de artefatos;
+- versão do runtime;
+- compatibilidade de módulos;
+- migrações;
+- backup prévio;
+- reversão ou recuperação;
+- política de suporte.
+
+### 19.2 Limite da primeira versão
+
+Na Etapa 1, o objetivo é validar empacotamento e atualização de esquema.
+
+Um atualizador automático completo poderá ser adiado até que o formato de distribuição e a política de compatibilidade estejam mais maduros.
+
+---
+
+## 20. Sincronização e serviços externos
+
+Sincronização será opcional e não pertencerá ao runtime mínimo enquanto sua necessidade e modelo não forem comprovados.
+
+Uma futura solução deverá preservar:
+
+- operação local;
+- exportação independente;
+- resolução documentada de conflitos;
+- criptografia apropriada;
+- controle do usuário;
+- possibilidade de utilizar provedores alternativos quando viável;
+- ausência de dependência obrigatória da entidade OpenCore.
+
+A primeira distribuição poderá operar integralmente em uma única instalação local.
+
+---
+
+## 21. Licenciamento por fronteira arquitetural
+
+### 21.1 MPL 2.0
+
+Deverão utilizar MPL 2.0, conforme o Manifesto:
+
+- runtime e kernel;
+- registro e ciclo de vida de módulos;
+- configuração estrutural;
+- barramento de eventos;
+- persistência e migrações estruturais;
+- segurança e integridade;
+- logs estruturais;
+- atualização;
+- módulos-base oficiais;
+- módulos de domínio incorporados oficialmente;
+- outros componentes classificados como patrimônio técnico central.
+
+### 21.2 Apache 2.0
+
+Deverão utilizar Apache 2.0, conforme o Manifesto:
+
+- especificação pública do protocolo de módulos;
+- SDK público e bindings por linguagem;
+- bibliotecas cliente;
+- adaptadores;
+- templates;
+- scaffolds;
+- exemplos;
+- ferramentas auxiliares que não componham o núcleo protegido;
+- materiais de código educacional não incorporados ao núcleo ou a módulos oficiais.
+
+O protocolo é a especificação principal. Cada SDK apenas facilita o uso desse protocolo. A existência de um SDK Rust não implica que todos os módulos devam ser escritos em Rust.
+
+### 21.3 Módulos independentes
+
+Módulos independentes poderão utilizar outras licenças compatíveis, desde que:
+
+- a licença seja claramente informada;
+- obrigações das dependências sejam respeitadas;
+- os direitos sobre dados sejam preservados;
+- não sejam apresentados como oficiais sem aprovação;
+- não comprometam uma distribuição oficial aberta.
+
+### 21.4 Distribuições oficiais
+
+Distribuições oficiais deverão ser integralmente open source e informar de forma auditável:
+
+- componentes;
+- versões;
+- licenças;
+- avisos;
+- código-fonte exigido;
+- procedimento de reconstrução.
+
+### 21.5 Verificação automatizada
+
+O projeto deverá avaliar durante a Etapa 1:
+
+- identificadores SPDX;
+- cabeçalhos ou arquivos de licença por diretório;
+- inventário de dependências;
+- geração de SBOM;
+- validação de compatibilidade de licenças no CI;
+- documentação de componentes de terceiros.
+
+---
+
+## 22. Organização inicial do repositório
+
+A hipótese inicial é um monorepo durante a fase de validação.
+
+```text
+opencore/
+├── apps/
+│   └── portaria/
+├── runtime/
+│   ├── core/
+│   ├── config/
+│   ├── events/
+│   ├── storage/
+│   ├── migrations/
+│   ├── module_host/      # orquestração de módulos process (hipótese ADR-015)
+│   └── diagnostics/
+├── modules/
+│   ├── base/
+│   │   ├── auth/
+│   │   ├── permissions/
+│   │   ├── audit/
+│   │   └── backup/
+│   └── domain/
+│       └── portaria/
+│           ├── units/
+│           ├── residents/
+│           ├── visitors/
+│           └── deliveries/
+├── protocol/             # especificação OpenCore Module Protocol (Apache 2.0)
+├── sdk/
+│   ├── rust/
+│   ├── python/           # após Spike 10, se Python for a linguagem escolhida
+│   └── typescript/       # após Spike 10, se TypeScript for a linguagem escolhida
+├── tools/
+├── examples/
+├── docs/
+│   ├── architecture/
+│   ├── adr/
+│   ├── rfc/
+│   ├── security/
+│   └── contributing/
+├── licenses/
+├── scripts/
+└── tests/
+```
+
+### 22.1 Motivos para o monorepo inicial
+
+- mudanças coordenadas entre runtime e módulos;
+- testes integrados;
+- revisão centralizada;
+- visibilidade das fronteiras;
+- simplificação do CI;
+- onboarding mais direto;
+- auditoria de licenças;
+- menor custo operacional durante os spikes.
+
+A divisão em múltiplos repositórios deverá ocorrer apenas quando houver motivos claros de ciclo de vida, acesso, publicação ou manutenção independente.
+
+---
+
+## 23. Estratégia de testes
+
+### 23.1 Camadas de teste
+
+A arquitetura deverá suportar:
+
+- testes unitários da lógica de negócio;
+- testes de contrato entre runtime e módulos;
+- testes de migração;
+- testes de integração entre módulos;
+- testes de backup e restauração;
+- testes de exportação;
+- testes de inicialização e falha;
+- testes de empacotamento;
+- testes multiplataforma;
+- testes de segurança proporcionais ao risco.
+
+### 23.2 Requisitos mínimos para módulos
+
+Um módulo não deverá ser considerado concluído sem:
+
+- testes de suas regras principais;
+- testes de configuração inválida;
+- testes de migração;
+- testes de permissões relevantes;
+- documentação de eventos e contratos;
+- teste de ativação e encerramento.
+
+### 23.3 CI inicial
+
+O CI deverá evoluir para verificar:
+
+- compilação;
+- formatação;
+- análise estática;
+- testes;
+- licenças;
+- vulnerabilidades conhecidas;
+- documentação básica;
+- builds ou smoke tests nos sistemas suportados.
+
+---
+
+## 24. Desempenho e hardware modesto
+
+A proposta de leveza deverá ser tratada como requisito mensurável, não apenas como intenção.
+
+Os spikes deverão coletar ao menos:
+
+- tamanho do executável ou pacote;
+- tempo de inicialização;
+- memória em repouso;
+- memória durante operações comuns;
+- tempo de leitura e gravação;
+- tempo de migração em bases de teste;
+- impacto de módulos adicionais;
+- comportamento sem conexão;
+- estabilidade em hardware mais simples disponível para teste.
+
+Metas numéricas definitivas somente deverão ser estabelecidas após medições iniciais.
+
+---
+
+## 25. Observabilidade local
+
+A observabilidade inicial deverá ser local e proporcional.
+
+O projeto deverá permitir:
+
+- identificar módulos carregados;
+- visualizar versões;
+- verificar migrações;
+- consultar erros recentes;
+- exportar diagnóstico;
+- verificar integridade do banco e do backup;
+- compreender por que um módulo não foi ativado.
+
+Não será necessário criar uma plataforma remota de observabilidade na primeira versão.
+
+---
+
+## 26. Compatibilidade e versionamento
+
+### 26.1 Versionamento
+
+Runtime, módulos e distribuições deverão possuir versões independentes.
+
+A estratégia inicial deverá avaliar versionamento semântico, levando em conta que versões anteriores a 1.0 podem sofrer mudanças frequentes.
+
+### 26.2 Compatibilidade
+
+O manifesto de módulo deverá declarar o intervalo de versões de runtime suportado.
+
+A distribuição deverá possuir uma matriz resolvida de:
+
+- runtime;
+- módulos;
+- migrações;
+- sistema operacional;
+- formato de backup.
+
+### 26.3 Depreciação
+
+Antes de remover um contrato público, o projeto deverá definir:
+
+- aviso;
+- alternativa;
+- período de transição;
+- impacto;
+- migração necessária;
+- versão em que ocorrerá a remoção.
+
+Uma política completa será criada com o SDK v0.
+
+---
+
+## 27. ADRs iniciais
+
+As seguintes decisões deverão ser registradas separadamente:
+
+| ADR | Título | Estado inicial |
+|---|---|---|
+| ADR-001 | Monólito modular como arquitetura inicial | Proposto |
+| ADR-002 | Separação entre runtime, módulos-base, módulos de domínio e distribuições | Proposto |
+| ADR-003 | SQLite como persistência local inicial | Proposto, condicionado a spike |
+| ADR-004 | Barramento local de eventos para comunicação desacoplada | Proposto |
+| ADR-005 | Registro estático/nativo in-process antes de plugins dinâmicos; módulos em processo são classe distinta (ADR-015) | Proposto |
+| ADR-006 | Rust como hipótese principal para o runtime | Proposto, condicionado a spike |
+| ADR-007 | Slint como hipótese principal para a interface | Proposto, condicionado a spike |
+| ADR-008 | Licenciamento definido por fronteira arquitetural | Aceito pelo Manifesto v1.1 |
+| ADR-009 | Backup técnico separado de exportação portátil | Proposto |
+| ADR-010 | Telemetria externa desativada por padrão | Aceito pelo Manifesto v1.1 |
+| ADR-011 | Monorepo durante a fase inicial | Proposto |
+| ADR-012 | Portaria como distribuição de referência, não parte do runtime | Aceito pela direção do projeto |
+| ADR-013 | Banco compartilhado com propriedade lógica por módulo na primeira versão | Proposto, condicionado a spike |
+| ADR-014 | Execução local sem broker ou infraestrutura externa | Proposto |
+| ADR-015 | Módulos nativos Rust, módulos externos em processo e protocolo neutro de linguagem | Proposto, condicionado a spike |
+
+ADRs condicionados deverão ser revisados após os resultados da Etapa 1.
+
+---
+
+## 28. Hipóteses técnicas a validar na Etapa 1
+
+### 28.1 Stack e multiplataforma
+
+1. Rust compila, executa e pode ser empacotado adequadamente em Windows, Linux e macOS?
+2. Slint oferece os componentes, acessibilidade, integração e desempenho necessários?
+3. O tamanho dos pacotes e o consumo de memória são compatíveis com a proposta de leveza?
+4. O fluxo de desenvolvimento é viável para contribuidores em formação?
+
+### 28.2 Modularidade
+
+5. Dois módulos simples podem ser registrados sem acoplamento indevido?
+6. O runtime consegue resolver dependências e rejeitar ciclos?
+7. Um módulo pode falhar sem derrubar desnecessariamente componentes independentes?
+8. Uma segunda combinação experimental pode utilizar o mesmo runtime sem alterações específicas?
+
+### 28.2.1 Módulos em processo (ADR-015)
+
+8a. Um módulo externo em processo consegue registrar-se e conversar com o runtime por protocolo local versionado?
+8b. Crash do módulo externo deixa o runtime e demais módulos operacionais?
+8c. Permissões não declaradas são negadas de forma verificável?
+8d. O processo filho consegue operar sem abrir diretamente o SQLite?
+8e. O empacotamento do interpretador (embutido ou detectado) permanece compatível com leveza e offline-first?
+8f. Uma pessoa em formação consegue criar e executar um módulo externo só com documentação e template?
+
+### 28.3 Dados e migrações
+
+9. SQLite atende ao volume e à concorrência esperados para a primeira distribuição?
+10. Cada módulo consegue controlar suas migrações com ordem determinística?
+11. O banco compartilhado mantém fronteiras suficientemente claras?
+12. Migrações com falha podem ser recuperadas com segurança?
+13. A desativação de um módulo preserva seus dados sem afetar outros módulos?
+
+### 28.4 Eventos e contratos
+
+14. Eventos conectam módulos sem acesso direto às estruturas internas?
+15. O modelo síncrono, assíncrono ou híbrido é compreensível e testável?
+16. Erros em consumidores de eventos podem ser diagnosticados sem perda silenciosa?
+17. Os contratos de consulta e comando evitam dependências excessivas?
+
+### 28.5 Backup, exportação e continuidade
+
+18. O backup captura banco, configuração e metadados suficientes?
+19. A restauração valida compatibilidade antes de alterar a instalação?
+20. A exportação portátil permite reconstruir os dados essenciais fora do OpenCore?
+21. O formato de backup pode evoluir sem tornar versões antigas inutilizáveis?
+
+### 28.6 Segurança e configuração
+
+22. Permissões podem ser declaradas e verificadas de forma útil desde a primeira versão?
+23. Segredos podem ser armazenados adequadamente nos três sistemas?
+24. Logs evitam vazamento de dados sensíveis?
+25. A ausência de conexão não altera a autorização para recursos locais?
+
+### 28.7 Empacotamento e manutenção
+
+26. Instaladores podem ser reproduzidos para os três sistemas?
+27. O projeto consegue registrar inventário e licenças dos componentes?
+28. O CI consegue validar testes e conformidade sem infraestrutura excessiva?
+29. Uma pessoa externa consegue executar o projeto seguindo apenas a documentação?
+30. As decisões arquiteturais conseguem ser alteradas sem reescrever todo o protótipo?
+
+---
+
+## 29. Spikes recomendados
+
+### Spike 01 — Aplicação mínima multiplataforma
+
+**Objetivo:** compilar e executar uma aplicação Rust com Slint nos três sistemas.
+
+**Evidências:**
+
+- scripts de build;
+- pacotes gerados;
+- consumo de memória;
+- tempo de inicialização;
+- dificuldades por sistema;
+- relatório comparativo.
+
+### Spike 02 — Registro de módulos
+
+**Objetivo:** registrar dois módulos estáticos com manifestos e ciclos de vida independentes.
+
+**Evidências:**
+
+- validação de identificadores;
+- resolução de dependências;
+- ordem de inicialização;
+- falha isolada;
+- logs de diagnóstico.
+
+### Spike 03 — Eventos locais
+
+**Objetivo:** permitir que um módulo publique um evento consumido por outro sem acesso ao estado interno.
+
+**Evidências:**
+
+- evento tipado ou validado;
+- teste de consumidor;
+- tratamento de falha;
+- medição de acoplamento;
+- decisão síncrona, assíncrona ou híbrida.
+
+### Spike 04 — SQLite e migrações por módulo
+
+**Objetivo:** criar tabelas pertencentes a dois módulos e aplicar migrações independentes.
+
+**Evidências:**
+
+- registro de migrações;
+- rollback ou recuperação;
+- falha simulada;
+- teste de dependência;
+- convenção de nomes.
+
+### Spike 05 — Backup e restauração
+
+**Objetivo:** gerar backup técnico, alterar dados e restaurar uma instalação compatível.
+
+**Evidências:**
+
+- formato do backup;
+- checksum;
+- metadados de versão;
+- teste de corrupção;
+- teste de incompatibilidade.
+
+### Spike 06 — Exportação portátil
+
+**Objetivo:** exportar dados dos dois módulos em formatos abertos e documentados.
+
+**Evidências:**
+
+- JSON ou CSV;
+- esquema documentado;
+- anexos quando aplicável;
+- reimportação experimental ou validação externa;
+- diferenças em relação ao backup.
+
+### Spike 07 — Composição de distribuições
+
+**Objetivo:** gerar duas aplicações ou composições usando o mesmo runtime e combinações diferentes de módulos.
+
+**Evidências:**
+
+- manifests das distribuições;
+- builds separados;
+- ausência de regras de domínio no runtime;
+- testes de compatibilidade;
+- comparação das dependências.
+
+### Spike 08 — Licenças e inventário
+
+**Objetivo:** validar a separação MPL 2.0 e Apache 2.0 no repositório.
+
+**Evidências:**
+
+- arquivos de licença;
+- identificadores SPDX;
+- inventário de dependências;
+- verificação no CI;
+- proposta de SBOM.
+
+### Spike 09 — Onboarding externo
+
+**Objetivo:** permitir que uma pessoa externa compile e execute o projeto apenas com a documentação.
+
+**Evidências:**
+
+- tempo até primeira execução;
+- bloqueios encontrados;
+- passos não documentados;
+- correções realizadas;
+- resultado reproduzido em mais de um sistema.
+
+### Spike 10 — Módulo externo em processo (ADR-015)
+
+**Objetivo:** executar um módulo externo em processo isolado (Python **ou** TypeScript — uma linguagem apenas), comunicando-se com o runtime Rust por protocolo local versionado.
+
+**Evidências:**
+
+- manifesto com `execution: process`;
+- handshake e registro;
+- comando request/response;
+- evento publicado e consumido;
+- negação de permissão;
+- crash isolado e reinício;
+- ausência de abertura direta do SQLite;
+- medição de memória e latência;
+- estratégia de empacotamento documentada;
+- template mínimo e teste em pelo menos dois sistemas operacionais.
+
+**Fora de escopo deste spike:** segundo SDK completo, interpretador embutido no runtime, UI Slint injetada pelo módulo externo, marketplace.
+
+---
+
+## 30. Métricas iniciais
+
+Os spikes deverão registrar dados comparáveis, sem impor metas arbitrárias antes da primeira medição.
+
+### Produto e desempenho
+
+- tempo de inicialização;
+- memória em repouso;
+- tamanho do pacote;
+- tempo de operações comuns;
+- tempo de migração;
+- tempo de backup e restauração.
+
+### Arquitetura
+
+- dependências por módulo;
+- falhas de isolamento;
+- necessidade de acesso direto entre módulos;
+- quantidade de mudanças no runtime exigidas por domínio;
+- cobertura de testes dos contratos.
+
+### Contribuição
+
+- tempo para preparar o ambiente;
+- quantidade de passos manuais;
+- erros de documentação;
+- tempo até executar um teste;
+- necessidade de orientação privada.
+
+### Portabilidade
+
+- diferenças entre sistemas;
+- dependências específicas;
+- falhas de empacotamento;
+- recursos indisponíveis;
+- esforço de manutenção por plataforma.
+
+---
+
+## 31. Critérios de saída da Arquitetura v1
+
+Esta etapa documental será considerada concluída quando:
+
+- cada componente inicial possuir uma camada identificada;
+- responsabilidades do runtime estiverem delimitadas;
+- dependências permitidas e proibidas estiverem documentadas;
+- contrato interno de módulo v0 estiver definido;
+- ciclo de vida de módulos estiver descrito;
+- persistência e migrações tiverem regras iniciais;
+- backup e exportação estiverem diferenciados;
+- comunicação por contratos e eventos estiver definida;
+- fronteiras de segurança estiverem registradas;
+- fronteiras de licenciamento estiverem mapeadas;
+- ADRs iniciais tiverem sido criados;
+- hipóteses técnicas tiverem sido convertidas em spikes mensuráveis;
+- nenhuma regra específica do OpenCore Portaria estiver localizada no runtime;
+- uma pessoa externa conseguir compreender como uma distribuição é composta.
+
+---
+
+## 32. Critérios de saída da validação técnica
+
+A Etapa 1 poderá ser considerada concluída quando:
+
+- a stack funcionar nos três sistemas operacionais;
+- dois módulos operarem sem acoplamento indevido;
+- dependências e ciclos forem validados;
+- migrações por módulo funcionarem de forma verificável;
+- eventos permitirem comunicação sem acesso interno direto;
+- backup e restauração forem demonstrados;
+- exportação portátil for validada;
+- duas composições utilizarem o mesmo runtime;
+- os builds puderem ser reproduzidos;
+- as fronteiras de licença puderem ser auditadas;
+- uma pessoa externa executar o projeto seguindo apenas a documentação;
+- o Spike 10 tiver aceito, rejeitado ou adiado com evidência registrada o modelo de módulo em processo;
+- os ADRs provisórios forem aceitos, alterados ou rejeitados com base nas evidências.
+
+---
+
+## 33. Riscos arquiteturais iniciais
+
+### 33.1 Complexidade prematura do sistema de plugins
+
+**Risco:** tentar oferecer plugins binários, marketplace e ABI estável antes de compreender os contratos reais.
+
+**Mitigação:** manter registro nativo/estático para in-process; validar módulos em processo apenas via protocolo (ADR-015 / Spike 10); extrair o SDK após evidência; adiar interpretador embutido e ABI dinâmica.
+
+### 33.2 Contaminação do runtime pelo domínio de portaria
+
+**Risco:** acelerar a primeira distribuição incorporando regras específicas ao núcleo.
+
+**Mitigação:** revisar dependências, exigir ADR e validar uma segunda composição experimental.
+
+### 33.3 Isolamento apenas aparente entre módulos
+
+**Risco:** módulos separados em diretórios, mas acoplados por tabelas, tipos internos ou chamadas diretas.
+
+**Mitigação:** contratos, propriedade de dados, testes de arquitetura e eventos.
+
+### 33.4 Stack pouco acessível à comunidade
+
+**Risco:** Rust e Slint apresentarem barreira de contribuição maior que o benefício obtido.
+
+**Mitigação:** medir onboarding durante os spikes; oferecer caminho de contribuição via módulo em processo e template educacional (ADR-015); comparar alternativas caso os resultados sejam inadequados.
+
+### 33.4.1 Custo oculto do empacotamento multilíngue
+
+**Risco:** bundlar ou depender de Python/Node destruir a proposta de leveza, previsibilidade de instalador ou offline-first.
+
+**Mitigação:** Spike 10 medir tamanho e estratégia de runtime; exigir declaração explícita embutido/PATH/dev-only; não aceitar ADR-015 sem evidência de empacotamento.
+
+### 33.5 Portabilidade inconsistente
+
+**Risco:** diferenças de GUI, empacotamento, segredos ou sistema de arquivos entre plataformas.
+
+**Mitigação:** validar os três sistemas desde o primeiro spike, não apenas ao final.
+
+### 33.6 Backup sem portabilidade
+
+**Risco:** considerar a cópia do banco suficiente para soberania de dados.
+
+**Mitigação:** implementar e testar backup técnico e exportação portátil como entregas distintas.
+
+### 33.7 Licenciamento difícil de auditar
+
+**Risco:** misturar arquivos MPL 2.0 e Apache 2.0 sem fronteiras objetivas.
+
+**Mitigação:** organização por diretório, SPDX, inventário e verificações automatizadas.
+
+### 33.8 Dependência excessiva do fundador
+
+**Risco:** decisões e conhecimento permanecerem privados.
+
+**Mitigação:** ADRs, RFCs, documentação de setup, testes e onboarding externo desde a Etapa 1.
+
+---
+
+## 34. Questões ainda abertas
+
+As seguintes decisões permanecem abertas até validação ou documento específico:
+
+- formato definitivo do manifesto de módulo;
+- mecanismo interno exato de registro de módulos;
+- modelo síncrono, assíncrono ou híbrido do barramento de eventos;
+- biblioteca de migrações SQLite;
+- estratégia de reversão de migrações irreversíveis;
+- armazenamento seguro de segredos em cada sistema;
+- composição modular da interface Slint;
+- formato final de backup;
+- política de compatibilidade antes da versão 1.0;
+- critérios para dividir o monorepo;
+- necessidade e momento de plugins dinâmicos in-process;
+- estratégia futura de assinatura de módulos;
+- modelo de sincronização opcional;
+- critérios técnicos detalhados para certificação;
+- momento em que um adaptador de banco alternativo se torna necessário;
+- escolha da primeira linguagem externa oficial (Python ou TypeScript);
+- transporte IPC definitivo do protocolo (stdio, socket, named pipe);
+- estratégia de empacotamento do interpretador em distribuições oficiais;
+- escape hatch futuro para UI além do esquema declarativo.
+
+Questões abertas deverão ser transformadas em spikes, ADRs ou RFCs antes de gerar implementação estrutural definitiva.
+
+---
+
+## 35. Próximas entregas
+
+Após aprovação desta arquitetura, a sequência recomendada é:
+
+1. criar os ADRs iniciais, incluindo o ADR-015;
+2. criar a especificação separada do Manifesto de Módulo v0;
+3. criar a matriz de dependências permitidas e a matriz de classificação `native` vs `process`;
+4. definir a convenção inicial de migrações;
+5. definir o formato experimental de backup e exportação;
+6. preparar a estrutura do monorepo;
+7. criar o backlog detalhado dos spikes, incluindo o Spike 10;
+8. executar os spikes em branches ou diretórios isolados;
+9. registrar resultados mensuráveis;
+10. revisar esta arquitetura para a versão 1.1;
+11. somente então iniciar a fatia vertical definitiva do OpenCore Portaria.
+
+---
+
+## 36. Declaração arquitetural
+
+O OpenCore será desenvolvido inicialmente como um monólito modular, local e multiplataforma, composto por um runtime mínimo em Rust, módulos-base, módulos de domínio e distribuições testadas.
+
+O runtime coordenará inicialização, configuração, módulos, dados, migrações, eventos, logs e integridade, sem incorporar regras específicas de negócio.
+
+A primeira implementação deverá priorizar módulos nativos registrados de forma controlada, SQLite mediado pelo runtime, comunicação local e empacotamento nativo. Módulos externos em processo, comunicando-se por protocolo neutro de linguagem, constituem hipótese oficial condicionada ao ADR-015 e ao Spike 10 — voltada a domínio, integrações e contribuição educacional, sem substituir Rust no núcleo.
+
+Plugins dinâmicos in-process, interpretadores embutidos, marketplace, microserviços e infraestrutura obrigatória de nuvem permanecerão fora do escopo até que necessidades reais justifiquem sua adoção.
+
+A arquitetura deverá garantir que o OpenCore possa crescer sem abandonar os compromissos de soberania de dados, funcionamento offline, formatos abertos, licenciamento transparente, documentação, segurança, educação por trabalho real e independência institucional definidos no Manifesto.
+
+---
+
+## Histórico
+
+| Versão | Estado | Descrição |
+|---|---|---|
+| 1.0 | Histórico | Primeira consolidação das fronteiras arquiteturais. |
+| 1.0.1 | Histórico — supersedida pela 1.0.2 | Primeira incorporação do ADR-015 v1. |
