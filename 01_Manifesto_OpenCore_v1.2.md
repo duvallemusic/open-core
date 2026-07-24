@@ -1,10 +1,11 @@
 # Manifesto OpenCore — Versão 1.2
 
-**Status:** revisado; arquitetura inicial de licenciamento definida  
+**Status:** Aprovado (revisão formal 2026-07-24)  
 **Supersede:** Manifesto OpenCore v1.1 (`01_Manifesto_OpenCore_v1.1_licenciamento.md`)  
 **Principal mudança:** acessibilidade operacional, descoberta guiada e reproduzibilidade das instalações  
 **Licenciamento:** permanece inalterado em relação à v1.1  
-**Documentos relacionados:** Arquitetura OpenCore v1.3; Roadmap OpenCore v2.3; ADR-022 (OpenCore Builder — triagem, composição e empacotamento)
+**Documentos relacionados:** Arquitetura OpenCore v1.3; Roadmap OpenCore v2.3; ADR-022 (OpenCore Builder — triagem, composição e empacotamento)  
+**Registro de revisão:** [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)
 
 ## 1. Por que existimos
 
@@ -384,4 +385,4 @@ O projeto será considerado bem-sucedido quando organizações puderem depender 
 | Versão | Estado | Descrição |
 |---|---|---|
 | 1.1 | Revisado; arquitetura inicial de licenciamento definida | Define licenciamento por camadas (MPL 2.0 / Apache 2.0), direitos, soberania, offline-first, marca e governança. |
-| 1.2 | Revisado; supersede a 1.1 | Incorpora acessibilidade operacional, descoberta guiada e reproduzibilidade das instalações; licenciamento permanece inalterado. Relaciona Arquitetura v1.3, Roadmap v2.3 e ADR-022. |
+| 1.2 | Aprovado (2026-07-24); supersede a 1.1 | Incorpora acessibilidade operacional, descoberta guiada e reproduzibilidade das instalações; licenciamento permanece inalterado. Relaciona Arquitetura v1.3, Roadmap v2.3 e ADR-022. Revisão formal: `docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`. |

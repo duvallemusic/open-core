@@ -5,3 +5,7 @@
 .vscode/
 *.swp
 *~
+
+# Artefatos de spikes Rust
+**/target/
+spikes/**/target/

@@ -4,14 +4,16 @@ Plataforma open source para sistemas desktop modulares e multiplataforma (Window
 
 O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual se montam **distribuições** (como o OpenCore Portaria) a partir de módulos reutilizáveis — com soberania de dados, operação offline-first e licenciamento transparente.
 
-> **Status atual:** a documentação essencial da Etapa 0 foi consolidada.
-> Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem
-> em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos
+> **Status atual:** revisão formal da Etapa 0 concluída em 2026-07-24
+> ([`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)).
+> Manifesto 1.2, Arquitetura 1.3 e Roadmap 2.3 estão **aprovados**.
+> ADR-022 permanece **Proposto** (condicionado aos Spikes 14–18).
+> A Etapa 1 foi iniciada em [`spikes/`](spikes/) apenas com protótipos
 > reversíveis, documentados e time-boxed.
 >
-> O OpenCore Builder completo não está autorizado para implementação.
+> O OpenCore Builder completo **não** está autorizado para implementação.
 > A RFC-0001 permanece em consulta até 2026-08-22.
-> Ainda não há código de produto.
+> Ainda não há runtime de produção.
 
 ---
 
@@ -50,7 +52,7 @@ Comece pelo índice: [`00_Indice_Versoes.md`](00_Indice_Versoes.md).
 | Especificação Builder | [`06_Especificacao_OpenCore_Builder_v0.md`](06_Especificacao_OpenCore_Builder_v0.md) | proposta v0 |
 | Benchmarks | [`07_Benchmarks_Ecossistema_OpenCore_v1.0.md`](07_Benchmarks_Ecossistema_OpenCore_v1.0.md) | 1.0 · não normativo |
 
-> Comunidade/Governança 1.0 e Plano Institucional 1.0 foram aprovados originalmente em 2026-07-23. As alterações substantivas de 2026-07-24 permanecem pendentes de ratificação.
+> Comunidade/Governança 1.0 e Plano Institucional 1.0: versão original aprovada em 2026-07-23; alterações substantivas de 2026-07-24 **ratificadas** na revisão formal.
 
 ### ADRs arquiteturais (015–022)
 
@@ -99,8 +101,8 @@ nativo     processo (ADR-021)
 
 ## Roadmap em uma linha
 
-1. Revisão formal dos documentos 1.2/1.3/2.3 e ADR-022
-2. Spikes técnicos (Etapa 1), incluindo Spike 10 e CLI/lockfile/instalador
+1. ~~Revisão formal dos documentos 1.2/1.3/2.3 e ADR-022~~ (concluída 2026-07-24)
+2. Spikes técnicos (Etapa 1) — em andamento em [`spikes/`](spikes/)
 3. Fatia vertical: OpenCore Portaria (com instalação guiada)
 4. Extrair SDK v0 a partir de contratos reais
 5. Pilotos comunitário/institucional

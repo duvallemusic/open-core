@@ -1,0 +1,20 @@
+import { VerticalBox } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    title: "OpenCore Spike 01";
+    preferred-width: 420px;
+    preferred-height: 160px;
+
+    VerticalBox {
+        alignment: center;
+        Text {
+            text: "OpenCore Spike 01 — multiplataforma";
+            horizontal-alignment: center;
+        }
+        Text {
+            text: "Protótipo descartável · Etapa 1";
+            horizontal-alignment: center;
+            color: #555555;
+        }
+    }
+}

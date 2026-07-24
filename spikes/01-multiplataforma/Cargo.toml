@@ -1,0 +1,14 @@
+[package]
+name = "spike01-multiplataforma"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Spike 01 OpenCore — protótipo descartável Rust + Slint (não é runtime de produção)"
+publish = false
+
+[dependencies]
+slint = "1.17"
+
+
+[build-dependencies]
+slint-build = "1.17"

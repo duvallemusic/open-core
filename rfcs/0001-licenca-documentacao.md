@@ -7,7 +7,8 @@
 **Responsável pela decisão:** Lead Maintainer interino  
 **Issue relacionada:** [#2](https://github.com/duvallemusic/open-core/issues/2)  
 **ADRs relacionadas:** não aplicável  
-**Conflitos de interesse conhecidos:** nenhum declarado
+**Conflitos de interesse conhecidos:** nenhum declarado  
+**Nota (2026-07-24):** a revisão formal da Etapa 0 foi concluída em paralelo; esta RFC **permanece em consulta** até 2026-08-22 e **não** deve ser marcada como aceita antes do encerramento formal.
 
 > **Efeito da publicação inicial:** a licença foi aplicada publicamente aos
 > materiais identificados em 2026-07-23 e permanece válida para essas versões.

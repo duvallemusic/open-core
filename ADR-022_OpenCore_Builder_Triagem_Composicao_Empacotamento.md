@@ -1,13 +1,14 @@
 # ADR-022 — OpenCore Builder: triagem, composição e empacotamento
 
 **Versão desta ADR:** 0.1  
-**Status:** Proposto, condicionado aos Spikes 14–18  
+**Status:** Proposto (proposta formalmente revisada em 2026-07-24), condicionado aos Spikes 14–18  
 **Data:** 2026-07-24  
 **Base normativa:** Manifesto OpenCore v1.2  
-**Documento relacionado:** Arquitetura OpenCore v1.3 · Roadmap OpenCore v2.3 · Especificação OpenCore Builder v0  
+**Documento relacionado:** Arquitetura OpenCore v1.3 · Roadmap OpenCore v2.3 · Especificação OpenCore Builder v0 · [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)  
 **Numeração:** ADR-022  
 **Histórico de conteúdo:** proposta inicial de Builder externo ao OpenCore Runtime, com IA opcional subordinada a motor de regras e validação determinística.  
-**Substitui / altera:** complementa ADR-015 (matriz), ADR-016 (portabilidade), ADR-017 (confiança), ADR-018 (atualização), ADR-019 (sincronização), ADR-020 (testes) e ADR-021 (módulos nativos/processo); não autoriza compilação arbitrária, marketplace, sandbox completa nem IA como autoridade de compatibilidade
+**Substitui / altera:** complementa ADR-015 (matriz), ADR-016 (portabilidade), ADR-017 (confiança), ADR-018 (atualização), ADR-019 (sincronização), ADR-020 (testes) e ADR-021 (módulos nativos/processo); não autoriza compilação arbitrária, marketplace, sandbox completa nem IA como autoridade de compatibilidade  
+**Nota de revisão formal:** o texto da proposta foi revisado e aceito como hipótese oficial; a decisão arquitetural permanece **Proposto** até evidências dos Spikes 14–18. A implementação completa do Builder **não** está autorizada.
 
 ---
 
@@ -384,4 +385,4 @@ Status só poderá migrar para **Aceito** quando demonstrado, nos Spikes 14–18
 
 | Versão | Descrição |
 |---|---|
-| 0.1 | Proposta inicial: Builder externo ao OpenCore Runtime; IA opcional subordinada a motor de regras; manifesto/lockfile; empacotamento progressivo; critérios condicionados aos Spikes 14–18 |
+| 0.1 | Proposta inicial: Builder externo ao OpenCore Runtime; IA opcional subordinada a motor de regras; manifesto/lockfile; empacotamento progressivo; critérios condicionados aos Spikes 14–18. Proposta formalmente revisada em 2026-07-24; status permanece Proposto até Spikes 14–18. |

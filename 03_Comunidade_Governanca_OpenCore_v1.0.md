@@ -1,12 +1,12 @@
 # Comunidade e Governança OpenCore — Versão 1.0
 
-**Status:** Aprovado originalmente em 2026-07-23; alterações substantivas de 2026-07-24 pendentes de ratificação
-**Data de aprovação:** 2026-07-23
-**Data:** 2026-07-23
-**Última atualização:** 2026-07-24 — acréscimo da relação com o OpenCore Builder, papéis de distribuição e formação, ownership explícito, alinhamento à ADR-017 e formas adicionais de contribuição. As alterações de 2026-07-24 são substantivas e permanecem pendentes de ratificação.
-**Base normativa:** Manifesto OpenCore v1.2
-**Documentos relacionados:** Arquitetura OpenCore v1.3 · Roadmap OpenCore v2.3 · Plano Institucional · ADR-015..022 · Especificação Builder v0
-**Finalidade:** definir como pessoas participam, como responsabilidades são conquistadas, como decisões são tomadas e como o projeto protege sua missão durante a formação da comunidade.
+**Status:** Aprovado — versão 1.0 original (2026-07-23); alterações substantivas de 2026-07-24 ratificadas em 2026-07-24  
+**Data de aprovação:** 2026-07-23 (original); 2026-07-24 (ratificação das alterações)  
+**Data:** 2026-07-23  
+**Última atualização:** 2026-07-24 — acréscimo da relação com o OpenCore Builder, papéis de distribuição e formação, ownership explícito, alinhamento à ADR-017 e formas adicionais de contribuição. Alterações de 2026-07-24 ratificadas na revisão formal (`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`).  
+**Base normativa:** Manifesto OpenCore v1.2  
+**Documentos relacionados:** Arquitetura OpenCore v1.3 · Roadmap OpenCore v2.3 · Plano Institucional · ADR-015..022 · Especificação Builder v0  
+**Finalidade:** definir como pessoas participam, como responsabilidades são conquistadas, como decisões são tomadas e como o projeto protege sua missão durante a formação da comunidade.  
 **Supersede:** `03_Comunidade_OpenCore_rascunho.md` — rascunho inicial.
 
 ---
@@ -1082,6 +1082,8 @@ A versão 1.0 original já foi aprovada em 2026-07-23. As alterações substanti
 
 Após a ratificação, o índice de versões deverá registrar o estado ratificado das alterações de 2026-07-24, sem criar automaticamente uma versão 1.1.
 
+**Registro:** critérios atendidos e alterações **ratificadas** em 2026-07-24 — ver [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md).
+
 ---
 
 ## 23. Histórico de alterações
@@ -1089,11 +1091,11 @@ Após a ratificação, o índice de versões deverá registrar o estado ratifica
 | Data | Mudança |
 |---|---|
 | 2026-07-23 | Versão 1.0 aprovada. |
-| 2026-07-24 | Alterações substantivas: relação com o OpenCore Builder (§19); papéis de mantenedor em formação e responsável por distribuição; ladder de progressão; ownership explícito; alinhamento ADR-017; formas de contribuição (a11y, triagem, mentoria, demo data); aprovação de mudanças do Builder e de distribuições. **Pendentes de ratificação.** |
+| 2026-07-24 | Alterações substantivas: relação com o OpenCore Builder (§19); papéis de mantenedor em formação e responsável por distribuição; ladder de progressão; ownership explícito; alinhamento ADR-017; formas de contribuição (a11y, triagem, mentoria, demo data); aprovação de mudanças do Builder e de distribuições. **Ratificadas** na revisão formal. |
 
 ## Histórico de aprovação
 
 | Data | Estado | Descrição |
 |---|---|---|
 | 2026-07-23 | Aprovado | Versão 1.0 original aprovada durante a consolidação da Etapa 0. |
-| 2026-07-24 | Pendente de ratificação | Alterações substantivas relacionadas ao Builder, ownership, distribuição, formação e níveis de confiança. |
+| 2026-07-24 | Ratificado | Alterações substantivas relacionadas ao Builder, ownership, distribuição, formação e níveis de confiança. Registro: `docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`. |
