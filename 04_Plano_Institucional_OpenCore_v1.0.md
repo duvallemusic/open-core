@@ -1,10 +1,11 @@
 # Plano Institucional OpenCore — Versão 1.0
 
-**Status:** Aprovado
+**Status:** Aprovado  
 **Data de aprovação:** 2026-07-23  
 **Data:** 2026-07-23  
-**Base normativa:** Manifesto OpenCore v1.1  
-**Documentos relacionados:** Arquitetura OpenCore v1.2 · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore v2.2 · ADR-015..021  
+**Última atualização editorial:** 2026-07-24 — acréscimo do OpenCore Builder como canal de adoção, SEO/marketing por necessidade, mensagens de referência, reforço da rede de prestadores e métricas correlatas (sem alterar o status Aprovado).  
+**Base normativa:** Manifesto OpenCore v1.1 (evoluções posteriores aplicam-se quando canônicas)  
+**Documentos relacionados:** Arquitetura OpenCore · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore · ADR-015..021 · ADR-022 / Especificação Builder (quando existirem) · `07_Benchmarks_Ecossistema_OpenCore_v1.0.md`  
 **Finalidade:** definir como o OpenCore se relaciona com usuários, organizações-piloto, instituições de ensino, comunidades, empresas, patrocinadores e futuros prestadores de serviços sem comprometer a independência, os direitos dos usuários ou a abertura do projeto.  
 **Supersede:** `04_Plano_Institucional_OpenCore_rascunho.md` — rascunho inicial.
 
@@ -209,6 +210,8 @@ Deverá identificar contrapartidas de comunicação, prazo, restrições e confl
 Consultoria, implantação, suporte, treinamento, integração ou desenvolvimento contratado realizado por pessoa ou empresa.
 
 O serviço deverá ser claramente separado de certificação oficial, representação institucional e autoridade técnica. A contratação não torna o prestador representante do OpenCore.
+
+Prestadores poderão, no futuro, constar do diretório da rede (seção 17), sem exclusividade e sem condicionar o uso do software.
 
 ---
 
@@ -597,29 +600,139 @@ Critérios de contratação devem considerar competência, conflito de interesse
 
 ---
 
-## 17. Métricas institucionais
+## 17. Rede de prestadores
+
+O OpenCore planeja uma **rede de prestadores** (implementadores, suporte, treinamento, integração) como canal opcional de ajuda — nunca como condição de uso das distribuições oficiais abertas.
+
+### 17.1 Diretório público
+
+Quando existir capacidade operacional, o projeto manterá um diretório público com:
+
+- identificação do prestador;
+- especialidades (distribuição, domínio, idiomas);
+- regiões de atendimento;
+- canais de contato;
+- eventual selo de prestador certificado (somente após política de certificação);
+- data de renovação do cadastro.
+
+### 17.2 Critérios e governança da rede
+
+O cadastro e a permanência deverão observar:
+
+- compatibilidade com o Manifesto e o Código de Conduta;
+- declaração de conflitos de interesse;
+- especialidades e limitações honestas;
+- avaliações e processo de contestação;
+- renovação periódica;
+- suspensão ou remoção por conduta, fraude, lock-in ou uso indevido da marca.
+
+### 17.3 Não exclusividade
+
+- o usuário pode contratar **qualquer** terceiro fora da rede;
+- prestadores da rede **não** possuem exclusividade territorial ou de produto;
+- o download e o uso das distribuições oficiais **não** dependem de contratação;
+- listagem no diretório não confere autoridade técnica sobre o núcleo nem certificação automática de módulos.
+
+---
+
+## 18. OpenCore Builder como canal de adoção
+
+O OpenCore Builder é o canal principal de descoberta e obtenção de uma composição instalável por pessoas sem conhecimento técnico. Não faz parte do OpenCore Runtime e não é obrigatório para continuar usando, restaurar ou exportar dados após a instalação.
+
+### 18.1 Regras obrigatórias do canal
+
+O Builder deverá:
+
+- orientar usuários leigos em linguagem de necessidade, não de arquitetura;
+- apresentar prestadores da rede de forma **opcional** e claramente marcada;
+- **não** condicionar o download à contratação de serviços;
+- **não** exigir cadastro para explicar a recomendação ou concluir o fluxo essencial;
+- minimizar coleta de dados da triagem (preferência por fluxo anônimo);
+- permitir download gratuito da composição oficial suportada;
+- distinguir suporte comunitário de suporte comercial;
+- permitir salvar ou exportar a composição (manifesto/lockfile ou equivalente documentado).
+
+### 18.2 O que o canal não pode fazer
+
+- prometer distribuição, perfil ou módulo inexistente;
+- instalar silenciosamente componentes não verificados ou comerciais ocultos;
+- tornar o portal necessário à operação diária;
+- usar respostas da triagem para anúncios;
+- cobrar licença por usuário das distribuições oficiais abertas.
+
+---
+
+## 19. Marketing, SEO e mensagens de referência
+
+### 19.1 Estratégia por necessidade real
+
+A aquisição deve partir de problemas concretos, por exemplo páginas ou conteúdos orientados a:
+
+- sistema gratuito para padaria;
+- controle de estoque offline;
+- sistema para oficina sem mensalidade;
+- sistema para condomínio;
+- software de gestão local;
+- sistema para associação;
+- sistema para biblioteca.
+
+Esses exemplos são **hipóteses de entrada**; só devem apontar para perfis/distribuições realmente suportados quando existirem.
+
+### 19.2 Regras anti-promessa
+
+- não prometer distribuição inexistente;
+- páginas por segmento devem apontar apenas para perfis realmente suportados;
+- linguagem de resultado antes de arquitetura;
+- destacar, quando verdadeiro: sem mensalidade obrigatória; funcionamento local; dados sob controle do usuário; instalação guiada; módulos conforme necessidade; código aberto; suporte opcional;
+- não usar SEO para afirmar conformidade fiscal, contábil ou regulatória universal sem domínio específico.
+
+### 19.3 Mensagens de referência
+
+Registradas como **referência**, não como slogan definitivo:
+
+1. “Sistemas que pertencem a quem usa.”
+2. “Você explica como seu negócio funciona. O OpenCore prepara o sistema certo.”
+3. “Seu sistema pronto, sem mensalidade e sem nuvem obrigatória.”
+4. “Não procure módulos. Conte o que seu negócio precisa.”
+5. “Um sistema do tamanho da sua organização.”
+
+---
+
+## 20. Métricas institucionais
 
 Métricas serão utilizadas para aprendizagem e prestação de contas, não para produzir números promocionais sem contexto.
 
-### 17.1 Produto e usuários
+### 20.1 Produto e usuários
 
 - organizações-piloto ativas;
 - instalações e distribuições avaliadas;
 - problemas reais resolvidos;
 - falhas, incidentes e tempo de recuperação;
 - satisfação e retenção de pilotos;
-- portabilidade e restauração testadas.
+- portabilidade e restauração testadas;
+- importações realizadas (CSV e adaptadores);
+- usuários ou organizações atendidos **sem** serviço pago.
 
-### 17.2 Comunidade
+### 20.2 OpenCore Builder e adoção
+
+- taxa de conversão do Builder (triagem → download → instalação concluída, quando mensurável com consentimento);
+- abandono por etapa da triagem;
+- porcentagem que mantém o perfil recomendado;
+- exportações de composição (manifesto/lockfile);
+- necessidade de suporte após instalação guiada.
+
+### 20.3 Comunidade
 
 - contribuições externas concluídas;
 - tempo até primeira contribuição;
 - retenção e formação de revisores;
 - módulos com mais de um responsável;
 - dependência do fundador;
-- participação não relacionada a código.
+- participação não relacionada a código;
+- mantenedores formados;
+- contribuições originadas de instituições.
 
-### 17.3 Educação
+### 20.4 Educação
 
 - participantes e taxa de conclusão;
 - contribuições úteis produzidas;
@@ -629,8 +742,10 @@ Métricas serão utilizadas para aprendizagem e prestação de contas, não para
 - satisfação de estudantes e mentores;
 - tempo de mentoria por contribuição.
 
-### 17.4 Sustentabilidade
+### 20.5 Rede de prestadores e sustentabilidade
 
+- prestadores ativos no diretório;
+- regiões e especialidades cobertas;
 - fontes de receita e concentração;
 - custos de manutenção;
 - meses de reserva quando aplicável;
@@ -638,7 +753,7 @@ Métricas serão utilizadas para aprendizagem e prestação de contas, não para
 - obrigações futuras;
 - percentual destinado a manutenção, segurança e documentação.
 
-### 17.5 Independência
+### 20.6 Independência
 
 - concentração de financiamento;
 - participação de organizações em decisões;
@@ -648,7 +763,7 @@ Métricas serão utilizadas para aprendizagem e prestação de contas, não para
 
 ---
 
-## 18. Encerramento de parceria
+## 21. Encerramento de parceria
 
 Toda parceria relevante deverá possuir condições de término.
 
@@ -670,7 +785,7 @@ Quando um parceiro deixar de manter componente relevante, será aplicado o proce
 
 ---
 
-## 19. Criação de entidade independente
+## 22. Criação de entidade independente
 
 A entidade será considerada quando existirem necessidades concretas de administrar:
 
@@ -697,7 +812,7 @@ Até a entidade existir, o projeto não deverá representar estrutura futura com
 
 ---
 
-## 20. Ordem de execução institucional
+## 23. Ordem de execução institucional
 
 ### Etapa 0
 
@@ -736,7 +851,7 @@ Até a entidade existir, o projeto não deverá representar estrutura futura com
 
 ---
 
-## 21. Decisões iniciais desta versão
+## 24. Decisões iniciais desta versão
 
 Esta versão estabelece que:
 
@@ -754,11 +869,15 @@ Esta versão estabelece que:
 12. receitas pessoais ou empresariais não serão apresentadas como tesouraria institucional;
 13. sustentabilidade deve financiar manutenção sem tornar a edição aberta artificialmente incompleta;
 14. encerramento de parceria preservará licenças, dados e continuidade;
-15. entidade independente só será criada quando houver necessidade e capacidade verificáveis.
+15. entidade independente só será criada quando houver necessidade e capacidade verificáveis;
+16. a rede de prestadores é opcional, pública, não exclusiva e não condiciona o download;
+17. o OpenCore Builder é canal de adoção para leigos, com download gratuito, sem cadastro obrigatório para a recomendação essencial e com exportação da composição;
+18. marketing e SEO partem de necessidades reais e obedecem regras anti-promessa;
+19. as cinco mensagens da seção 19.3 são referência, não slogan definitivo.
 
 ---
 
-## 22. Critério de aprovação da versão 1.0
+## 25. Critério de aprovação da versão 1.0
 
 Este Plano estará pronto para ser marcado como **Aprovado** quando:
 
@@ -776,5 +895,14 @@ Após aprovação:
 
 - o índice deverá promover `04_Plano_Institucional_OpenCore_v1.0.md` a canônico;
 - o rascunho anterior deverá ser preservado como histórico;
-- o Roadmap v2.2 deverá receber revisão final de consistência;
+- o Roadmap deverá receber revisão final de consistência;
 - a Etapa 0 só será encerrada após os artefatos operacionais prioritários e decisões pendentes de licença e canais privados.
+
+---
+
+## 26. Histórico de alterações
+
+| Data | Mudança |
+|---|---|
+| 2026-07-23 | Versão 1.0 aprovada. |
+| 2026-07-24 | Atualização editorial: rede de prestadores (§17); OpenCore Builder como canal de adoção (§18); marketing/SEO e mensagens de referência (§19); métricas de conversão, importações, prestadores e usuários sem serviço pago (§20). Status permanece **Aprovado**. |
