@@ -4,10 +4,10 @@ Plataforma open source para sistemas desktop modulares e multiplataforma (Window
 
 O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual se montam **distribuições** (como o OpenCore Portaria) a partir de módulos reutilizáveis — com soberania de dados, operação offline-first e licenciamento transparente.
 
-> **Status atual:** a implementação documental essencial da Etapa 0 foi
-> concluída. A RFC-0001 permanece em consulta pública até 2026-08-22, enquanto
-> o projeto inicia a Etapa 1 com spikes técnicos controlados. Ainda não há
-> código de produto.
+> **Status atual:** Etapa 0 consolidada com Manifesto 1.2, Arquitetura 1.3,
+> Roadmap 2.3 e proposta do OpenCore Builder (ADR-022). A RFC-0001 permanece
+> em consulta até 2026-08-22. Etapa 1 autorizada com spikes controlados.
+> Ainda não há código de produto.
 
 ---
 
@@ -30,7 +30,7 @@ O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual 
 | Protocolo, SDKs e ferramentas (quando publicados) | **Apache 2.0** (previsto no Manifesto) |
 | Marca e selos | direitos reservados |
 
-Detalhes: [`LICENSE`](LICENSE) e [`01_Manifesto_OpenCore_v1.1_licenciamento.md`](01_Manifesto_OpenCore_v1.1_licenciamento.md).
+Detalhes: [`LICENSE`](LICENSE) e [`01_Manifesto_OpenCore_v1.2.md`](01_Manifesto_OpenCore_v1.2.md).
 
 ## Documentos canônicos
 
@@ -38,13 +38,15 @@ Comece pelo índice: [`00_Indice_Versoes.md`](00_Indice_Versoes.md).
 
 | Documento | Arquivo | Versão |
 |---|---|---|
-| Manifesto | [`01_Manifesto_OpenCore_v1.1_licenciamento.md`](01_Manifesto_OpenCore_v1.1_licenciamento.md) | 1.1 |
-| Arquitetura | [`02_Arquitetura_OpenCore_v1.2.md`](02_Arquitetura_OpenCore_v1.2.md) | 1.2 |
+| Manifesto | [`01_Manifesto_OpenCore_v1.2.md`](01_Manifesto_OpenCore_v1.2.md) | 1.2 |
+| Arquitetura | [`02_Arquitetura_OpenCore_v1.3.md`](02_Arquitetura_OpenCore_v1.3.md) | 1.3 |
 | Comunidade e Governança | [`03_Comunidade_Governanca_OpenCore_v1.0.md`](03_Comunidade_Governanca_OpenCore_v1.0.md) | 1.0 |
 | Plano Institucional | [`04_Plano_Institucional_OpenCore_v1.0.md`](04_Plano_Institucional_OpenCore_v1.0.md) | 1.0 |
-| Roadmap | [`05_Roadmap_OpenCore_v2.2.md`](05_Roadmap_OpenCore_v2.2.md) | 2.2 |
+| Roadmap | [`05_Roadmap_OpenCore_v2.3.md`](05_Roadmap_OpenCore_v2.3.md) | 2.3 |
+| Especificação Builder | [`06_Especificacao_OpenCore_Builder_v0.md`](06_Especificacao_OpenCore_Builder_v0.md) | proposta v0 |
+| Benchmarks | [`07_Benchmarks_Ecossistema_OpenCore_v1.0.md`](07_Benchmarks_Ecossistema_OpenCore_v1.0.md) | 1.0 · não normativo |
 
-### ADRs arquiteturais (015–021)
+### ADRs arquiteturais (015–022)
 
 | ADR | Tema |
 |---|---|
@@ -55,6 +57,7 @@ Comece pelo índice: [`00_Indice_Versoes.md`](00_Indice_Versoes.md).
 | [ADR-019](ADR-019_Sincronizacao_Como_Adaptador.md) | Sincronização como adaptador |
 | [ADR-020](ADR-020_Testes_Arquitetura_CI.md) | Testes de arquitetura no CI |
 | [ADR-021](ADR-021_Modulos_Nativos_Processo_Protocolo_v1.1.md) | Módulos nativos / em processo e protocolo neutro |
+| [ADR-022](ADR-022_OpenCore_Builder_Triagem_Composicao_Empacotamento.md) | OpenCore Builder — triagem, composição e empacotamento |
 
 > Arquivos `ADR-015_Modulos_Nativos_*` são **errata de numeração** (não canônicos). O conteúdo correto está no **ADR-021**.
 
@@ -90,13 +93,13 @@ nativo     processo (ADR-021)
 
 ## Roadmap em uma linha
 
-1. ~~Fechar Etapa 0 (governança + plano institucional + artefatos)~~
-2. Spikes técnicos (Etapa 1), incluindo Spike 10 se ADR-021 for validado
-3. Fatia vertical: OpenCore Portaria
+1. ~~Fechar Etapa 0 (governança + Builder documental + artefatos)~~
+2. Spikes técnicos (Etapa 1), incluindo Spike 10 e CLI/lockfile/instalador
+3. Fatia vertical: OpenCore Portaria (com instalação guiada)
 4. Extrair SDK v0 a partir de contratos reais
-5. Pilotos comunitário e educacional
+5. Pilotos comunitário/institucional e Builder MVP baseado em regras
 
-Detalhes: [`05_Roadmap_OpenCore_v2.2.md`](05_Roadmap_OpenCore_v2.2.md).
+Detalhes: [`05_Roadmap_OpenCore_v2.3.md`](05_Roadmap_OpenCore_v2.3.md).
 
 ## Aviso sobre histórico
 
