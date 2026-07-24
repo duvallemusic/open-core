@@ -2,19 +2,20 @@
 
 Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots históricos** preservados.
 
-**Última consolidação:** 2026-07-23 — Comunidade e Governança v1.0 promovida a canônica; próxima entrega = Plano Institucional v1.0.
+**Última consolidação:** 2026-07-23 — Plano Institucional v1.0 aprovado; artefatos operacionais na raiz; RFC-0001 (CC BY 4.0) aceita; Etapa 0 documental essencial concluída.
 
 ---
 
 ## Canônicos (usar estes)
 
-| Documento | Arquivo | Versão |
+| Documento | Arquivo | Versão / estado |
 |---|---|---|
 | Manifesto | `01_Manifesto_OpenCore_v1.1_licenciamento.md` | 1.1 |
 | Arquitetura | `02_Arquitetura_OpenCore_v1.2.md` | 1.2 |
-| Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 |
-| Plano Institucional | `04_Plano_Institucional_OpenCore.md` | rascunho — **próxima entrega = v1.0** |
+| Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 · **Aprovado** |
+| Plano Institucional | `04_Plano_Institucional_OpenCore_v1.0.md` | 1.0 · **Aprovado** |
 | Roadmap | `05_Roadmap_OpenCore_v2.2.md` | 2.2 |
+| Licença documental | `LICENSE` · `rfcs/0001-licenca-documentacao.md` | CC BY 4.0 (+ Apache 2.0 em código de docs) |
 | ADR-015 | `ADR-015_Matriz_Classificacao_Arquitetural.md` | Proposto |
 | ADR-016 | `ADR-016_Portabilidade_Exclusao_Modulos.md` | Proposto |
 | ADR-017 | `ADR-017_Niveis_Confianca_Modulos.md` | Proposto |
@@ -23,7 +24,21 @@ Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots histór
 | ADR-020 | `ADR-020_Testes_Arquitetura_CI.md` | Proposto |
 | ADR-021 | `ADR-021_Modulos_Nativos_Processo_Protocolo_v1.1.md` | 1.1 · Proposto, condicionado a spike |
 
-Espelhos de conveniência (apontam para o canônico mais recente quando sincronizados):
+### Artefatos operacionais (raiz)
+
+| Artefato | Arquivo |
+|---|---|
+| Contribuição | `CONTRIBUTING.md` |
+| Conduta | `CODE_OF_CONDUCT.md` |
+| Segurança | `SECURITY.md` |
+| Governança (entrada) | `GOVERNANCE.md` |
+| Mantenedores | `MAINTAINERS.md` |
+| DCO | `DCO.md` |
+| Guias de ADR | `docs/adr/` |
+| RFCs | `rfcs/` |
+| Templates GitHub | `.github/` |
+
+Espelhos de conveniência:
 
 - `02_Arquitetura_OpenCore_v1.md` → espelha **1.2**
 - `05_Roadmap_OpenCore_v2.md` → espelha **2.2**
@@ -37,17 +52,17 @@ Espelhos de conveniência (apontam para o canônico mais recente quando sincroni
 | Manifesto (rascunho) | `01_Manifesto_OpenCore.md` | pré-v1.1 |
 | Arquitetura (rascunho) | `02_Arquitetura_OpenCore.md` | pré-v1 |
 | Comunidade (rascunho) | `03_Comunidade_OpenCore_rascunho.md` | supersedido pela v1.0 |
-| Arquitetura 1.0.1 | `02_Arquitetura_OpenCore_v1.0.1.md` | linha divergente (só ADR multilíngue v1) |
-| Arquitetura 1.0.2 | `02_Arquitetura_OpenCore_v1.0.2.md` | linha divergente (multilíngue P0–P2); **não substitui** a v1.1 |
-| Arquitetura 1.1 | `02_Arquitetura_OpenCore_v1.1.md` | base correta pré-consolidação (LGPD, matriz, ADRs 015–020) |
-| Roadmap v2.0 | `05_Roadmap_OpenCore_v2.0.md` | menção parcial multilíngue |
-| Roadmap v2.1 | `05_Roadmap_OpenCore_v2.1.md` | multilíngue com numeração ADR incorreta (015) |
-| ADR-015 módulos* (errata) | `ADR-015_Modulos_Nativos_*` | **não canônico** — conteúdo → ADR-021 |
+| Plano institucional (rascunho) | `04_Plano_Institucional_OpenCore_rascunho.md` | supersedido pela v1.0 |
+| Arquitetura 1.0.1 / 1.0.2 | `02_Arquitetura_OpenCore_v1.0.*.md` | linha divergente |
+| Arquitetura 1.1 | `02_Arquitetura_OpenCore_v1.1.md` | base pré-consolidação 1.2 |
+| Roadmaps anteriores | `05_Roadmap_OpenCore_v2.0.md`, `v2.1.md` | histórico |
+| Pacote operacional (checklist) | `docs/PACOTE_REVISAO_historico.md` | itens pendentes resolvidos na integração |
+| ADR-015 módulos* (errata) | `ADR-015_Modulos_Nativos_*` | conteúdo → ADR-021 |
 | Legados | `OpenCore_Proposta.md`, `OpenCore_Roadmap_Arquitetura.md` | supersedidos |
 
 ---
 
-## Numeração ADR (corrigida)
+## Numeração ADR
 
 | ID | Tema |
 |---|---|
@@ -59,16 +74,14 @@ Espelhos de conveniência (apontam para o canônico mais recente quando sincroni
 | ADR-020 | Testes de arquitetura no CI |
 | ADR-021 | Módulos nativos, em processo e protocolo neutro |
 
-Não renumerar ADR-015..020. O conteúdo multilíngue usa **ADR-021**.
-
 ---
 
-## Próxima etapa (Etapa 0)
-
-Não iniciar Spike 10 ainda.
+## Etapa 0 — estado
 
 1. ~~Manifesto v1.1~~
 2. ~~Arquitetura v1.2 + ADR-015..021~~
-3. ~~Comunidade e Governança OpenCore v1.0~~
-4. **Plano Institucional OpenCore v1.0** ← próximo
-5. Roadmap v2.2 já consolidado; revisar após o item 4 se necessário
+3. ~~Comunidade e Governança v1.0~~
+4. ~~Plano Institucional v1.0~~
+5. ~~Artefatos operacionais + RFC-0001 (licença documental)~~
+
+**Próximo:** Etapa 1 — spikes técnicos (incluindo Spike 10 / ADR-021 quando priorizado), sem antecipar runtime de produção antes das evidências.

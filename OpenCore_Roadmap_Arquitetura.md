@@ -84,7 +84,7 @@ Prioridade estratégica:
 
 ## Avaliação da estratégia
 
-A parceria com DIO, EBAC e plataformas semelhantes pode reduzir drasticamente o
+A parceria com plataformas semelhantes pode reduzir drasticamente o
 risco inicial.
 
 Benefícios:

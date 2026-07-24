@@ -74,8 +74,7 @@ necessários e gere um instalador personalizado.
 ## Estratégia de crescimento
 
 Em vez de depender apenas de crescimento orgânico, buscar parcerias com
-instituições de ensino (DIO, EBAC e similares), empresas patrocinadoras e
-bootcamps.
+instituições de ensino, empresas patrocinadoras e bootcamps.
 
 Essas organizações podem utilizar o OpenCore como ambiente de aprendizado e
 como plataforma para resolver problemas reais de empresas parceiras.

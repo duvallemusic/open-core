@@ -1,6 +1,7 @@
 # Comunidade e Governança OpenCore — Versão 1.0
 
-**Status:** proposta consolidada para aprovação  
+**Status:** Aprovado
+**Data de aprovação:** 2026-07-23  
 **Data:** 2026-07-23  
 **Base normativa:** Manifesto OpenCore v1.1  
 **Documentos relacionados:** Arquitetura OpenCore v1.2 · Roadmap OpenCore v2.2 · ADR-015..021  

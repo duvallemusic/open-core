@@ -1,3 +1,5 @@
+> **Histórico.** Rascunho supersedido por `04_Plano_Institucional_OpenCore_v1.0.md`.
+
 # Plano Institucional (Rascunho)
 
 ## Parceiros prioritários

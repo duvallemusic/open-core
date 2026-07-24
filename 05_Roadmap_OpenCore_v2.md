@@ -1,9 +1,9 @@
 # OpenCore — Roadmap Revisado v2.2
 
-**Status:** rascunho consolidado para Etapa 0 (faltam Comunidade/Governança e Plano Institucional v1)  
+**Status:** rascunho consolidado — Etapa 0 documental essencial concluída; próximo = Etapa 1 (spikes)  
 **Objetivo:** transformar a visão do OpenCore em uma sequência executável, validando arquitetura, produto, comunidade e adoção educacional sem criar infraestrutura prematura.  
-**Documentos relacionados:** Manifesto v1.1 · Arquitetura v1.2 · ADR-015..020 · ADR-021 v1.1  
-**Histórico:** supersede Roadmap v2.1 (`05_Roadmap_OpenCore_v2.1.md`). Corrige numeração ADR (módulos em processo = ADR-021) e alinha à Arquitetura v1.2 (base v1.1 + multilíngue).
+**Documentos relacionados:** Manifesto v1.1 · Arquitetura v1.2 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..021 · RFC-0001  
+**Histórico:** supersede Roadmap v2.1 (`05_Roadmap_OpenCore_v2.1.md`).
 
 ---
 
@@ -17,7 +17,7 @@ A evolução deve ocorrer em três trilhas paralelas:
 2. **Comunidade e educação:** documentação, trilhas de contribuição, mentorias e formação de mantenedores.
 3. **Institucional e sustentabilidade:** parceiros, governança, métricas, patrocínio e proteção da independência do projeto.
 
-Plataformas de ensino não devem aparecer apenas no final do roadmap. A possibilidade de adoção por DIO, EBAC, universidades e bootcamps precisa influenciar desde o início a documentação, a separação das tarefas, os critérios de revisão e a forma de demonstrar contribuições.
+Plataformas de ensino não devem aparecer apenas no final do roadmap. A possibilidade de adoção por plataformas de ensino, universidades e bootcamps precisa influenciar desde o início a documentação, a separação das tarefas, os critérios de revisão e a forma de demonstrar contribuições.
 
 Ao mesmo tempo, o núcleo técnico deve continuar sendo projetado como software profissional. A camada educacional organiza a participação ao redor do produto; ela não deve reduzir os padrões de arquitetura, testes, segurança ou manutenção.
 
@@ -417,7 +417,7 @@ A sequência imediata recomendada é:
 7. extrair o SDK v0 da experiência real;
 8. executar um piloto fechado de contribuição;
 9. corrigir documentação, arquitetura e processo com base nas métricas;
-10. preparar a proposta institucional para DIO, EBAC, universidade ou bootcamp;
+10. preparar a proposta institucional para plataforma de ensino, universidade ou bootcamp;
 11. executar uma coorte educacional piloto;
 12. publicar o alpha e o portal mínimo;
 13. expandir para a segunda distribuição e para o modelo de sustentabilidade.
@@ -450,27 +450,24 @@ A sequência imediata recomendada é:
 16. **Alinhamento à Arquitetura v1.2:** recupera obrigações da v1.1 (LGPD, portabilidade, confiança, atualização/sync, CI, time-box) + melhorias multilíngues.
 17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes de fechar a Etapa 0.
 18. **Classificação de atualização e sincronização alinhada à ADR-015:** módulos-base não listam mais “atualização” nem “sincronização opcional”; sync e feeds/provedores ficam em adaptadores transversais.
+19. **Etapa 0 encerrada** com Plano Institucional v1.0, artefatos operacionais, canais privados e RFC-0001 (CC BY 4.0).
 
 ---
 
 # 6. Próxima decisão de projeto
 
-Antes de iniciar código novo, o OpenCore precisa fechar a Etapa 0. O próximo trabalho documental deve revisar, nesta ordem:
+A Etapa 0 documental essencial está concluída:
 
-1. Manifesto v1.1 (já revisado);
-2. Arquitetura v1.2 + ADR-015..021 (já consolidados nesta rodada);
-3. Comunidade e Governança v1.0 (já consolidada: `03_Comunidade_Governanca_OpenCore_v1.0.md`);
-4. **Plano institucional v1.0** ← próximo;
-5. Roadmap v2.2 consolidado (este documento).
+1. ~~Manifesto v1.1~~
+2. ~~Arquitetura v1.2 + ADR-015..021~~
+3. ~~Comunidade e Governança v1.0~~
+4. ~~Plano Institucional v1.0~~
+5. ~~Artefatos operacionais, canais privados e RFC-0001 (licença documental CC BY 4.0)~~
 
-A decisão mais importante é definir a prioridade institucional do OpenCore:
+A hierarquia institucional permanece:
 
 - **principal:** infraestrutura aberta e utilizável por organizações reais;
 - **meio estratégico:** educação e formação de desenvolvedores através de contribuições reais;
 - **sustentação:** adoção comercial, patrocínio, suporte e treinamento sem lock-in.
 
-Essa hierarquia mantém o produto útil fora do contexto educacional e, ao mesmo tempo, torna plataformas de ensino uma alavanca estrutural de crescimento.
-
-Antes do Spike 10, a Etapa 0 ainda exige **Comunidade e Governança v1.0** e **Plano Institucional v1.0**.
-
-A próxima decisão técnica condicionada é o **Spike 10**: validar módulo em processo headless em Python sem tratar o resultado como sandbox nem como compromisso multilíngue amplo.
+**Próximo passo:** iniciar a Etapa 1 (spikes técnicos), incluindo o Spike 10 (ADR-021) quando priorizado — módulo em processo headless em Python, sem tratar o resultado como sandbox nem como compromisso multilíngue amplo.

@@ -1,0 +1,31 @@
+# Licenciamento deste repositório
+
+Este repositório está na Etapa 0 (documentação e decisões). Aplica-se o seguinte:
+
+## Documentação textual — CC BY 4.0
+
+Salvo aviso em contrário no próprio arquivo, os textos públicos do projeto — Manifesto, Arquitetura, Roadmap, Comunidade e Governança, Plano Institucional, ADRs, RFCs, guias e templates documentais — são licenciados sob:
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)**  
+https://creativecommons.org/licenses/by/4.0/
+
+Você pode copiar, adaptar, traduzir e redistribuir o material, inclusive para fins comerciais, desde que atribua a autoria de forma razoável e indique alterações.
+
+## Código em documentação — Apache 2.0
+
+Exemplos substanciais, scaffolds, scripts e trechos destinados a incorporação em software são licenciados sob a **Apache License 2.0**, salvo cabeçalho diferente.
+
+## Software futuro (runtime, módulos, SDKs)
+
+Quando publicado, o software seguirá a política do Manifesto v1.1:
+
+- patrimônio estrutural e módulos oficiais: **MPL 2.0**;
+- protocolo, SDKs, templates e ferramentas: **Apache 2.0**.
+
+## Marca
+
+Nome, logotipo, selos e expressões de aprovação oficial **não** são concedidos por esta licença documental. Dependem de política de marca futura.
+
+## Decisão
+
+Esta política documental foi estabelecida pela **RFC-0001** (aceita em 2026-07-23). Ver `rfcs/0001-licenca-documentacao.md`.

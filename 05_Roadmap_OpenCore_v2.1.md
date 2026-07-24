@@ -17,7 +17,7 @@ A evolução deve ocorrer em três trilhas paralelas:
 2. **Comunidade e educação:** documentação, trilhas de contribuição, mentorias e formação de mantenedores.
 3. **Institucional e sustentabilidade:** parceiros, governança, métricas, patrocínio e proteção da independência do projeto.
 
-Plataformas de ensino não devem aparecer apenas no final do roadmap. A possibilidade de adoção por DIO, EBAC, universidades e bootcamps precisa influenciar desde o início a documentação, a separação das tarefas, os critérios de revisão e a forma de demonstrar contribuições.
+Plataformas de ensino não devem aparecer apenas no final do roadmap. A possibilidade de adoção por plataformas de ensino, universidades e bootcamps precisa influenciar desde o início a documentação, a separação das tarefas, os critérios de revisão e a forma de demonstrar contribuições.
 
 Ao mesmo tempo, o núcleo técnico deve continuar sendo projetado como software profissional. A camada educacional organiza a participação ao redor do produto; ela não deve reduzir os padrões de arquitetura, testes, segurança ou manutenção.
 
@@ -406,7 +406,7 @@ A sequência imediata recomendada é:
 7. extrair o SDK v0 da experiência real;
 8. executar um piloto fechado de contribuição;
 9. corrigir documentação, arquitetura e processo com base nas métricas;
-10. preparar a proposta institucional para DIO, EBAC, universidade ou bootcamp;
+10. preparar a proposta institucional para plataforma de ensino, universidade ou bootcamp;
 11. executar uma coorte educacional piloto;
 12. publicar o alpha e o portal mínimo;
 13. expandir para a segunda distribuição e para o modelo de sustentabilidade.
