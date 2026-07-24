@@ -1,3 +1,12 @@
+> **Status:** histórico — instruções executadas em 2026-07-24.
+>
+> Este arquivo registra o roteiro utilizado para produzir Manifesto 1.2,
+> Arquitetura 1.3, Roadmap 2.3, ADR-022, Especificação Builder v0 e
+> Benchmarks v1.0.
+>
+> Não utilizar este documento como fonte normativa ou como lista atual de
+> arquivos canônicos. Consulte `00_Indice_Versoes.md`.
+
 # Instruções para o Cursor — Atualização documental do OpenCore
 
 **Objetivo:** consolidar, nos arquivos do repositório OpenCore, as decisões e sugestões definidas durante a análise de concorrentes, experiência do desenvolvedor, governança de módulos, interoperabilidade, experiência do usuário final e criação do **OpenCore Builder**.

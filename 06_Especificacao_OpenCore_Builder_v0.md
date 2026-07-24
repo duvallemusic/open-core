@@ -178,7 +178,7 @@ Regras:
 
 ### 8.1 Exemplo ilustrativo — Padaria
 
-> **Atenção:** exemplo de UX para teste de simplicidade. Depende de módulos realmente implementados. Não altera a Portaria nem introduce regras de padaria no OpenCore Runtime.
+> **Atenção:** exemplo de UX para teste de simplicidade. Depende de módulos realmente implementados. Não altera a Portaria nem introduz regras de padaria no OpenCore Runtime.
 
 Necessidades possíveis declaradas pelo usuário:
 
@@ -248,7 +248,7 @@ Cada recomendação deve dizer:
 
 - perfil recomendado;
 - poucas decisões;
-- apenas módulos oficiais/verificados;
+- apenas módulos T3 Oficiais e T2 Verificados;
 - linguagem comum;
 - “não sei” → padrão seguro.
 
@@ -259,7 +259,8 @@ Cada recomendação deve dizer:
 - adaptadores;
 - requisitos técnicos;
 - riscos e níveis de confiança;
-- eventual inclusão de módulo comunitário com aceite explícito.
+- eventual inclusão de T1 Comunitário com aceite explícito;
+- T0 Experimental permanece bloqueado.
 
 ## 10. Preview
 
@@ -291,8 +292,8 @@ Permitida apenas dentro dos limites verificados do perfil:
 Bloqueada na v0:
 
 - combinação livre fora da matriz;
-- módulos experimentais;
-- módulos comunitários no modo simples;
+- módulos T0 Experimentais;
+- módulos T1 Comunitários no modo simples;
 - alterações que quebrem dependências sem explicação.
 
 Toda alteração reexecuta o validador antes do download.

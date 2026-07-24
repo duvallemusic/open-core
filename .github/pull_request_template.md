@@ -56,7 +56,7 @@ Quais riscos permanecem? Como a mudança pode ser revertida?
 
 ## DCO e autoria
 
-- [ ] Todos os commits possuem `Signed-off-by`
+- [ ] Commits criados a partir de 2026-07-25 possuem `Signed-off-by`
 - [ ] Tenho direito de enviar este conteúdo sob a licença indicada
 - [ ] Autoria e fontes externas estão identificadas
 

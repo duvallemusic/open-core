@@ -1,8 +1,8 @@
 # OpenCore — Roadmap Revisado v2.3
 
-**Status:** Etapa 0 documental em evolução (Manifesto 1.2, Arquitetura 1.3, Builder e benchmarks); RFC-0001 em consulta; Etapa 1 autorizada para spikes técnicos controlados.  
-**Objetivo:** transformar a visão do OpenCore em uma sequência executável, validando arquitetura, produto, comunidade, adoção educacional e experiência do usuário final sem criar infraestrutura prematura.  
-**Documentos relacionados:** Manifesto v1.2 · Arquitetura v1.3 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0 · RFC-0001 ([consulta #2](https://github.com/duvallemusic/open-core/issues/2))  
+**Status:** documentação essencial da Etapa 0 consolidada; Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 em revisão formal; RFC-0001 em consulta; Etapa 1 autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
+**Objetivo:** transformar a visão do OpenCore em uma sequência executável, validando arquitetura, produto, comunidade, adoção educacional e experiência do usuário final sem criar infraestrutura prematura.
+**Documentos relacionados:** Manifesto v1.2 · Arquitetura v1.3 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0 · RFC-0001 ([consulta #2](https://github.com/duvallemusic/open-core/issues/2))
 **Histórico:** supersede Roadmap v2.2 (`05_Roadmap_OpenCore_v2.2.md`).
 
 ---
@@ -572,14 +572,14 @@ A sequência imediata recomendada é:
 
 15. **Numeração corrigida:** módulos nativos/processo passam a ser **ADR-021**; ADR-015 permanece a matriz de classificação.
 16. **Alinhamento à Arquitetura v1.2:** recupera obrigações da v1.1 (LGPD, portabilidade, confiança, atualização/sync, CI, time-box) + melhorias multilíngues.
-17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes de fechar a Etapa 0.
+17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes da revisão formal da documentação da Etapa 0.
 18. **Classificação de atualização e sincronização alinhada à ADR-015:** módulos-base não listam mais “atualização” nem “sincronização opcional”; sync e feeds/provedores ficam em adaptadores transversais.
-19. **Etapa 0 documental essencial implementada**; licença CC BY 4.0 em vigor; RFC-0001 em consulta pública até 2026-08-22; Etapa 1 autorizada para spikes controlados.
+19. **Documentação essencial da Etapa 0 consolidada**; licença CC BY 4.0 em vigor; RFC-0001 em consulta pública até 2026-08-22; Etapa 1 autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
 
 ### Mudanças específicas da v2.3 (Builder, UX e composição)
 
 20. **Lente transversal** de experiência e adoção do usuário final, sem criar quarta equipe obrigatória.
-21. **Etapa 0** incorpora Manifesto 1.2, Arquitetura 1.3, ADR-022, Especificação Builder v0, Benchmarks v1.0 e critério leigo de obtenção de distribuição.
+21. **Etapa 0** incorpora Manifesto 1.2, Arquitetura 1.3, ADR-022, Especificação Builder v0, Benchmarks v1.0 e critério leigo de obtenção de distribuição — documentos em revisão formal; Builder completo não autorizado para implementação.
 22. **Etapa 1** acrescenta Spikes 12–13, catálogo estático, perfil simples, instalador monoposto, `doctor`, demo data e teste externo — sem IA nem portal completo.
 23. **Etapa 2 (Portaria)** exige instalador, onboarding, CSV, backup, ficha, lockfile, perfil Essencial, preview interno e teste leigo; catálogo permanece genérico.
 24. **Etapa 3 (SDK)** inclui CLI, scaffolds, metadados, testes de composição, lockfile experimental, adaptadores, campos do Builder e conformidade ampliada.
@@ -595,12 +595,14 @@ A sequência imediata recomendada é:
 
 # 6. Próxima decisão de projeto
 
-A consolidação documental da Etapa 0 avança para a linha 1.2/1.3/2.3:
+A documentação essencial da Etapa 0 foi consolidada. Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed. O OpenCore Builder completo não está autorizado para implementação.
 
-1. Manifesto v1.2 (acessibilidade operacional e descoberta guiada)
-2. Arquitetura v1.3 + ADR-015..022
-3. Comunidade e Governança v1.0
-4. Plano Institucional v1.0
+Documentos da linha 1.2/1.3/2.3:
+
+1. Manifesto v1.2 (acessibilidade operacional e descoberta guiada) — revisão formal pendente
+2. Arquitetura v1.3 + ADR-015..022 — revisão formal pendente
+3. Comunidade e Governança v1.0 — alterações de 2026-07-24 pendentes de ratificação
+4. Plano Institucional v1.0 — alterações de 2026-07-24 pendentes de ratificação
 5. Especificação Builder v0 + Benchmarks v1.0
 6. Licença documental publicada; RFC-0001 em consulta até 2026-08-22 ([#2](https://github.com/duvallemusic/open-core/issues/2))
 
@@ -610,4 +612,4 @@ A hierarquia institucional permanece:
 - **meio estratégico:** educação e formação de desenvolvedores através de contribuições reais;
 - **sustentação:** adoção comercial, patrocínio, suporte e treinamento sem lock-in.
 
-**Próximo passo:** revisar e aprovar os documentos 1.2/1.3/1.0/2.3 e a ADR-022; não iniciar implementação completa do Builder; iniciar a Etapa 1 pelos spikes técnicos controlados (incluindo Spike 10 quando priorizado, e Spikes 12–13 de CLI/lockfile/instalador de forma time-boxed). A consulta da RFC-0001 prossegue em paralelo até 2026-08-22. IA permanece opcional e pós-MVP; marketplace permanece etapa futura condicionada.
+**Próximo passo:** revisar formalmente Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022; ratificar ou ajustar as alterações de 2026-07-24 em Comunidade/Governança e Plano Institucional; não iniciar implementação completa do Builder; iniciar a Etapa 1 apenas pelos spikes técnicos priorizados (incluindo Spike 10 quando priorizado, e Spikes 12–13 de CLI/lockfile/instalador de forma time-boxed). A consulta da RFC-0001 prossegue em paralelo até 2026-08-22. IA permanece opcional e pós-MVP; marketplace permanece etapa futura condicionada.

@@ -1,12 +1,12 @@
 # Plano Institucional OpenCore — Versão 1.0
 
-**Status:** Aprovado  
-**Data de aprovação:** 2026-07-23  
-**Data:** 2026-07-23  
-**Última atualização editorial:** 2026-07-24 — acréscimo do OpenCore Builder como canal de adoção, SEO/marketing por necessidade, mensagens de referência, reforço da rede de prestadores e métricas correlatas (sem alterar o status Aprovado).  
-**Base normativa:** Manifesto OpenCore v1.1 (evoluções posteriores aplicam-se quando canônicas)  
-**Documentos relacionados:** Arquitetura OpenCore · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore · ADR-015..021 · ADR-022 / Especificação Builder (quando existirem) · `07_Benchmarks_Ecossistema_OpenCore_v1.0.md`  
-**Finalidade:** definir como o OpenCore se relaciona com usuários, organizações-piloto, instituições de ensino, comunidades, empresas, patrocinadores e futuros prestadores de serviços sem comprometer a independência, os direitos dos usuários ou a abertura do projeto.  
+**Status:** Aprovado originalmente em 2026-07-23; alterações substantivas de 2026-07-24 pendentes de ratificação
+**Data de aprovação:** 2026-07-23
+**Data:** 2026-07-23
+**Última atualização:** 2026-07-24 — acréscimo do OpenCore Builder como canal de adoção, SEO e marketing por necessidade, mensagens de referência, rede de prestadores e métricas. As alterações de 2026-07-24 são substantivas e permanecem pendentes de ratificação.
+**Base normativa:** Manifesto OpenCore v1.2
+**Documentos relacionados:** Arquitetura OpenCore v1.3 · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore v2.3 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0
+**Finalidade:** definir como o OpenCore se relaciona com usuários, organizações-piloto, instituições de ensino, comunidades, empresas, patrocinadores e futuros prestadores de serviços sem comprometer a independência, os direitos dos usuários ou a abertura do projeto.
 **Supersede:** `04_Plano_Institucional_OpenCore_rascunho.md` — rascunho inicial.
 
 ---
@@ -905,4 +905,11 @@ Após aprovação:
 | Data | Mudança |
 |---|---|
 | 2026-07-23 | Versão 1.0 aprovada. |
-| 2026-07-24 | Atualização editorial: rede de prestadores (§17); OpenCore Builder como canal de adoção (§18); marketing/SEO e mensagens de referência (§19); métricas de conversão, importações, prestadores e usuários sem serviço pago (§20). Status permanece **Aprovado**. |
+| 2026-07-24 | Alterações substantivas: rede de prestadores (§17); OpenCore Builder como canal de adoção (§18); marketing/SEO e mensagens de referência (§19); métricas de conversão, importações, prestadores e usuários sem serviço pago (§20). **Pendentes de ratificação.** |
+
+## Histórico de aprovação
+
+| Data | Estado | Descrição |
+|---|---|---|
+| 2026-07-23 | Aprovado | Versão 1.0 original aprovada durante a consolidação da Etapa 0. |
+| 2026-07-24 | Pendente de ratificação | Alterações substantivas relacionadas ao Builder, SEO, marketing, prestadores e métricas. |

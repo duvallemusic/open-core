@@ -1,9 +1,9 @@
 # ADR-017 — Níveis de confiança de módulos (T0–T3)
 
-**Status:** Proposto  
-**Data:** 2026-07-23  
-**Base normativa:** Manifesto OpenCore v1.1  
-**Documento relacionado:** Arquitetura OpenCore v1.2 (origem normativa: v1.1)  
+**Status:** Proposto
+**Data:** 2026-07-23
+**Base normativa:** Manifesto OpenCore v1.2
+**Documento relacionado:** Arquitetura OpenCore v1.3 (origem normativa: v1.1 §17.2; consolidado em v1.2/v1.3)
 **Seções de referência:** §17.2 Níveis de confiança de módulos · §17.3 Código externo · §17.4 Política de segurança
 
 ---

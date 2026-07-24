@@ -1,10 +1,31 @@
 # Benchmarks do Ecossistema OpenCore — Versão 1.0
 
-**Status:** Referência não normativa  
-**Data:** 2026-07-24  
-**Natureza:** padrões observados; não é especificação, ADR nem manifesto  
-**Documentos relacionados:** Manifesto · Arquitetura · Comunidade e Governança · Plano Institucional · ADR-017 · ADR-022 (quando existir) · Especificação OpenCore Builder  
+**Status:** Referência não normativa
+**Data:** 2026-07-24
+**Natureza:** padrões observados; não é especificação, ADR nem manifesto
+**Documentos relacionados:** Manifesto 1.2 · Arquitetura 1.3 · Comunidade e Governança · Plano Institucional · ADR-017 · ADR-022 · Especificação OpenCore Builder v0
 **Finalidade:** registrar padrões de produtos e ecossistemas open source relevantes para orientar o OpenCore sem copiar código, textos extensos ou estruturas protegidas.
+
+---
+
+## Fontes e data de verificação
+
+As informações deste documento devem ser verificadas em fontes primárias:
+
+- repositório oficial;
+- arquivo de licença;
+- documentação oficial;
+- site oficial;
+- fundação ou organização mantenedora.
+
+Cada seção deverá registrar:
+
+- data de verificação;
+- fonte principal;
+- componente ou edição analisada;
+- licença específica do componente.
+
+Licenças e ofertas comerciais podem mudar. Este documento não substitui revisão jurídica por componente.
 
 ---
 
@@ -16,7 +37,11 @@ Este documento:
 - **não** autoriza cópia de código, documentação extensa, assets, marcas ou schemas proprietários;
 - **não** afirma superioridade absoluta de nenhum projeto;
 - **não** inclui estatísticas de usuários sem fonte, data e natureza (autodeclarada ou auditada);
-- trata concorrentes e referências como **benchmarks de padrões**, não como dependências do runtime.
+- trata concorrentes e referências como **benchmarks de padrões**, não como dependências do runtime;
+- reforça que estudar padrões **não** autoriza copiar código;
+- exige verificação de licenças por arquivo e componente;
+- lembra que Apache/MIT/MPL também exigem cumprimento de avisos;
+- lembra que GPL/AGPL/LGPL exigem análise de copyleft e fronteira.
 
 Qualquer número eventualmente citado deve trazer data, origem e se é autodeclarado. Na ausência de fonte verificável nesta versão, números de adoção **não** são incluídos.
 
@@ -38,6 +63,7 @@ Para cada projeto:
 | Padrão a NÃO incorporar | O que deve ser rejeitado ou adiado? |
 | Interoperabilidade | Há caminho realista de adaptador/importação? |
 | Risco jurídico de copiar código | Quão sensível é reutilizar implementação? |
+| Verificação | Data e fontes primárias usadas |
 | Apelo de marketing | Como o produto se comunica com o usuário final? |
 
 ---
@@ -59,6 +85,7 @@ Para cada projeto:
 | **Interoperabilidade** | Adaptador de importação futuro (dados mestres, movimentos) é desejável; não embutir Tryton no runtime |
 | **Risco jurídico de copiar código** | **Alto** — GPL; reutilização de código exige análise de copyleft e fronteiras de licença |
 | **Apelo de marketing** | Foco em profissionalismo ERP e extensibilidade; pouco discurso de “instale em três cliques” |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -68,15 +95,16 @@ Para cada projeto:
 |---|---|
 | **Categoria** | Framework de aplicações (Frappe) + ERP (ERPNext) |
 | **Arquitetura** | Stack web (Python/JS); apps/módulos; scaffolding e CLI fortes; banco compartilhado típico de frameworks web |
-| **Licenciamento** | GPL (ERPNext e partes do ecossistema) |
+| **Licenciamento** | Frappe Framework: MIT. ERPNext: GPL-3.0. Outros produtos e componentes do ecossistema devem ser verificados individualmente. |
 | **Público** | Empresas médias, implementadores e desenvolvedores confortáveis com self-hosting web |
 | **Pontos fortes** | Experiência do desenvolvedor; CLI e scaffolding; docs e comunidade ativa; catálogo de apps |
-| **Pontos fracos vs OpenCore** | Web/server como requisito; instalação frequentemente complexa (containers, serviços); Community vs oferta comercial pode criar percepção de edição limitada; GPL |
+| **Pontos fracos vs OpenCore** | Web/server como requisito; instalação frequentemente complexa (containers, serviços); Community vs oferta comercial pode criar percepção de edição limitada; GPL no ERPNext |
 | **Padrão a estudar** | CLI (`bench`-like conceitualmente); scaffolds; docs geradas; onboarding de contribuidores |
-| **Padrão a NÃO incorporar** | Obrigatoriedade de stack web/servidor; Community “limitada” como modelo das distribuições oficiais OpenCore |
+| **Padrão a NÃO incorporar** | Obrigatoriedade de stack web/servidor; importar código ERPNext GPL para o monorepo sem análise; tratar todo o ecossistema Frappe como se tivesse uma única licença. |
 | **Interoperabilidade** | Adaptador de importação ERPNext é candidato natural (CSV/JSON/APIs documentadas), sempre dry-run e relatório de inconsistências |
-| **Risco jurídico de copiar código** | **Alto** — GPL; estudar padrões, não portar código |
+| **Risco jurídico de copiar código** | **Variável por componente:** baixo a médio no Frappe Framework MIT, desde que preservados aviso e licença; alto no ERPNext GPL-3.0 para incorporação ao monorepo. Preferir estudar padrões e reimplementar contratos. |
 | **Apelo de marketing** | “ERP completo”, cloud opcional da empresa mantenedora, apps; linguagem mais técnica que a de um instalador leigo |
+| **Verificação** | 2026-07-24 — arquivos de licença dos repositórios oficiais Frappe Framework e ERPNext |
 
 ---
 
@@ -95,6 +123,7 @@ Para cada projeto:
 | **Interoperabilidade** | Adaptador de importação Odoo é prioridade de ecossistema (muito pedido em migrações) |
 | **Risco jurídico de copiar código** | **Alto** — licenças mistas e módulos Enterprise; nunca copiar código Enterprise; Community exige verificação por arquivo |
 | **Apelo de marketing** | Extremamente forte em SEO por segmento e resultado (“CRM gratuito”, apps por indústria) |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -113,6 +142,7 @@ Para cada projeto:
 | **Interoperabilidade** | Adaptador de importação possível para migração regional |
 | **Risco jurídico de copiar código** | **Alto** — GPL |
 | **Apelo de marketing** | Ênfase em software livre instalado e independência de nuvem obrigatória |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -131,6 +161,7 @@ Para cada projeto:
 | **Interoperabilidade** | Adaptador de importação Dolibarr é candidato (muito usado em PME) |
 | **Risco jurídico de copiar código** | **Alto** — GPL |
 | **Apelo de marketing** | “ERP/CRM para pequenas empresas”, gratuito/self-hosted |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -149,6 +180,7 @@ Para cada projeto:
 | **Interoperabilidade** | Baixa prioridade como origem de migração ERP; útil como referência de ciclo de vida |
 | **Risco jurídico de copiar código** | **Médio a alto** — verificar licença por pacote/edição antes de qualquer reuso |
 | **Apelo de marketing** | “Construa seu sistema”, plugins, no-code |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -167,6 +199,7 @@ Para cada projeto:
 | **Interoperabilidade** | Possível via exportações/custom, menor prioridade que Odoo/ERPNext/Dolibarr |
 | **Risco jurídico de copiar código** | **Baixo a médio** — Apache 2.0; ainda assim preferir reimplementar padrões, não copiar trechos grandes |
 | **Apelo de marketing** | Técnico/Apache; pouco marketing de PME leiga |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -185,6 +218,7 @@ Para cada projeto:
 | **Interoperabilidade** | Não prioritária para dados ERP; útil para padrões de comunidade |
 | **Risco jurídico de copiar código** | **Alto** — GPL |
 | **Apelo de marketing** | Educação, instituições, plugins |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -203,6 +237,7 @@ Para cada projeto:
 | **Interoperabilidade** | Fora do foco inicial de migração comercial PME |
 | **Risco jurídico de copiar código** | **Médio** — MPL é copyleft de arquivo; reuso exige respeito a arquivos MPL e avisos |
 | **Apelo de marketing** | Impacto social, saúde global, implementação |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -221,6 +256,7 @@ Para cada projeto:
 | **Interoperabilidade** | Conceitual (adaptadores), não migração de dados de gestão |
 | **Risco jurídico de copiar código** | **Baixo a médio** — Apache 2.0; preferir padrões a cópia |
 | **Apelo de marketing** | “Monte apps internos rapidamente”, drag-and-drop |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -239,6 +275,7 @@ Para cada projeto:
 | **Interoperabilidade** | Adaptador possível, prioridade média |
 | **Risco jurídico de copiar código** | **Muito alto** — AGPL; não incorporar código Axelor |
 | **Apelo de marketing** | ERP/BPM completo, open source com serviços |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 
@@ -257,6 +294,7 @@ Para cada projeto:
 | **Interoperabilidade** | Baixa para migração ERP |
 | **Risco jurídico de copiar código** | **Alto** se GPL; analisar por componente |
 | **Apelo de marketing** | “Substitua planilhas”, apps internos rápidos |
+| **Verificação** | Pendente de anexar fontes primárias e data de verificação |
 
 ---
 

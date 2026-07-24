@@ -23,3 +23,9 @@ git commit -s
 ```
 
 Source: Developer Certificate of Origin, Version 1.1.
+
+## Aplicação no OpenCore
+
+A exigência operacional de `Signed-off-by` aplica-se a commits criados a partir de 2026-07-25.
+
+O histórico anterior é tratado como legado da fase de consolidação documental. Essa regra de transição não elimina obrigações de autoria, licença ou direito de contribuição.

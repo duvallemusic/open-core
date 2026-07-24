@@ -1,12 +1,12 @@
 # Comunidade e Governança OpenCore — Versão 1.0
 
-**Status:** Aprovado  
-**Data de aprovação:** 2026-07-23  
-**Data:** 2026-07-23  
-**Última atualização editorial:** 2026-07-24 — acréscimo da relação com o OpenCore Builder, papéis de distribuição/formação, ownership explícito, alinhamento ADR-017 e formas de contribuição faltantes (sem alterar o status Aprovado).  
-**Base normativa:** Manifesto OpenCore v1.1 (evoluções posteriores aplicam-se quando canônicas)  
-**Documentos relacionados:** Arquitetura OpenCore · Roadmap OpenCore · Plano Institucional · ADR-015..021 · ADR-017 (níveis de confiança) · ADR-022 / Especificação Builder (quando existirem)  
-**Finalidade:** definir como pessoas participam, como responsabilidades são conquistadas, como decisões são tomadas e como o projeto protege sua missão durante a formação da comunidade.  
+**Status:** Aprovado originalmente em 2026-07-23; alterações substantivas de 2026-07-24 pendentes de ratificação
+**Data de aprovação:** 2026-07-23
+**Data:** 2026-07-23
+**Última atualização:** 2026-07-24 — acréscimo da relação com o OpenCore Builder, papéis de distribuição e formação, ownership explícito, alinhamento à ADR-017 e formas adicionais de contribuição. As alterações de 2026-07-24 são substantivas e permanecem pendentes de ratificação.
+**Base normativa:** Manifesto OpenCore v1.2
+**Documentos relacionados:** Arquitetura OpenCore v1.3 · Roadmap OpenCore v2.3 · Plano Institucional · ADR-015..022 · Especificação Builder v0
+**Finalidade:** definir como pessoas participam, como responsabilidades são conquistadas, como decisões são tomadas e como o projeto protege sua missão durante a formação da comunidade.
 **Supersede:** `03_Comunidade_OpenCore_rascunho.md` — rascunho inicial.
 
 ---
@@ -1070,7 +1070,7 @@ Esta versão estabelece que:
 
 Esta política estará pronta para ser marcada como **Aprovada** quando:
 
-- estiver alinhada ao Manifesto v1.1, à Arquitetura v1.2 e ao Roadmap v2.2;
+- estiver alinhada ao Manifesto v1.2, à Arquitetura v1.3 e ao Roadmap v2.3;
 - identificar claramente quem decide durante o Estágio F;
 - definir caminho verificável para revisores e mantenedores;
 - definir PRs, RFCs, ADRs, segurança, conduta e conflitos;
@@ -1088,4 +1088,11 @@ Após aprovação, o índice de versões deverá marcar **Comunidade e Governan�
 | Data | Mudança |
 |---|---|
 | 2026-07-23 | Versão 1.0 aprovada. |
-| 2026-07-24 | Atualização editorial: relação com o OpenCore Builder (§19); papéis de mantenedor em formação e responsável por distribuição; ladder de progressão; ownership explícito; alinhamento ADR-017; formas de contribuição (a11y, triagem, mentoria, demo data); aprovação de mudanças do Builder e de distribuições. Status permanece **Aprovado**. |
+| 2026-07-24 | Alterações substantivas: relação com o OpenCore Builder (§19); papéis de mantenedor em formação e responsável por distribuição; ladder de progressão; ownership explícito; alinhamento ADR-017; formas de contribuição (a11y, triagem, mentoria, demo data); aprovação de mudanças do Builder e de distribuições. **Pendentes de ratificação.** |
+
+## Histórico de aprovação
+
+| Data | Estado | Descrição |
+|---|---|---|
+| 2026-07-23 | Aprovado | Versão 1.0 original aprovada durante a consolidação da Etapa 0. |
+| 2026-07-24 | Pendente de ratificação | Alterações substantivas relacionadas ao Builder, ownership, distribuição, formação e níveis de confiança. |

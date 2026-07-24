@@ -679,7 +679,8 @@ name: Módulo de Exemplo
 version: 0.1.0
 license: MPL-2.0
 type: base | domain | integration | tool
-trust_level: experimental | community | verified | official
+trust_level: T0 | T1 | T2 | T3
+# T0 Experimental | T1 Comunitário | T2 Verificado | T3 Oficial
 execution:
   mode: native            # native | process
   # apenas quando mode: process
@@ -770,7 +771,7 @@ Além dos campos estruturais acima, o manifesto deverá representar, como **camp
 | `data_categories` | Categorias de dados tratados |
 | `external_transmissions` | Transmissões externas possíveis |
 | `maintenance_status` | Status de manutenção |
-| `trust_level` | Nível de confiança (ADR-017) |
+| `trust_level` | Nível técnico T0–T3 conforme ADR-017; a interface pode exibir o nome traduzido |
 | `owner` | Ownership / mantenedor declarado |
 | `backup_contract` | Contrato de participação no backup |
 | `export_contract` | Contrato de exportação portátil |
@@ -1351,10 +1352,10 @@ Para alinhamento com ADR-017 e com o OpenCore Builder, a nomenclatura de produto
 
 O Builder deverá preferir, nesta ordem:
 
-1. módulos oficiais;
-2. módulos verificados compatíveis;
-3. módulos comunitários somente quando o usuário entrar em modo avançado e aceitar o risco;
-4. nunca recomendar experimental por padrão.
+1. módulos T3 Oficiais;
+2. módulos T2 Verificados compatíveis;
+3. módulos T1 Comunitários somente quando o usuário entrar em modo avançado e aceitar o risco;
+4. nunca recomendar T0 Experimental por padrão.
 
 ### 17.3 Código externo
 
@@ -2843,7 +2844,7 @@ Após aprovação desta arquitetura, a sequência recomendada é:
 6. definir a convenção inicial de migrações, backup, restauração e exclusão;
 7. preparar a estrutura mínima do monorepo (`module_host/`, `protocol/`, `native-rust`, `process-python`, `conformance-tests`, `tools/`) e os templates Apache 2.0 da trilha educacional;
 8. converter os Spikes 01–09 em backlog time-boxed (20 pessoa-dias), o Spike 10 (+3 pessoa-dias), registrar Spike 11 como futuro e time-boxar Spikes 12–18 conforme capacidade;
-9. somente após fechar a Etapa 0 documental, iniciar a fatia vertical experimental e os spikes técnicos;
+9. somente após a revisão formal da documentação da Etapa 0, iniciar a fatia vertical experimental e os spikes técnicos;
 10. executar o Spike 10 (módulo em processo headless, ADR-021) com evidência registrada — ADR-021 permanece condicionado a esse spike;
 11. priorizar CLI/lockfile/instalador de forma time-boxed após evidências mínimas da fatia vertical;
 12. registrar resultados mensuráveis e revisar os ADRs condicionados;

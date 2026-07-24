@@ -2,10 +2,10 @@
 
 Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots históricos** preservados.
 
-**Última consolidação:** 2026-07-24 — Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3,
-ADR-022 (Proposto), Especificação OpenCore Builder v0 e Benchmarks v1.0;
-Comunidade e Plano Institucional 1.0 atualizados com relação ao Builder;
-RFC-0001 permanece em consulta pública até 2026-08-22.
+**Última consolidação:** 2026-07-24 — documentação essencial da Etapa 0 consolidada;
+Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 em revisão formal;
+alterações de Comunidade/Plano de 2026-07-24 pendentes de ratificação;
+RFC-0001 em consulta pública até 2026-08-22.
 
 ---
 
@@ -13,11 +13,11 @@ RFC-0001 permanece em consulta pública até 2026-08-22.
 
 | Documento | Arquivo | Versão / estado |
 |---|---|---|
-| Manifesto | `01_Manifesto_OpenCore_v1.2.md` | 1.2 |
-| Arquitetura | `02_Arquitetura_OpenCore_v1.3.md` | 1.3 |
-| Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 · **Aprovado** (atualizado 2026-07-24) |
-| Plano Institucional | `04_Plano_Institucional_OpenCore_v1.0.md` | 1.0 · **Aprovado** (atualizado 2026-07-24) |
-| Roadmap | `05_Roadmap_OpenCore_v2.3.md` | 2.3 |
+| Manifesto | `01_Manifesto_OpenCore_v1.2.md` | 1.2 · Revisão formal pendente |
+| Arquitetura | `02_Arquitetura_OpenCore_v1.3.md` | 1.3 · Revisão formal pendente |
+| Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 · Aprovado originalmente; alterações de 2026-07-24 pendentes de ratificação |
+| Plano Institucional | `04_Plano_Institucional_OpenCore_v1.0.md` | 1.0 · Aprovado originalmente; alterações de 2026-07-24 pendentes de ratificação |
+| Roadmap | `05_Roadmap_OpenCore_v2.3.md` | 2.3 · Revisão formal pendente |
 | Especificação OpenCore Builder | `06_Especificacao_OpenCore_Builder_v0.md` | proposta v0 |
 | Benchmarks do ecossistema | `07_Benchmarks_Ecossistema_OpenCore_v1.0.md` | 1.0 · referência **não normativa** |
 | Licença documental | `LICENSE` · `rfcs/0001-licenca-documentacao.md` | CC BY 4.0 em vigor · RFC-0001 em consulta |
@@ -66,6 +66,7 @@ Espelhos de conveniência:
 | Roadmap 2.2 | `05_Roadmap_OpenCore_v2.2.md` | supersedido pela 2.3 |
 | Roadmaps anteriores | `05_Roadmap_OpenCore_v2.0.md`, `v2.1.md` | histórico |
 | Pacote operacional (checklist) | `docs/PACOTE_REVISAO_historico.md` | itens pendentes resolvidos na integração |
+| Instruções Cursor — Builder | `docs/history/INSTRUCOES_CURSOR_BUILDER_2026-07-24.md` | roteiro executado; não normativo |
 | ADR-015 módulos* (errata) | `ADR-015_Modulos_Nativos_*` | conteúdo → ADR-021 |
 | Legados | `OpenCore_Proposta.md`, `OpenCore_Roadmap_Arquitetura.md` | supersedidos |
 
@@ -88,23 +89,31 @@ Espelhos de conveniência:
 
 ## Etapa 0 — estado
 
-1. ~~Manifesto v1.1~~ → **Manifesto v1.2** criado (revisão/aprovação pendente)
-2. ~~Arquitetura v1.2 + ADR-015..021~~ → **Arquitetura v1.3** + **ADR-022** (Proposto)
-3. ~~Comunidade e Governança v1.0~~ (atualizada com relação ao Builder)
-4. ~~Plano Institucional v1.0~~ (atualizado com Builder, SEO e prestadores)
-5. Licença documental publicada; RFC-0001 em consulta até 2026-08-22.
-6. **Especificação Builder v0** e **Benchmarks v1.0** criados.
+A documentação essencial da Etapa 0 foi consolidada.
+
+1. Manifesto 1.2 criado — revisão formal pendente.
+2. Arquitetura 1.3 criada — revisão formal pendente.
+3. Comunidade e Governança 1.0 aprovada originalmente; alterações de 2026-07-24 pendentes de ratificação.
+4. Plano Institucional 1.0 aprovado originalmente; alterações de 2026-07-24 pendentes de ratificação.
+5. Roadmap 2.3 criado — revisão formal pendente.
+6. ADR-022 permanece Proposto e condicionado aos Spikes 14–18.
+7. Especificação Builder v0 e Benchmarks v1.0 foram criados.
+8. Licença documental publicada; RFC-0001 em consulta até 2026-08-22.
+
+A Etapa 1 está autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
+
+O OpenCore Builder completo não está autorizado para implementação.
 
 ---
 
 ## Próxima etapa
 
-1. Revisar e aprovar Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e os patches de Comunidade/Plano.
-2. Revisar ADR-022 (permanece Proposto até Spikes 14–18).
-3. **Não** iniciar implementação completa do OpenCore Builder.
-4. Iniciar Etapa 1 pelos spikes técnicos já definidos (incluindo Spike 10).
+1. Revisar formalmente Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022.
+2. Ratificar ou ajustar as alterações de 2026-07-24 em Comunidade/Governança e Plano Institucional.
+3. Não iniciar implementação completa do OpenCore Builder.
+4. Iniciar a Etapa 1 apenas pelos spikes técnicos priorizados.
 5. Priorizar a fatia vertical comum (Portaria como distribuição de referência).
-6. Executar Spike 10 (módulos em processo).
+6. Executar Spike 10 (módulos em processo) quando priorizado.
 7. Executar CLI / lockfile / instalador de forma time-boxed (Spikes 12–15).
 8. Documentar decisões e só então avançar o Builder baseado em regras.
 

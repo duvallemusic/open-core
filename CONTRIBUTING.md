@@ -10,19 +10,26 @@ Leia, nesta ordem:
 
 1. [`README.md`](README.md)
 2. [`00_Indice_Versoes.md`](00_Indice_Versoes.md)
-3. [`01_Manifesto_OpenCore_v1.1_licenciamento.md`](01_Manifesto_OpenCore_v1.1_licenciamento.md)
-4. [`02_Arquitetura_OpenCore_v1.2.md`](02_Arquitetura_OpenCore_v1.2.md)
+3. [`01_Manifesto_OpenCore_v1.2.md`](01_Manifesto_OpenCore_v1.2.md)
+4. [`02_Arquitetura_OpenCore_v1.3.md`](02_Arquitetura_OpenCore_v1.3.md)
 5. [`03_Comunidade_Governanca_OpenCore_v1.0.md`](03_Comunidade_Governanca_OpenCore_v1.0.md)
-6. [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+6. [`05_Roadmap_OpenCore_v2.3.md`](05_Roadmap_OpenCore_v2.3.md)
+7. [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+
+Para contribuições relacionadas ao OpenCore Builder, produto, UX, catálogo de capacidades ou composição guiada, leia também:
+
+8. [`ADR-022_OpenCore_Builder_Triagem_Composicao_Empacotamento.md`](ADR-022_OpenCore_Builder_Triagem_Composicao_Empacotamento.md)
+9. [`06_Especificacao_OpenCore_Builder_v0.md`](06_Especificacao_OpenCore_Builder_v0.md)
 
 Use apenas as versões marcadas como canônicas no índice.
 
 ## 2. Estado atual do projeto
 
-O OpenCore concluiu a implementação documental essencial da Etapa 0 e inicia
-a Etapa 1, dedicada a spikes técnicos controlados.
+A documentação essencial da Etapa 0 foi consolidada.
 
-Ainda não existe runtime de produção nem SDK público estável.
+Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
+
+Ainda não existe runtime de produção, SDK público estável, OpenCore Builder implementado ou distribuição pronta para uso final.
 
 Contribuições úteis agora incluem:
 
@@ -35,12 +42,9 @@ Contribuições úteis agora incluem:
 - documentação de ambiente e reprodução;
 - identificação de riscos, casos de uso e requisitos de pilotos.
 
-Contribuições de código devem estar vinculadas a uma issue, RFC, ADR ou spike
-explicitamente aberto no roadmap.
+Contribuições de código devem estar vinculadas a uma issue, RFC, ADR ou spike explicitamente aberto no roadmap.
 
-A conclusão da Etapa 0 não autoriza a implementação antecipada de um runtime
-definitivo. Código produzido nos spikes poderá ser descartado, refeito ou
-mantido isolado conforme as evidências obtidas.
+A conclusão documental da Etapa 0 não autoriza a implementação antecipada de um runtime definitivo nem do OpenCore Builder completo. Código produzido nos spikes poderá ser descartado, refeito ou mantido isolado conforme as evidências obtidas.
 
 ## 3. Escolhendo uma contribuição
 
@@ -116,7 +120,19 @@ Signed-off-by: Seu Nome <seu-email@example.com>
 
 Ao assinar, você certifica as condições descritas em [`DCO.md`](DCO.md).
 
-Commits não assinados poderão precisar de correção antes do merge.
+### Início da exigência operacional
+
+A exigência operacional de DCO aplica-se a commits criados a partir de **2026-07-25**.
+
+Commits anteriores a essa data são tratados como histórico legado da fase de consolidação documental e não serão reescritos apenas para acrescentar `Signed-off-by`.
+
+Pull requests novas poderão ser bloqueadas quando seus commits não possuírem assinatura DCO válida.
+
+Ação futura:
+
+- [ ] configurar check automático de DCO no GitHub
+
+Commits não assinados (a partir da data de corte) poderão precisar de correção antes do merge.
 
 ## 8. Pull requests
 

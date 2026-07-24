@@ -81,7 +81,7 @@ O sistema deve funcionar em modo sem IA, com questionário e regras.
 
 ### 3.3 Autoridade da validação determinística
 
-Toda saída do fluxo de recomendação — inclusive saída assistida por IA — deve passar pelo validador determinística antes de gerar manifesto, lockfile, preview ou pacote.
+Toda saída do fluxo de recomendação — inclusive saída assistida por IA — deve passar pelo validador determinístico antes de gerar manifesto, lockfile, preview ou pacote.
 
 ### 3.4 Empacotamento progressivo
 
@@ -160,7 +160,7 @@ O validador é a autoridade técnica. Deve verificar, no mínimo:
 - `execution.mode` e requisitos de runtime da linguagem empacotado, quando aplicável;
 - sistemas operacionais e hardware mínimos;
 - requisitos de rede e transmissões externas;
-- níveis de confiança (preferência: oficial → verificado; comunitário só em modo avançado com aceite explícito; experimental nunca por padrão);
+- níveis de confiança (preferência: T3 Oficial → T2 Verificado; T1 Comunitário apenas no modo avançado com aceite explícito; T0 Experimental nunca por padrão);
 - permissões e categorias de dados;
 - consistência entre preview, manifesto, lockfile e pacote;
 - política de atualização e canal.
@@ -273,9 +273,9 @@ Deve corresponder à composição validada (critério de aceitação).
 
 ## 12. Segurança
 
-- preferir módulos oficiais e verificados (ADR-017);
-- módulos comunitários apenas em modo avançado com aceite explícito de risco;
-- nunca recomendar experimental por padrão;
+- preferir módulos T3 Oficiais e T2 Verificados (ADR-017);
+- módulos T1 Comunitários apenas em modo avançado com aceite explícito de risco;
+- nunca recomendar T0 Experimental por padrão;
 - isolamento por processo (ADR-021) não equivale a sandbox;
 - pacotes iniciais usam artefatos conhecidos;
 - hashes e, futuramente, assinatura e SBOM;
@@ -374,7 +374,7 @@ Status só poderá migrar para **Aceito** quando demonstrado, nos Spikes 14–18
 |---|---|
 | **ADR-015** — Matriz de classificação arquitetural | Composições e perfis devem respeitar a matriz; Builder não inventa classificação |
 | **ADR-016** — Portabilidade e exclusão de módulos | Exportação, remoção e continuidade após exclusão permanecem obrigações; Builder declara contratos no manifesto/lockfile |
-| **ADR-017** — Níveis de confiança | Preferência oficial/verificado; comunitário só avançado; experimental nunca por padrão |
+| **ADR-017** — Níveis de confiança | Preferência T3/T2; T1 só avançado; T0 nunca por padrão |
 | **ADR-018** — Atualização estrutural e canais | Lockfile e canal de atualização alinhados; Builder não redefine política de update sozinho |
 | **ADR-019** — Sincronização como adaptador | Modo sincronizado é opção declarada, não núcleo; Builder não trata sync como requisito |
 | **ADR-020** — Testes, arquitetura e CI | Exige testes de composição, experiência, Builder e soberania |

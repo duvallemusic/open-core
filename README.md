@@ -4,9 +4,13 @@ Plataforma open source para sistemas desktop modulares e multiplataforma (Window
 
 O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual se montam **distribuições** (como o OpenCore Portaria) a partir de módulos reutilizáveis — com soberania de dados, operação offline-first e licenciamento transparente.
 
-> **Status atual:** Etapa 0 consolidada com Manifesto 1.2, Arquitetura 1.3,
-> Roadmap 2.3 e proposta do OpenCore Builder (ADR-022). A RFC-0001 permanece
-> em consulta até 2026-08-22. Etapa 1 autorizada com spikes controlados.
+> **Status atual:** a documentação essencial da Etapa 0 foi consolidada.
+> Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem
+> em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos
+> reversíveis, documentados e time-boxed.
+>
+> O OpenCore Builder completo não está autorizado para implementação.
+> A RFC-0001 permanece em consulta até 2026-08-22.
 > Ainda não há código de produto.
 
 ---
@@ -45,6 +49,8 @@ Comece pelo índice: [`00_Indice_Versoes.md`](00_Indice_Versoes.md).
 | Roadmap | [`05_Roadmap_OpenCore_v2.3.md`](05_Roadmap_OpenCore_v2.3.md) | 2.3 |
 | Especificação Builder | [`06_Especificacao_OpenCore_Builder_v0.md`](06_Especificacao_OpenCore_Builder_v0.md) | proposta v0 |
 | Benchmarks | [`07_Benchmarks_Ecossistema_OpenCore_v1.0.md`](07_Benchmarks_Ecossistema_OpenCore_v1.0.md) | 1.0 · não normativo |
+
+> Comunidade/Governança 1.0 e Plano Institucional 1.0 foram aprovados originalmente em 2026-07-23. As alterações substantivas de 2026-07-24 permanecem pendentes de ratificação.
 
 ### ADRs arquiteturais (015–022)
 
@@ -93,11 +99,12 @@ nativo     processo (ADR-021)
 
 ## Roadmap em uma linha
 
-1. ~~Fechar Etapa 0 (governança + Builder documental + artefatos)~~
+1. Revisão formal dos documentos 1.2/1.3/2.3 e ADR-022
 2. Spikes técnicos (Etapa 1), incluindo Spike 10 e CLI/lockfile/instalador
 3. Fatia vertical: OpenCore Portaria (com instalação guiada)
 4. Extrair SDK v0 a partir de contratos reais
-5. Pilotos comunitário/institucional e Builder MVP baseado em regras
+5. Pilotos comunitário/institucional
+6. Builder MVP baseado em regras (não autorizado para implementação completa agora)
 
 Detalhes: [`05_Roadmap_OpenCore_v2.3.md`](05_Roadmap_OpenCore_v2.3.md).
 
