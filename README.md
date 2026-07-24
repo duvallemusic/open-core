@@ -4,7 +4,10 @@ Plataforma open source para sistemas desktop modulares e multiplataforma (Window
 
 O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual se montam **distribuições** (como o OpenCore Portaria) a partir de módulos reutilizáveis — com soberania de dados, operação offline-first e licenciamento transparente.
 
-> **Status atual:** Etapa 0 documental **concluída**. Ainda não há código de produto. A próxima fase é a **Etapa 1** (spikes técnicos).
+> **Status atual:** a implementação documental essencial da Etapa 0 foi
+> concluída. A RFC-0001 permanece em consulta pública até 2026-08-22, enquanto
+> o projeto inicia a Etapa 1 com spikes técnicos controlados. Ainda não há
+> código de produto.
 
 ---
 
@@ -21,7 +24,7 @@ O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual 
 
 | Material | Licença |
 |---|---|
-| Documentação textual deste repositório | **CC BY 4.0** ([RFC-0001](rfcs/0001-licenca-documentacao.md)) |
+| Documentação textual deste repositório | **CC BY 4.0** — em vigor; RFC-0001 em consulta até 2026-08-22 ([#2](https://github.com/duvallemusic/open-core/issues/2)) |
 | Exemplos / trechos de código na documentação | **Apache 2.0** |
 | Runtime e módulos oficiais (quando publicados) | **MPL 2.0** (previsto no Manifesto) |
 | Protocolo, SDKs e ferramentas (quando publicados) | **Apache 2.0** (previsto no Manifesto) |

@@ -1,20 +1,28 @@
 # RFC-0001 — Licença da documentação OpenCore
 
 **Autor:** Bruno Costa / comunidade OpenCore  
-**Status:** Aceita
-**Decisão:** 2026-07-23 — aprovada pelo Lead Maintainer interino após alinhamento com a Etapa 0  
-**Criada em:** 2026-07-23  
-**Prazo de consulta proposto:** 30 dias  
+**Status:** Em consulta  
+**Publicação inicial da licença:** 2026-07-23  
+**Período de consulta:** 2026-07-23 a 2026-08-22  
 **Responsável pela decisão:** Lead Maintainer interino  
-**Issue relacionada:** a criar  
+**Issue relacionada:** [#2](https://github.com/duvallemusic/open-core/issues/2)  
 **ADRs relacionadas:** não aplicável  
 **Conflitos de interesse conhecidos:** nenhum declarado
+
+> **Efeito da publicação inicial:** a licença foi aplicada publicamente aos
+> materiais identificados em 2026-07-23 e permanece válida para essas versões.
+> A consulta prevista nesta RFC trata da ratificação da decisão dentro da
+> governança do OpenCore e de eventuais ajustes para versões futuras. Ela não
+> revoga direitos já concedidos.
 
 ---
 
 ## Resumo
 
-Esta RFC propõe licenciar a documentação pública do OpenCore sob **Creative Commons Attribution 4.0 International — CC BY 4.0**, mantendo exemplos e trechos de código sob **Apache License 2.0**, salvo indicação diferente no próprio arquivo.
+Esta RFC formaliza e submete à consulta pública a decisão inicial de licenciar
+a documentação pública do OpenCore sob **Creative Commons Attribution 4.0
+International — CC BY 4.0**, mantendo exemplos e trechos de código sob **Apache
+License 2.0**, salvo indicação diferente no próprio arquivo.
 
 Marcas, logotipos, selos e elementos de identidade institucional permanecerão fora da licença documental e dependerão de política de marca futura.
 
@@ -79,57 +87,26 @@ A licença documental não concede direito de usar:
 
 - logotipo;
 - selos;
-- identidade visual oficial;
-- expressões que indiquem certificação, aprovação ou representação institucional.
+- expressões de aprovação oficial;
+- certificações;
+- identidade visual institucional.
 
-Uso nominativo para descrever o projeto ou compatibilidade permanece sujeito à legislação e à política de marca futura.
+### 4. Forma sugerida de atribuição
 
-### 4. Conteúdo de terceiros
+Uma atribuição razoável pode utilizar:
 
-Conteúdo incorporado de terceiros deverá:
+> Documentação OpenCore, por Bruno Costa e contribuidores do OpenCore,
+> licenciada sob CC BY 4.0. Alterações realizadas quando aplicável.
 
-- possuir licença compatível;
-- manter atribuição e avisos;
-- ser identificado no arquivo ou inventário;
-- não ser relicenciado além do permitido.
-
-### 5. Contribuições futuras
-
-Após aprovação:
-
-- PRs documentais seguirão `CC-BY-4.0` para texto e `Apache-2.0` para código identificado;
-- commits continuarão sujeitos ao DCO;
-- `CONTRIBUTING.md` será atualizado;
-- o repositório publicará arquivos e avisos de licença apropriados;
-- documentos poderão usar identificadores SPDX quando aplicável.
-
-## Experiência do usuário e operação
-
-Usuários poderão copiar, traduzir, adaptar e distribuir documentação, inclusive em ambientes educacionais e comerciais, desde que cumpram atribuição.
-
-A licença não transforma uma adaptação em documento oficial nem autoriza uso de marca que sugira aprovação.
-
-## Arquitetura e dependências
-
-Não há impacto sobre arquitetura de software. A proposta afeta organização do repositório, cabeçalhos, inventário de licenças e CI futuro.
-
-## Dados, privacidade e segurança
-
-A licença não se aplica a:
-
-- dados pessoais;
-- credenciais;
-- relatos privados;
-- vulnerabilidades ainda não divulgadas;
-- informações confidenciais;
-- materiais de pilotos sem autorização.
+A atribuição pode incluir um link para o repositório, para a licença e uma
+indicação das modificações realizadas.
 
 ## Compatibilidade e migração
 
-Após aprovação:
+Após a publicação inicial:
 
 1. confirmar que os autores atuais autorizam o licenciamento;
-2. adicionar `LICENSE-DOCS` com texto ou referência oficial da CC BY 4.0;
+2. publicar o mapa de licenciamento no arquivo `LICENSE`;
 3. adicionar aviso de código Apache quando aplicável;
 4. atualizar README e CONTRIBUTING;
 5. identificar exceções e conteúdo de terceiros;
@@ -173,13 +150,16 @@ O projeto poderá continuar vendendo treinamento, suporte e materiais organizado
 
 ## Plano de implementação
 
-1. consulta pública de 30 dias;
-2. confirmação dos autores e cadeia de direitos;
-3. decisão motivada;
-4. publicação de `LICENSE-DOCS`;
-5. atualização de README, CONTRIBUTING e templates;
-6. identificação de código Apache e conteúdo de terceiros;
-7. abertura ampla de PRs documentais.
+1. [x] confirmar a intenção dos autores atuais de licenciar o conteúdo;
+2. [x] publicar o mapa de licenciamento no arquivo `LICENSE`;
+3. [x] atualizar README e CONTRIBUTING;
+4. [x] separar texto, código reutilizável e marca;
+5. [ ] manter consulta pública até 2026-08-22;
+6. [ ] registrar contribuições, objeções e alternativas;
+7. [ ] publicar decisão motivada ao final da consulta;
+8. [ ] identificar continuamente conteúdo de terceiros e exceções;
+9. [ ] adicionar identificadores SPDX quando aplicável;
+10. [ ] abrir amplamente contribuições documentais sob os termos publicados.
 
 ## Critérios de sucesso
 
@@ -200,6 +180,14 @@ Licenças concedidas a versões publicadas não podem ser retiradas retroativame
 - quais diagramas, fontes e imagens exigem inventário separado?
 - o nome “OpenCore” precisará de aviso de marca antes do registro formal?
 
-## Resultado da consulta
+## Estado da consulta
 
-A preencher após o encerramento.
+A consulta pública foi aberta em 2026-07-23 e permanecerá disponível até
+2026-08-22.
+
+A licença documental foi publicada inicialmente em 2026-07-23 para estabelecer
+termos claros para uso e contribuição. Direitos concedidos às versões já
+publicadas permanecem válidos.
+
+O resultado final, as objeções relevantes e a decisão motivada serão registrados
+nesta seção após o encerramento.

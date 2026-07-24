@@ -1,8 +1,9 @@
 # OpenCore — Roadmap Revisado v2.2
 
-**Status:** rascunho consolidado — Etapa 0 documental essencial concluída; próximo = Etapa 1 (spikes)  
+**Status:** Etapa 0 documental essencial implementada; RFC-0001 em consulta;
+Etapa 1 autorizada para spikes técnicos controlados.  
 **Objetivo:** transformar a visão do OpenCore em uma sequência executável, validando arquitetura, produto, comunidade e adoção educacional sem criar infraestrutura prematura.  
-**Documentos relacionados:** Manifesto v1.1 · Arquitetura v1.2 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..021 · RFC-0001  
+**Documentos relacionados:** Manifesto v1.1 · Arquitetura v1.2 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..021 · RFC-0001 ([consulta #2](https://github.com/duvallemusic/open-core/issues/2))  
 **Histórico:** supersede Roadmap v2.1 (`05_Roadmap_OpenCore_v2.1.md`).
 
 ---
@@ -450,19 +451,19 @@ A sequência imediata recomendada é:
 16. **Alinhamento à Arquitetura v1.2:** recupera obrigações da v1.1 (LGPD, portabilidade, confiança, atualização/sync, CI, time-box) + melhorias multilíngues.
 17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes de fechar a Etapa 0.
 18. **Classificação de atualização e sincronização alinhada à ADR-015:** módulos-base não listam mais “atualização” nem “sincronização opcional”; sync e feeds/provedores ficam em adaptadores transversais.
-19. **Etapa 0 encerrada** com Plano Institucional v1.0, artefatos operacionais, canais privados e RFC-0001 (CC BY 4.0).
+19. **Etapa 0 documental essencial implementada**; licença CC BY 4.0 em vigor; RFC-0001 em consulta pública até 2026-08-22; Etapa 1 autorizada para spikes controlados.
 
 ---
 
 # 6. Próxima decisão de projeto
 
-A Etapa 0 documental essencial está concluída:
+A implementação documental essencial da Etapa 0 está concluída:
 
 1. ~~Manifesto v1.1~~
 2. ~~Arquitetura v1.2 + ADR-015..021~~
 3. ~~Comunidade e Governança v1.0~~
 4. ~~Plano Institucional v1.0~~
-5. ~~Artefatos operacionais, canais privados e RFC-0001 (licença documental CC BY 4.0)~~
+5. Licença documental publicada; RFC-0001 em consulta até 2026-08-22 ([#2](https://github.com/duvallemusic/open-core/issues/2))
 
 A hierarquia institucional permanece:
 
@@ -470,4 +471,4 @@ A hierarquia institucional permanece:
 - **meio estratégico:** educação e formação de desenvolvedores através de contribuições reais;
 - **sustentação:** adoção comercial, patrocínio, suporte e treinamento sem lock-in.
 
-**Próximo passo:** iniciar a Etapa 1 (spikes técnicos), incluindo o Spike 10 (ADR-021) quando priorizado — módulo em processo headless em Python, sem tratar o resultado como sandbox nem como compromisso multilíngue amplo.
+**Próximo passo:** iniciar a Etapa 1 (spikes técnicos controlados), incluindo o Spike 10 (ADR-021) quando priorizado — módulo em processo headless em Python, sem tratar o resultado como sandbox nem como compromisso multilíngue amplo. A consulta da RFC-0001 prossegue em paralelo até 2026-08-22.

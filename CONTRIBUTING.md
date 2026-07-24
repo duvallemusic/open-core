@@ -19,19 +19,28 @@ Use apenas as versões marcadas como canônicas no índice.
 
 ## 2. Estado atual do projeto
 
-O OpenCore ainda está na Etapa 0 documental. Não existe runtime de produção nem SDK público estável.
+O OpenCore concluiu a implementação documental essencial da Etapa 0 e inicia
+a Etapa 1, dedicada a spikes técnicos controlados.
+
+Ainda não existe runtime de produção nem SDK público estável.
 
 Contribuições úteis agora incluem:
 
-- revisão de consistência;
-- documentação;
+- revisão de consistência e documentação;
 - pesquisa técnica;
-- propostas de RFC;
-- ADRs derivados de decisões aprovadas;
-- templates e processo comunitário;
+- propostas e revisões de RFC;
+- ADRs derivados de decisões aceitas;
+- implementação de spikes explicitamente priorizados;
+- testes de hipóteses arquiteturais;
+- documentação de ambiente e reprodução;
 - identificação de riscos, casos de uso e requisitos de pilotos.
 
-Não inicie implementação do runtime ou do Spike 10 como contribuição oficial antes de a Etapa 0 ser encerrada e a atividade ser aberta no roadmap.
+Contribuições de código devem estar vinculadas a uma issue, RFC, ADR ou spike
+explicitamente aberto no roadmap.
+
+A conclusão da Etapa 0 não autoriza a implementação antecipada de um runtime
+definitivo. Código produzido nos spikes poderá ser descartado, refeito ou
+mantido isolado conforme as evidências obtidas.
 
 ## 3. Escolhendo uma contribuição
 
@@ -151,7 +160,7 @@ Contribuições aceitas seguem a licença do componente de destino:
 
 ### Documentos normativos atuais
 
-Conforme a RFC-0001 aceita:
+Conforme a política publicada e a RFC-0001 em consulta ([#2](https://github.com/duvallemusic/open-core/issues/2)):
 
 - documentação textual pública: **CC BY 4.0**;
 - exemplos e trechos de código em documentação: **Apache 2.0**, salvo aviso diferente;
@@ -159,7 +168,8 @@ Conforme a RFC-0001 aceita:
 
 Veja [`LICENSE`](LICENSE) e [`rfcs/0001-licenca-documentacao.md`](rfcs/0001-licenca-documentacao.md).
 
-A abertura ampla de PRs documentais deverá ocorrer após a publicação de uma política de licença documental.
+PRs documentais são recebidas sob a política de licença publicada. A RFC-0001
+permanece em consulta até 2026-08-22 para ratificação conforme a governança.
 
 ## 11. Segurança
 

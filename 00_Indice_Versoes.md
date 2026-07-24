@@ -2,7 +2,10 @@
 
 Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots históricos** preservados.
 
-**Última consolidação:** 2026-07-23 — Plano Institucional v1.0 aprovado; artefatos operacionais na raiz; RFC-0001 (CC BY 4.0) aceita; Etapa 0 documental essencial concluída.
+**Última consolidação:** 2026-07-23 — Plano Institucional v1.0 aprovado;
+artefatos operacionais publicados; licença documental CC BY 4.0 em vigor;
+RFC-0001 em consulta pública até 2026-08-22; Etapa 1 autorizada a iniciar
+com spikes controlados.
 
 ---
 
@@ -15,7 +18,7 @@ Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots histór
 | Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 · **Aprovado** |
 | Plano Institucional | `04_Plano_Institucional_OpenCore_v1.0.md` | 1.0 · **Aprovado** |
 | Roadmap | `05_Roadmap_OpenCore_v2.2.md` | 2.2 |
-| Licença documental | `LICENSE` · `rfcs/0001-licenca-documentacao.md` | CC BY 4.0 (+ Apache 2.0 em código de docs) |
+| Licença documental | `LICENSE` · `rfcs/0001-licenca-documentacao.md` | CC BY 4.0 em vigor · RFC-0001 em consulta |
 | ADR-015 | `ADR-015_Matriz_Classificacao_Arquitetural.md` | Proposto |
 | ADR-016 | `ADR-016_Portabilidade_Exclusao_Modulos.md` | Proposto |
 | ADR-017 | `ADR-017_Niveis_Confianca_Modulos.md` | Proposto |
@@ -82,6 +85,8 @@ Espelhos de conveniência:
 2. ~~Arquitetura v1.2 + ADR-015..021~~
 3. ~~Comunidade e Governança v1.0~~
 4. ~~Plano Institucional v1.0~~
-5. ~~Artefatos operacionais + RFC-0001 (licença documental)~~
+5. Licença documental publicada; RFC-0001 em consulta até 2026-08-22.
 
-**Próximo:** Etapa 1 — spikes técnicos (incluindo Spike 10 / ADR-021 quando priorizado), sem antecipar runtime de produção antes das evidências.
+**Próximo:** Etapa 1 — spikes técnicos controlados. A consulta da RFC-0001
+prossegue em paralelo e deverá ser encerrada formalmente antes de a decisão
+ser marcada como aceita.

@@ -1,6 +1,10 @@
 # Licenciamento deste repositório
 
-Este repositório está na Etapa 0 (documentação e decisões). Aplica-se o seguinte:
+Este repositório contém a documentação fundadora do OpenCore, produzida
+principalmente durante a Etapa 0. A implementação documental essencial da
+Etapa 0 foi concluída em 2026-07-23, e o projeto inicia a Etapa 1.
+
+Aplica-se o seguinte:
 
 ## Documentação textual — CC BY 4.0
 
@@ -26,6 +30,28 @@ Quando publicado, o software seguirá a política do Manifesto v1.1:
 
 Nome, logotipo, selos e expressões de aprovação oficial **não** são concedidos por esta licença documental. Dependem de política de marca futura.
 
-## Decisão
+## Forma sugerida de atribuição
 
-Esta política documental foi estabelecida pela **RFC-0001** (aceita em 2026-07-23). Ver `rfcs/0001-licenca-documentacao.md`.
+Uma atribuição razoável pode utilizar:
+
+> Documentação OpenCore, por Bruno Costa e contribuidores do OpenCore,
+> licenciada sob CC BY 4.0. Alterações realizadas quando aplicável.
+
+A atribuição pode incluir um link para o repositório, para a licença e uma
+indicação das modificações realizadas.
+
+A CC BY exige crédito apropriado, link para a licença e indicação de alterações, mas permite que isso seja feito de maneira razoável.
+
+## Publicação e processo de decisão
+
+Esta política de licenciamento foi publicada inicialmente em 2026-07-23.
+
+A CC BY 4.0 aplica-se às versões dos materiais disponibilizadas com este aviso.
+A RFC-0001 permanece em consulta pública até 2026-08-22 para ratificação da
+decisão dentro da governança do OpenCore.
+
+A consulta poderá orientar políticas aplicáveis a versões futuras, mas não
+retirará direitos já concedidos às versões publicadas.
+
+Consulta: https://github.com/duvallemusic/open-core/issues/2  
+RFC: `rfcs/0001-licenca-documentacao.md`
