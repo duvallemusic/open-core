@@ -25,7 +25,7 @@ Ao mesmo tempo, o núcleo técnico deve continuar sendo projetado como software 
 
 ## 2. Modelo arquitetural de referência
 
-Antes de implementar o SDK, o projeto deve formalizar quatro níveis:
+Antes de implementar o SDK, o projeto deve formalizar os níveis abaixo, alinhados à ADR-015 (matriz de classificação) e à Arquitetura v1.2:
 
 ### 2.1 OpenCore Runtime
 
@@ -38,7 +38,8 @@ Parte mínima e não removível da plataforma (Rust):
 - banco e migrações;
 - barramento de eventos;
 - logs e diagnóstico;
-- contratos mínimos de segurança e integridade.
+- contratos mínimos de segurança e integridade;
+- contratos estruturais de atualização (validação, compatibilidade, migração e recuperação — ADR-015 / ADR-018).
 
 **Nota:** isolamento por processo = isolamento de falhas, não sandbox completa de SO (ADR-021 v1.1).
 
@@ -51,10 +52,20 @@ Serviços reutilizáveis que podem ser exigidos por uma distribuição:
 - backup e restauração;
 - relatórios;
 - internacionalização;
-- atualização;
-- sincronização opcional.
+- interface administrativa opcional de atualização.
 
-### 2.3 Módulos de domínio
+**Nota (ADR-015 / ADR-018):** “atualização” não é um módulo-base monolítico. O runtime detém os contratos estruturais; a interface administrativa é opcional e modular; feeds, download e provedores ficam em adaptadores.
+
+### 2.3 Adaptadores transversais
+
+Categoria transversal (não é uma nova camada obrigatória do runtime). Exemplos:
+
+- sincronização (sempre adaptador — ADR-015 / ADR-019; nunca módulo-base);
+- feeds e provedores de atualização / obtenção de artefatos;
+- telemetria opcional;
+- integrações externas (e-mail, APIs, identidade, armazenamento remoto de backup, etc.).
+
+### 2.4 Módulos de domínio
 
 Funcionalidades específicas de um tipo de sistema:
 
@@ -68,7 +79,7 @@ Funcionalidades específicas de um tipo de sistema:
 - biblioteca;
 - estacionamento.
 
-### 2.4 Distribuições
+### 2.5 Distribuições
 
 Combinações testadas e empacotadas de módulos. Exemplos:
 
@@ -438,6 +449,7 @@ A sequência imediata recomendada é:
 15. **Numeração corrigida:** módulos nativos/processo passam a ser **ADR-021**; ADR-015 permanece a matriz de classificação.
 16. **Alinhamento à Arquitetura v1.2:** recupera obrigações da v1.1 (LGPD, portabilidade, confiança, atualização/sync, CI, time-box) + melhorias multilíngues.
 17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes de fechar a Etapa 0.
+18. **Classificação de atualização e sincronização alinhada à ADR-015:** módulos-base não listam mais “atualização” nem “sincronização opcional”; sync e feeds/provedores ficam em adaptadores transversais.
 
 ---
 
