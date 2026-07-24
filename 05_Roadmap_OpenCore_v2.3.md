@@ -1,8 +1,8 @@
 # OpenCore — Roadmap Revisado v2.3
 
-**Status:** documentação essencial da Etapa 0 consolidada; Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 em revisão formal; RFC-0001 em consulta; Etapa 1 autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
+**Status:** documentação essencial da Etapa 0 aprovada na revisão formal de 2026-07-24; Manifesto 1.2, Arquitetura 1.3 e Roadmap 2.3 aprovados; ADR-022 proposta formalmente revisada (permanece Proposto, condicionado aos Spikes 14–18); alterações de 2026-07-24 em Comunidade/Governança e Plano Institucional ratificadas; RFC-0001 em consulta até 2026-08-22; Etapa 1 iniciada apenas com spikes técnicos reversíveis, documentados e time-boxed; OpenCore Builder completo não autorizado para implementação.
 **Objetivo:** transformar a visão do OpenCore em uma sequência executável, validando arquitetura, produto, comunidade, adoção educacional e experiência do usuário final sem criar infraestrutura prematura.
-**Documentos relacionados:** Manifesto v1.2 · Arquitetura v1.3 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0 · RFC-0001 ([consulta #2](https://github.com/duvallemusic/open-core/issues/2))
+**Documentos relacionados:** Manifesto v1.2 · Arquitetura v1.3 · Comunidade e Governança v1.0 · Plano Institucional v1.0 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0 · RFC-0001 ([consulta #2](https://github.com/duvallemusic/open-core/issues/2)) · [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)
 **Histórico:** supersede Roadmap v2.2 (`05_Roadmap_OpenCore_v2.2.md`).
 
 ---
@@ -579,7 +579,7 @@ A sequência imediata recomendada é:
 ### Mudanças específicas da v2.3 (Builder, UX e composição)
 
 20. **Lente transversal** de experiência e adoção do usuário final, sem criar quarta equipe obrigatória.
-21. **Etapa 0** incorpora Manifesto 1.2, Arquitetura 1.3, ADR-022, Especificação Builder v0, Benchmarks v1.0 e critério leigo de obtenção de distribuição — documentos em revisão formal; Builder completo não autorizado para implementação.
+21. **Etapa 0** incorpora Manifesto 1.2, Arquitetura 1.3, ADR-022, Especificação Builder v0, Benchmarks v1.0 e critério leigo de obtenção de distribuição — documentos aprovados na revisão formal de 2026-07-24; ADR-022 permanece Proposto (Spikes 14–18); Builder completo não autorizado para implementação.
 22. **Etapa 1** acrescenta Spikes 12–13, catálogo estático, perfil simples, instalador monoposto, `doctor`, demo data e teste externo — sem IA nem portal completo.
 23. **Etapa 2 (Portaria)** exige instalador, onboarding, CSV, backup, ficha, lockfile, perfil Essencial, preview interno e teste leigo; catálogo permanece genérico.
 24. **Etapa 3 (SDK)** inclui CLI, scaffolds, metadados, testes de composição, lockfile experimental, adaptadores, campos do Builder e conformidade ampliada.
@@ -590,19 +590,20 @@ A sequência imediata recomendada é:
 29. **Etapa futura condicionada** registra marketplace, geração avançada, sandbox, segundo SDK e afins sem número fixo.
 30. **Ordem prática revisada** em 15 itens, priorizando documentos → spikes → Portaria → leigo → SDK → Builder em regras → alpha → IA opcional → ecossistema comercial após confiança.
 31. Documentos relacionados passam a citar Manifesto 1.2, Arquitetura 1.3, ADR-015..022, Spec Builder v0 e Benchmarks v1.0.
+32. **Revisão formal 2026-07-24:** Manifesto 1.2, Arquitetura 1.3 e Roadmap 2.3 aprovados; ADR-022 proposta revisada (permanece Proposto); alterações de Comunidade/Plano ratificadas; Etapa 1 iniciada em `spikes/`; Builder completo continua não autorizado; RFC-0001 permanece em consulta até 2026-08-22.
 
 ---
 
 # 6. Próxima decisão de projeto
 
-A documentação essencial da Etapa 0 foi consolidada. Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed. O OpenCore Builder completo não está autorizado para implementação.
+A documentação essencial da Etapa 0 foi aprovada na revisão formal de 2026-07-24 ([registro](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)). A Etapa 1 está iniciada apenas pelos spikes técnicos priorizados em `spikes/`. O OpenCore Builder completo não está autorizado para implementação. A consulta da RFC-0001 prossegue até 2026-08-22.
 
 Documentos da linha 1.2/1.3/2.3:
 
-1. Manifesto v1.2 (acessibilidade operacional e descoberta guiada) — revisão formal pendente
-2. Arquitetura v1.3 + ADR-015..022 — revisão formal pendente
-3. Comunidade e Governança v1.0 — alterações de 2026-07-24 pendentes de ratificação
-4. Plano Institucional v1.0 — alterações de 2026-07-24 pendentes de ratificação
+1. Manifesto v1.2 (acessibilidade operacional e descoberta guiada) — **aprovado**
+2. Arquitetura v1.3 + ADR-015..022 — Arquitetura **aprovada**; ADR-022 proposta formalmente revisada (permanece Proposto, Spikes 14–18)
+3. Comunidade e Governança v1.0 — alterações de 2026-07-24 **ratificadas**
+4. Plano Institucional v1.0 — alterações de 2026-07-24 **ratificadas**
 5. Especificação Builder v0 + Benchmarks v1.0
 6. Licença documental publicada; RFC-0001 em consulta até 2026-08-22 ([#2](https://github.com/duvallemusic/open-core/issues/2))
 
@@ -612,4 +613,4 @@ A hierarquia institucional permanece:
 - **meio estratégico:** educação e formação de desenvolvedores através de contribuições reais;
 - **sustentação:** adoção comercial, patrocínio, suporte e treinamento sem lock-in.
 
-**Próximo passo:** revisar formalmente Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022; ratificar ou ajustar as alterações de 2026-07-24 em Comunidade/Governança e Plano Institucional; não iniciar implementação completa do Builder; iniciar a Etapa 1 apenas pelos spikes técnicos priorizados (incluindo Spike 10 quando priorizado, e Spikes 12–13 de CLI/lockfile/instalador de forma time-boxed). A consulta da RFC-0001 prossegue em paralelo até 2026-08-22. IA permanece opcional e pós-MVP; marketplace permanece etapa futura condicionada.
+**Próximo passo:** executar o backlog da Etapa 1 em `spikes/` (Spikes 01–09 → Spike 10 → Spikes 12–13 e 15 time-boxed); manter Spikes 14/16/17/18 adiados; não implementar o Builder completo; encerrar formalmente a RFC-0001 após 2026-08-22. IA permanece opcional e pós-MVP; marketplace permanece etapa futura condicionada.

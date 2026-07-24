@@ -1,12 +1,12 @@
 # Plano Institucional OpenCore — Versão 1.0
 
-**Status:** Aprovado originalmente em 2026-07-23; alterações substantivas de 2026-07-24 pendentes de ratificação
-**Data de aprovação:** 2026-07-23
-**Data:** 2026-07-23
-**Última atualização:** 2026-07-24 — acréscimo do OpenCore Builder como canal de adoção, SEO e marketing por necessidade, mensagens de referência, rede de prestadores e métricas. As alterações de 2026-07-24 são substantivas e permanecem pendentes de ratificação.
-**Base normativa:** Manifesto OpenCore v1.2
-**Documentos relacionados:** Arquitetura OpenCore v1.3 · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore v2.3 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0
-**Finalidade:** definir como o OpenCore se relaciona com usuários, organizações-piloto, instituições de ensino, comunidades, empresas, patrocinadores e futuros prestadores de serviços sem comprometer a independência, os direitos dos usuários ou a abertura do projeto.
+**Status:** Aprovado — versão 1.0 original (2026-07-23); alterações substantivas de 2026-07-24 ratificadas em 2026-07-24  
+**Data de aprovação:** 2026-07-23 (original); 2026-07-24 (ratificação das alterações)  
+**Data:** 2026-07-23  
+**Última atualização:** 2026-07-24 — acréscimo do OpenCore Builder como canal de adoção, SEO e marketing por necessidade, mensagens de referência, rede de prestadores e métricas. Alterações de 2026-07-24 ratificadas na revisão formal (`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`).  
+**Base normativa:** Manifesto OpenCore v1.2  
+**Documentos relacionados:** Arquitetura OpenCore v1.3 · Comunidade e Governança OpenCore v1.0 · Roadmap OpenCore v2.3 · ADR-015..022 · Especificação Builder v0 · Benchmarks v1.0  
+**Finalidade:** definir como o OpenCore se relaciona com usuários, organizações-piloto, instituições de ensino, comunidades, empresas, patrocinadores e futuros prestadores de serviços sem comprometer a independência, os direitos dos usuários ou a abertura do projeto.  
 **Supersede:** `04_Plano_Institucional_OpenCore_rascunho.md` — rascunho inicial.
 
 ---
@@ -896,7 +896,9 @@ Após a ratificação:
 
 - o índice deverá registrar o estado ratificado das alterações de 2026-07-24, sem criar automaticamente uma versão 1.1;
 - o rascunho anterior permanece preservado como histórico;
-- a revisão formal de Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 prossegue em paralelo aos spikes autorizados.
+- spikes técnicos reversíveis permanecem autorizados conforme o Roadmap v2.3.
+
+**Registro:** critérios atendidos e alterações **ratificadas** em 2026-07-24 — ver [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md).
 
 ---
 
@@ -905,11 +907,11 @@ Após a ratificação:
 | Data | Mudança |
 |---|---|
 | 2026-07-23 | Versão 1.0 aprovada. |
-| 2026-07-24 | Alterações substantivas: rede de prestadores (§17); OpenCore Builder como canal de adoção (§18); marketing/SEO e mensagens de referência (§19); métricas de conversão, importações, prestadores e usuários sem serviço pago (§20). **Pendentes de ratificação.** |
+| 2026-07-24 | Alterações substantivas: rede de prestadores (§17); OpenCore Builder como canal de adoção (§18); marketing/SEO e mensagens de referência (§19); métricas de conversão, importações, prestadores e usuários sem serviço pago (§20). **Ratificadas** na revisão formal. |
 
 ## Histórico de aprovação
 
 | Data | Estado | Descrição |
 |---|---|---|
 | 2026-07-23 | Aprovado | Versão 1.0 original aprovada durante a consolidação da Etapa 0. |
-| 2026-07-24 | Pendente de ratificação | Alterações substantivas relacionadas ao Builder, SEO, marketing, prestadores e métricas. |
+| 2026-07-24 | Ratificado | Alterações substantivas relacionadas ao Builder, SEO, marketing, prestadores e métricas. Registro: `docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`. |

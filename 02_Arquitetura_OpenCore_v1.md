@@ -1,12 +1,13 @@
 # Arquitetura OpenCore — Versão 1.3
 
-**Status:** proposta consolidada para aprovação  
+**Status:** Aprovado (revisão formal 2026-07-24); hipóteses tecnológicas permanecem condicionadas a spikes  
 **Base estratégica:** Manifesto OpenCore v1.2  
 **Roadmap relacionado:** OpenCore — Roadmap Revisado v2.3  
 **ADR relacionada:** ADR-022 (OpenCore Builder — proposto, condicionado aos Spikes 14–18)  
 **Finalidade:** definir as fronteiras arquiteturais iniciais do OpenCore, a experiência de composição e instalação para usuários não técnicos, e preparar a validação técnica da Etapa 1  
-**Observação:** decisões tecnológicas marcadas como provisórias somente serão confirmadas após os spikes técnicos. Esta versão incorpora o OpenCore Builder como componente externo, experiência do desenvolvedor, manifesto/lockfile de distribuição, catálogo de capacidades, composição guiada, instalação e onboarding, interoperabilidade por adaptadores, e testes/métricas/riscos adicionais. Mantém ADR-021 condicionado ao Spike 10.  
-**Supersede:** Arquitetura v1.2.
+**Observação:** decisões tecnológicas marcadas como provisórias somente serão confirmadas após os spikes técnicos. Esta versão incorpora o OpenCore Builder como componente externo, experiência do desenvolvedor, manifesto/lockfile de distribuição, catálogo de capacidades, composição guiada, instalação e onboarding, interoperabilidade por adaptadores, e testes/métricas/riscos adicionais. Mantém ADR-021 condicionado ao Spike 10. O OpenCore Builder completo não está autorizado para implementação.  
+**Supersede:** Arquitetura v1.2.  
+**Registro de revisão:** [`docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)
 
 ---
 
@@ -2504,7 +2505,7 @@ O spike terá dois checkpoints:
 - assinatura futura;
 - custo operacional.
 
-Os Spikes 12–18 **não renumeram** os Spikes 01–11. São adicionados após a sequência atual e permanecem condicionantes do ADR-022 e da experiência de adoção.
+Os Spikes 12–18 **não renumeram** os Spikes 01–11. São adicionados após a sequência atual. Apenas os Spikes **14–18** condicionam o ADR-022 (Builder). Os Spikes **12–13** (CLI/scaffolding e manifesto/lockfile) e o Spike **15** (instalador/onboarding) pertencem à experiência de adoção da Etapa 1 e podem ser executados de forma time-boxed sem autorizar a implementação completa do Builder.
 
 ---
 
@@ -2636,7 +2637,7 @@ A Etapa 1 poderá ser considerada concluída quando:
 - o Spike 10 tiver aceito, rejeitado ou adiado com evidência registrada o modelo de módulo em processo (ADR-021);
 - as fronteiras de licença puderem ser auditadas;
 - uma pessoa externa executar o projeto seguindo apenas a documentação;
-- os ADRs provisórios forem aceitos, alterados ou rejeitados com base nas evidências.
+- os ADRs provisórios relevantes à Etapa 1 forem aceitos, alterados ou rejeitados com base nas evidências (o ADR-022 permanece proposto e condicionado aos Spikes 14–18; sua aceitação não é critério de saída da Etapa 1).
 
 ---
 
@@ -2876,4 +2877,4 @@ A arquitetura deverá garantir que o OpenCore possa crescer sem abandonar os com
 | 1.0 | Proposta para revisão | Primeira consolidação das fronteiras arquiteturais, contrato modular, dados, eventos, segurança, licenciamento e plano de validação técnica. |
 | 1.1 | Proposta revisada para aprovação | Resolve a classificação de atualização e sincronização, explicita LGPD, adiciona contrato de portabilidade e exclusão, níveis de confiança, trilha educacional, canal mínimo de segurança, testes arquiteturais e time-box dos spikes. |
 | 1.2 | Proposta consolidada para aprovação | Consolida v1.1 com ADR-021 (módulos nativos/processo, protocolo, isolamento ≠ sandbox, empacotamento, storage tipado); supersede a linha divergente v1.0.1/v1.0.2. |
-| 1.3 | Proposta consolidada para aprovação | Incorpora OpenCore Builder (externo ao runtime; ADR-022), experiência do desenvolvedor e CLI conceitual, manifesto/lockfile de distribuição, perfis verificados, catálogo de capacidades, preview estrutural, empacotamento progressivo A/B/C, instalação/onboarding/ficha, catálogo público de módulos, interoperabilidade por adaptadores, testes e métricas adicionais, riscos de composição/adoção e Spikes 12–18. Base: Manifesto 1.2 e Roadmap 2.3. Mantém ADR-021 condicionado ao Spike 10. Supersede Arquitetura v1.2. |
+| 1.3 | Aprovado (revisão formal 2026-07-24) | Incorpora OpenCore Builder (externo ao runtime; ADR-022), experiência do desenvolvedor e CLI conceitual, manifesto/lockfile de distribuição, perfis verificados, catálogo de capacidades, preview estrutural, empacotamento progressivo A/B/C, instalação/onboarding/ficha, catálogo público de módulos, interoperabilidade por adaptadores, testes e métricas adicionais, riscos de composição/adoção e Spikes 12–18. Base: Manifesto 1.2 e Roadmap 2.3. Mantém ADR-021 condicionado ao Spike 10. Builder completo não autorizado para implementação. Supersede Arquitetura v1.2. Registro: `docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md`. |

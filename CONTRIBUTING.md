@@ -25,9 +25,9 @@ Use apenas as versões marcadas como canônicas no índice.
 
 ## 2. Estado atual do projeto
 
-A documentação essencial da Etapa 0 foi consolidada.
+A documentação essencial da Etapa 0 foi **aprovada** na revisão formal de 2026-07-24 ([registro](docs/REVISAO_FORMAL_ETAPA0_2026-07-24.md)).
 
-Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 permanecem em revisão formal. A Etapa 1 está autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
+Manifesto 1.2, Arquitetura 1.3 e Roadmap 2.3 estão aprovados. ADR-022 permanece Proposto (condicionado aos Spikes 14–18). A Etapa 1 está em andamento em [`spikes/`](spikes/) apenas com spikes técnicos reversíveis, documentados e time-boxed.
 
 Ainda não existe runtime de produção, SDK público estável, OpenCore Builder implementado ou distribuição pronta para uso final.
 
