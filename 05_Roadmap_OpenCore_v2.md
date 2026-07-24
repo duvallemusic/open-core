@@ -459,8 +459,8 @@ Antes de iniciar código novo, o OpenCore precisa fechar a Etapa 0. O próximo t
 
 1. Manifesto v1.1 (já revisado);
 2. Arquitetura v1.2 + ADR-015..021 (já consolidados nesta rodada);
-3. Comunidade e governança;
-4. Plano institucional;
+3. Comunidade e Governança v1.0 (já consolidada: `03_Comunidade_Governanca_OpenCore_v1.0.md`);
+4. **Plano institucional v1.0** ← próximo;
 5. Roadmap v2.2 consolidado (este documento).
 
 A decisão mais importante é definir a prioridade institucional do OpenCore:

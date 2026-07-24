@@ -4,7 +4,7 @@ Plataforma open source para sistemas desktop modulares e multiplataforma (Window
 
 O OpenCore não é um único aplicativo: é um **runtime mínimo** sobre o qual se montam **distribuições** (como o OpenCore Portaria) a partir de módulos reutilizáveis — com soberania de dados, operação offline-first e licenciamento transparente.
 
-> **Status atual:** fase documental (Etapa 0). Ainda não há código de produto. A próxima entrega prevista é *Comunidade e Governança v1.0*.
+> **Status atual:** fase documental (Etapa 0). Ainda não há código de produto. A próxima entrega prevista é *Plano Institucional OpenCore v1.0*.
 
 ---
 
@@ -34,7 +34,7 @@ Comece pelo índice: [`00_Indice_Versoes.md`](00_Indice_Versoes.md).
 |---|---|---|
 | Manifesto | [`01_Manifesto_OpenCore_v1.1_licenciamento.md`](01_Manifesto_OpenCore_v1.1_licenciamento.md) | 1.1 |
 | Arquitetura | [`02_Arquitetura_OpenCore_v1.2.md`](02_Arquitetura_OpenCore_v1.2.md) | 1.2 |
-| Comunidade e Governança | [`03_Comunidade_OpenCore.md`](03_Comunidade_OpenCore.md) | rascunho → v1.0 |
+| Comunidade e Governança | [`03_Comunidade_Governanca_OpenCore_v1.0.md`](03_Comunidade_Governanca_OpenCore_v1.0.md) | 1.0 |
 | Plano Institucional | [`04_Plano_Institucional_OpenCore.md`](04_Plano_Institucional_OpenCore.md) | rascunho → v1.0 |
 | Roadmap | [`05_Roadmap_OpenCore_v2.2.md`](05_Roadmap_OpenCore_v2.2.md) | 2.2 |
 

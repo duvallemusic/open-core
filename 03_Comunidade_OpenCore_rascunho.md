@@ -1,3 +1,5 @@
+> **Histórico.** Rascunho inicial supersedido por `03_Comunidade_Governanca_OpenCore_v1.0.md`.
+
 # Plano de Comunidade (Rascunho)
 
 ## Objetivo

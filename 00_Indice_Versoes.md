@@ -2,7 +2,7 @@
 
 Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots históricos** preservados.
 
-**Última consolidação:** 2026-07-23 — fusão Arquitetura v1.1 + linha multilíngue → v1.2; módulos em processo renumerados para **ADR-021**.
+**Última consolidação:** 2026-07-23 — Comunidade e Governança v1.0 promovida a canônica; próxima entrega = Plano Institucional v1.0.
 
 ---
 
@@ -12,8 +12,8 @@ Este arquivo aponta as versões **canônicas** (em uso) e os **snapshots histór
 |---|---|---|
 | Manifesto | `01_Manifesto_OpenCore_v1.1_licenciamento.md` | 1.1 |
 | Arquitetura | `02_Arquitetura_OpenCore_v1.2.md` | 1.2 |
-| Comunidade e Governança | `03_Comunidade_OpenCore.md` | rascunho — **próxima entrega = v1.0** |
-| Plano Institucional | `04_Plano_Institucional_OpenCore.md` | rascunho — próxima entrega = v1.0 |
+| Comunidade e Governança | `03_Comunidade_Governanca_OpenCore_v1.0.md` | 1.0 |
+| Plano Institucional | `04_Plano_Institucional_OpenCore.md` | rascunho — **próxima entrega = v1.0** |
 | Roadmap | `05_Roadmap_OpenCore_v2.2.md` | 2.2 |
 | ADR-015 | `ADR-015_Matriz_Classificacao_Arquitetural.md` | Proposto |
 | ADR-016 | `ADR-016_Portabilidade_Exclusao_Modulos.md` | Proposto |
@@ -36,6 +36,7 @@ Espelhos de conveniência (apontam para o canônico mais recente quando sincroni
 |---|---|---|
 | Manifesto (rascunho) | `01_Manifesto_OpenCore.md` | pré-v1.1 |
 | Arquitetura (rascunho) | `02_Arquitetura_OpenCore.md` | pré-v1 |
+| Comunidade (rascunho) | `03_Comunidade_OpenCore_rascunho.md` | supersedido pela v1.0 |
 | Arquitetura 1.0.1 | `02_Arquitetura_OpenCore_v1.0.1.md` | linha divergente (só ADR multilíngue v1) |
 | Arquitetura 1.0.2 | `02_Arquitetura_OpenCore_v1.0.2.md` | linha divergente (multilíngue P0–P2); **não substitui** a v1.1 |
 | Arquitetura 1.1 | `02_Arquitetura_OpenCore_v1.1.md` | base correta pré-consolidação (LGPD, matriz, ADRs 015–020) |
@@ -68,6 +69,6 @@ Não iniciar Spike 10 ainda.
 
 1. ~~Manifesto v1.1~~
 2. ~~Arquitetura v1.2 + ADR-015..021~~
-3. **Comunidade e Governança OpenCore v1.0** ← próximo
-4. Plano Institucional OpenCore v1.0
-5. Roadmap v2.2 já consolidado; revisar após os itens 3–4 se necessário
+3. ~~Comunidade e Governança OpenCore v1.0~~
+4. **Plano Institucional OpenCore v1.0** ← próximo
+5. Roadmap v2.2 já consolidado; revisar após o item 4 se necessário
