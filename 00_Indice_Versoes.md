@@ -67,6 +67,7 @@ Espelhos de conveniência:
 | Roadmaps anteriores | `05_Roadmap_OpenCore_v2.0.md`, `v2.1.md` | histórico |
 | Pacote operacional (checklist) | `docs/PACOTE_REVISAO_historico.md` | itens pendentes resolvidos na integração |
 | Instruções Cursor — Builder | `docs/history/INSTRUCOES_CURSOR_BUILDER_2026-07-24.md` | roteiro executado; não normativo |
+| Instruções Cursor — Correções pós-revisão | `docs/history/INSTRUCOES_CURSOR_CORRECOES_2026-07-24.md` | roteiro executado; não normativo |
 | ADR-015 módulos* (errata) | `ADR-015_Modulos_Nativos_*` | conteúdo → ADR-021 |
 | Legados | `OpenCore_Proposta.md`, `OpenCore_Roadmap_Arquitetura.md` | supersedidos |
 
