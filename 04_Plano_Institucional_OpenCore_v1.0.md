@@ -877,26 +877,26 @@ Esta versão estabelece que:
 
 ---
 
-## 25. Critério de aprovação da versão 1.0
+## 25. Critério de ratificação das alterações de 2026-07-24
 
-Este Plano estará pronto para ser marcado como **Aprovado** quando:
+A versão 1.0 original já foi aprovada em 2026-07-23. As alterações substantivas de 2026-07-24 estarão prontas para ratificação quando:
 
-- estiver alinhado ao Manifesto, à Arquitetura, à Governança e ao Roadmap;
-- responder quem representa o projeto no Estágio F;
-- definir seleção e aprovação de parceiros;
-- impedir compra de controle por patrocinadores;
-- definir regras para educação, pilotos, financiamento e dados;
-- diferenciar serviço comercial de autoridade institucional;
-- estabelecer métricas e processo de encerramento;
-- indicar quando criar entidade independente;
-- permitir que uma organização externa compreenda o que pode propor, quem decide e quais limites não são negociáveis.
+- permanecerem alinhadas ao Manifesto v1.2, à Arquitetura v1.3, à Governança e ao Roadmap v2.3;
+- responderem quem representa o projeto no Estágio F;
+- definirem seleção e aprovação de parceiros;
+- impedirem compra de controle por patrocinadores;
+- definirem regras para educação, pilotos, financiamento e dados;
+- diferenciarem serviço comercial de autoridade institucional;
+- estabelecerem métricas e processo de encerramento;
+- indicarem quando criar entidade independente;
+- permitirem que uma organização externa compreenda o que pode propor, quem decide e quais limites não são negociáveis;
+- o OpenCore Builder como canal de adoção, SEO/marketing por necessidade, rede de prestadores e métricas correlatas estiverem coerentes com os demais canônicos.
 
-Após aprovação:
+Após a ratificação:
 
-- o índice deverá promover `04_Plano_Institucional_OpenCore_v1.0.md` a canônico;
-- o rascunho anterior deverá ser preservado como histórico;
-- o Roadmap deverá receber revisão final de consistência;
-- a Etapa 0 só será encerrada após os artefatos operacionais prioritários e decisões pendentes de licença e canais privados.
+- o índice deverá registrar o estado ratificado das alterações de 2026-07-24, sem criar automaticamente uma versão 1.1;
+- o rascunho anterior permanece preservado como histórico;
+- a revisão formal de Manifesto 1.2, Arquitetura 1.3, Roadmap 2.3 e ADR-022 prossegue em paralelo aos spikes autorizados.
 
 ---
 

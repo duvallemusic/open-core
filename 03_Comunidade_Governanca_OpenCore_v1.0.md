@@ -1066,20 +1066,21 @@ Esta versão estabelece que:
 
 ---
 
-## 22. Critério de aprovação da versão 1.0
+## 22. Critério de ratificação das alterações de 2026-07-24
 
-Esta política estará pronta para ser marcada como **Aprovada** quando:
+A versão 1.0 original já foi aprovada em 2026-07-23. As alterações substantivas de 2026-07-24 estarão prontas para ratificação quando:
 
-- estiver alinhada ao Manifesto v1.2, à Arquitetura v1.3 e ao Roadmap v2.3;
-- identificar claramente quem decide durante o Estágio F;
-- definir caminho verificável para revisores e mantenedores;
-- definir PRs, RFCs, ADRs, segurança, conduta e conflitos;
-- estabelecer processo contra abandono de módulos;
-- proteger o projeto contra captura por patrocinadores ou fundador;
-- permitir que uma pessoa externa compreenda como participar, crescer e contestar decisões;
-- os documentos operacionais prioritários tiverem responsáveis e ordem de criação definidos.
+- permanecerem alinhadas ao Manifesto v1.2, à Arquitetura v1.3 e ao Roadmap v2.3;
+- identificarem claramente quem decide durante o Estágio F;
+- definirem caminho verificável para revisores e mantenedores;
+- definirem PRs, RFCs, ADRs, segurança, conduta e conflitos;
+- estabelecerem processo contra abandono de módulos;
+- protegerem o projeto contra captura por patrocinadores ou fundador;
+- permitirem que uma pessoa externa compreenda como participar, crescer e contestar decisões;
+- os documentos operacionais prioritários tiverem responsáveis e ordem de criação definidos;
+- a relação com o OpenCore Builder, ownership de distribuição, ladder de formação e alinhamento à ADR-017 estiverem coerentes com os demais canônicos.
 
-Após aprovação, o índice de versões deverá marcar **Comunidade e Governança v1.0** como canônico e a próxima entrega documental passará a ser o **Plano Institucional OpenCore v1.0**.
+Após a ratificação, o índice de versões deverá registrar o estado ratificado das alterações de 2026-07-24, sem criar automaticamente uma versão 1.1.
 
 ---
 

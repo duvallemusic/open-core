@@ -2844,7 +2844,7 @@ Após aprovação desta arquitetura, a sequência recomendada é:
 6. definir a convenção inicial de migrações, backup, restauração e exclusão;
 7. preparar a estrutura mínima do monorepo (`module_host/`, `protocol/`, `native-rust`, `process-python`, `conformance-tests`, `tools/`) e os templates Apache 2.0 da trilha educacional;
 8. converter os Spikes 01–09 em backlog time-boxed (20 pessoa-dias), o Spike 10 (+3 pessoa-dias), registrar Spike 11 como futuro e time-boxar Spikes 12–18 conforme capacidade;
-9. somente após a revisão formal da documentação da Etapa 0, iniciar a fatia vertical experimental e os spikes técnicos;
+9. a Etapa 1 pode iniciar com spikes técnicos reversíveis, documentados, time-boxed e isolados, enquanto a revisão formal da documentação prossegue; a fatia vertical definitiva permanece condicionada às decisões documentadas sobre stack e ADRs aplicáveis;
 10. executar o Spike 10 (módulo em processo headless, ADR-021) com evidência registrada — ADR-021 permanece condicionado a esse spike;
 11. priorizar CLI/lockfile/instalador de forma time-boxed após evidências mínimas da fatia vertical;
 12. registrar resultados mensuráveis e revisar os ADRs condicionados;

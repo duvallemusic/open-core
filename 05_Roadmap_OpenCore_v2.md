@@ -572,7 +572,7 @@ A sequência imediata recomendada é:
 
 15. **Numeração corrigida:** módulos nativos/processo passam a ser **ADR-021**; ADR-015 permanece a matriz de classificação.
 16. **Alinhamento à Arquitetura v1.2:** recupera obrigações da v1.1 (LGPD, portabilidade, confiança, atualização/sync, CI, time-box) + melhorias multilíngues.
-17. **Próxima etapa documental:** Comunidade e Governança v1.0 — não iniciar Spike 10 antes da revisão formal da documentação da Etapa 0.
+17. **Próxima etapa documental (histórico v2.2):** Comunidade e Governança v1.0 — a restrição de não iniciar Spike 10 antes da revisão formal da Etapa 0 foi **supersedida** na v2.3 pela autorização controlada de spikes reversíveis, documentados e time-boxed em paralelo à revisão formal.
 18. **Classificação de atualização e sincronização alinhada à ADR-015:** módulos-base não listam mais “atualização” nem “sincronização opcional”; sync e feeds/provedores ficam em adaptadores transversais.
 19. **Documentação essencial da Etapa 0 consolidada**; licença CC BY 4.0 em vigor; RFC-0001 em consulta pública até 2026-08-22; Etapa 1 autorizada apenas para spikes técnicos reversíveis, documentados e time-boxed.
 
