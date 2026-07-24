@@ -8,7 +8,7 @@
 
 | Ordem | Spike | Tema | Limite | Status |
 |---:|---|---|---:|---|
-| 1 | 01 | Aplicação mínima multiplataforma (Rust + Slint) | 3 pd | **em andamento** (A macOS OK; A/B via Actions; C pendente) |
+| 1 | 01 | Aplicação mínima multiplataforma (Rust + Slint) | 3 pd | **em andamento** (A/B OK nos 3 SO; C macOS parcial; C Win/Linux pendente) |
 | 2 | 02 | Registro de módulos | 2 pd | pendente |
 | 3 | 03 | Eventos locais | 2 pd | pendente |
 | 4 | 04 | SQLite e migrações por módulo | 3 pd | pendente |

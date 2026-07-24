@@ -9,3 +9,4 @@
 # Artefatos de spikes Rust
 **/target/
 spikes/**/target/
+spikes/**/artifacts/
