@@ -1,10 +1,11 @@
 # Comunidade e Governança OpenCore — Versão 1.0
 
-**Status:** Aprovado
+**Status:** Aprovado  
 **Data de aprovação:** 2026-07-23  
 **Data:** 2026-07-23  
-**Base normativa:** Manifesto OpenCore v1.1  
-**Documentos relacionados:** Arquitetura OpenCore v1.2 · Roadmap OpenCore v2.2 · ADR-015..021  
+**Última atualização editorial:** 2026-07-24 — acréscimo da relação com o OpenCore Builder, papéis de distribuição/formação, ownership explícito, alinhamento ADR-017 e formas de contribuição faltantes (sem alterar o status Aprovado).  
+**Base normativa:** Manifesto OpenCore v1.1 (evoluções posteriores aplicam-se quando canônicas)  
+**Documentos relacionados:** Arquitetura OpenCore · Roadmap OpenCore · Plano Institucional · ADR-015..021 · ADR-017 (níveis de confiança) · ADR-022 / Especificação Builder (quando existirem)  
 **Finalidade:** definir como pessoas participam, como responsabilidades são conquistadas, como decisões são tomadas e como o projeto protege sua missão durante a formação da comunidade.  
 **Supersede:** `03_Comunidade_OpenCore_rascunho.md` — rascunho inicial.
 
@@ -168,7 +169,23 @@ Pode:
 
 ### 4.2 Contribuidor
 
-Pessoa que realiza qualquer contribuição aceita, incluindo código, testes, documentação, design, tradução, pesquisa, segurança, suporte, organização comunitária ou validação com usuários.
+Pessoa que realiza qualquer contribuição aceita. Formas reconhecidas incluem, sem exclusividade:
+
+- código;
+- testes;
+- documentação;
+- tradução;
+- design;
+- acessibilidade;
+- segurança;
+- pesquisa;
+- suporte;
+- triagem de issues e relatos;
+- mentoria;
+- gestão comunitária;
+- validação com usuários;
+- criação de dados de demonstração;
+- contribuições ao OpenCore Builder (perfis, textos de triagem, catálogo de capacidades, templates), conforme a seção 19.
 
 Não existe hierarquia de valor que torne código automaticamente superior às demais contribuições.
 
@@ -195,7 +212,20 @@ Responsabilidades:
 - evitar aprovação automática ou revisão hostil;
 - declarar quando não possui conhecimento suficiente para aprovar uma parte da mudança.
 
-### 4.5 Mantenedor de módulo ou área
+### 4.5 Mantenedor em formação
+
+Pessoa em período acompanhado (tipicamente o probatório de noventa dias ou trilha `maintainer-track`) com escopo limitado de merge ou coordenação.
+
+Responsabilidades:
+
+- exercer progressivamente as atribuições de mantenedor sob mentoria;
+- documentar decisões e transferir conhecimento;
+- declarar disponibilidade e conflitos;
+- não atuar sozinha em mudanças de segurança, runtime ou distribuição oficial sem co-revisão.
+
+A conclusão bem-sucedida do período, com evidências públicas, habilita nomeação a mantenedor pleno conforme a seção 5.
+
+### 4.6 Mantenedor de módulo ou área
 
 Responsável por um módulo, conjunto de documentos ou área técnica específica.
 
@@ -214,13 +244,34 @@ Não pode:
 - tratar o módulo oficial como propriedade pessoal;
 - impedir sucessão ou revisão externa legítima.
 
-### 4.6 Mantenedor do núcleo
+### 4.7 Responsável por distribuição
+
+Responsável por uma distribuição oficial ou candidata (composição testada de runtime, módulos e perfil).
+
+Pode:
+
+- coordenar manifesto e lockfile da distribuição;
+- organizar matriz de compatibilidade e testes de instalação/onboarding;
+- representar a distribuição em RFCs e releases;
+- indicar inclusão ou remoção de módulos na composição, sujeito a arquitetura e segurança;
+- acompanhar estado de manutenção dos módulos incluídos.
+
+Não pode:
+
+- incluir módulo T0/experimental em distribuição oficial;
+- alterar unilateralmente contratos do OpenCore Runtime;
+- apresentar combinação não verificada como oficial;
+- condicionar a distribuição a serviços comerciais exclusivos.
+
+Mudanças em distribuições oficiais exigem o responsável da distribuição **e** revisão de arquitetura e segurança, conforme a seção 7.
+
+### 4.8 Mantenedor do núcleo
 
 Responsável por componentes estruturais, contratos globais, arquitetura ou releases oficiais.
 
 Mudanças no runtime, segurança estrutural, persistência, migrações, protocolo de módulos, compatibilidade e empacotamento exigem revisão de mantenedor habilitado nessas áreas.
 
-### 4.7 Lead Maintainer
+### 4.9 Lead Maintainer
 
 Responsável por coordenação geral durante o Estágio F ou quando designado pelo Conselho.
 
@@ -234,7 +285,7 @@ Competências:
 
 O Lead Maintainer não possui direito de propriedade sobre contribuições aceitas, módulos oficiais, marca futura ou decisões da comunidade.
 
-### 4.8 Release Manager
+### 4.10 Release Manager
 
 Responsável temporário por uma versão específica.
 
@@ -248,7 +299,7 @@ Deverá confirmar:
 - artefatos e assinaturas quando aplicáveis;
 - documentação de instalação e atualização.
 
-### 4.9 Grupo de Resposta de Segurança
+### 4.11 Grupo de Resposta de Segurança
 
 Grupo restrito responsável por receber relatos privados, coordenar correções e preparar divulgação responsável.
 
@@ -256,7 +307,7 @@ Enquanto não houver ao menos três pessoas qualificadas e confiáveis, essa fun
 
 Membros do grupo devem possuir acesso mínimo, dever de confidencialidade e obrigação de declarar conflitos.
 
-### 4.10 Conselho de Mantenedores
+### 4.12 Conselho de Mantenedores
 
 Órgão do Estágio C, sem existência obrigatória no Estágio F.
 
@@ -265,6 +316,23 @@ Mandato, composição, rotação, quórum e processo eleitoral serão definidos 
 ---
 
 ## 5. Conquista, revisão e perda de responsabilidades
+
+### 5.0 Ladder de progressão
+
+A progressão típica de responsabilidade é:
+
+```text
+Primeira contribuição
+→ colaborador recorrente
+→ responsável por componente (quando aplicável)
+→ revisor
+→ mantenedor em formação
+→ mantenedor
+```
+
+Caminhos paralelos válidos incluem: responsável por distribuição, mantenedor de segurança, mentoria e contribuições ao Builder. Progressão lateral (ex.: documentação → revisor de docs) é incentivada.
+
+Promoção deve considerar qualidade, constância, conhecimento, comportamento, capacidade de revisão, documentação, responsabilidade, segurança e ausência de conflito grave. **Não** basear poder apenas em volume de commits ou financiamento.
 
 ### 5.1 Critérios gerais
 
@@ -431,9 +499,12 @@ Toda pull request deverá, quando aplicável:
 Como regra geral:
 
 - mudanças rotineiras exigem uma aprovação de pessoa habilitada no escopo;
-- mudanças no runtime, segurança, migrações, protocolo ou releases exigem ao menos uma aprovação independente de mantenedor qualificado;
+- mudanças no OpenCore Runtime, segurança, migrações, protocolo ou releases exigem ao menos uma aprovação independente de mantenedor qualificado;
 - mudanças que implementem RFC deverão demonstrar conformidade com a decisão aprovada;
-- o autor não deverá ser a única pessoa a revisar mudança sensível de sua autoria.
+- o autor não deverá ser a única pessoa a revisar mudança sensível de sua autoria;
+- mudanças em distribuições oficiais exigem responsável por distribuição + arquitetura + segurança;
+- inclusão ou promoção no catálogo público exige checklist do nível de confiança (ADR-017) e revisão habilitada;
+- mudanças que afetem recomendações do OpenCore Builder exigem revisão de produto e compatibilidade (seção 19), não apenas revisão editorial.
 
 ### 7.3 Exceção fundadora
 
@@ -547,11 +618,20 @@ Itens patrocinados deverão identificar:
 
 ## 10. Propriedade e continuidade de módulos
 
-### 10.1 Responsabilidade compartilhada
+### 10.1 Responsabilidade compartilhada e ownership
 
 Módulos oficiais pertencem ao ecossistema OpenCore nos termos de suas licenças e governança. Mantenedores são responsáveis temporários, não proprietários exclusivos.
 
-Sempre que possível, um módulo oficial deverá possuir:
+Cada módulo (e, quando aplicável, cada distribuição oficial) deverá declarar publicamente:
+
+- **mantenedor principal;**
+- **substituto** (ou status explícito de ausência temporária, com plano de cobertura);
+- **canais de contato** públicos e, se necessário, privados de segurança;
+- **status** de manutenção;
+- **prazo de resposta** esperado (ex.: reconhecimento em X dias úteis);
+- **política de sucessão** ou referência ao processo de abandono desta seção.
+
+Sempre que possível, um módulo oficial deverá possuir também:
 
 - ao menos dois revisores capazes de compreender seu funcionamento;
 - documentação de arquitetura e operação;
@@ -562,16 +642,18 @@ Sempre que possível, um módulo oficial deverá possuir:
 
 ### 10.2 Estado de manutenção
 
-Módulos deverão declarar um dos estados:
+Módulos deverão declarar um dos estados (equivalências aceitas no catálogo):
 
-- **experimental:** sem garantia de estabilidade;
-- **ativo:** mantido e elegível para uso conforme documentação;
-- **manutenção:** recebe correções, sem novas funcionalidades prioritárias;
-- **em adoção:** sem responsável suficiente, aberto a novos mantenedores;
-- **depreciado:** possui substituição ou encerramento anunciado;
-- **arquivado:** sem suporte ativo, preservado para histórico.
+- **mantido / ativo:** mantido e elegível para uso conforme documentação;
+- **manutenção limitada:** recebe correções prioritárias, sem novas funcionalidades;
+- **procurando mantenedor / em adoção:** sem responsável suficiente, aberto a novos mantenedores;
+- **órfão:** sem mantenedor após chamada pública sem sucesso, ainda não arquivado;
+- **depreciado / substituído:** possui substituição ou encerramento anunciado;
+- **arquivado:** sem suporte ativo, preservado para histórico;
+- **removido de distribuições oficiais:** continua eventualmente no catálogo comunitário, mas fora de composições oficiais;
+- **experimental:** sem garantia de estabilidade (alinhado a T0 quando aplicável).
 
-O estado de manutenção é separado do nível de confiança T0–T3 definido pela arquitetura.
+O estado de manutenção é separado do nível de confiança T0–T3 (ADR-017).
 
 ### 10.3 Abandono
 
@@ -579,18 +661,40 @@ Quando um módulo ficar sem resposta ou manutenção:
 
 1. será aberta chamada pública para adoção;
 2. riscos e dependências serão avaliados;
-3. a distribuição poderá congelar sua versão;
+3. a distribuição poderá congelar sua versão ou removê-lo de composições oficiais;
 4. um novo mantenedor poderá ser nomeado por processo público;
-5. se não houver capacidade segura de continuidade, o módulo será depreciado;
+5. se não houver capacidade segura de continuidade, o módulo será depreciado, arquivado ou marcado órfão;
 6. dados, exportação e caminho de migração deverão ser preservados sempre que possível.
 
-Nenhum módulo essencial será abandonado silenciosamente.
+O processo de adoção comunitária será público. Nenhum módulo essencial será abandonado silenciosamente.
 
 ### 10.4 Forks e sucessão
 
 A governança não impedirá forks permitidos pela licença.
 
 Quando houver divergência legítima, a prioridade será preservar interoperabilidade, histórico e possibilidade de migração, evitando incompatibilidade deliberada ou disputa de marca que prejudique usuários.
+
+### 10.5 Níveis de confiança (ADR-017)
+
+A governança de módulos integra os níveis de confiança da ADR-017. Denominações equivalentes:
+
+| Nível | Nome | Uso típico |
+|---|---|---|
+| **T0** | Experimental | Apenas desenvolvimento; nunca em distribuição oficial |
+| **T1** | Comunitário | Catálogo comunitário com aviso; instalação manual |
+| **T2** | Verificado | Catálogo verificado; compatibilidade e artefatos revisados |
+| **T3** | Oficial | Governança OpenCore; elegível a distribuições oficiais |
+
+**Certificação comercial** (quando existir política própria) é atributo **separado** do nível T: um módulo pode ser certificado sem ser T3, e um T3 não implica certificação comercial.
+
+Quem pode promover ou rebaixar:
+
+- T0 → T1: mantenedor do escopo + checklist mínimo;
+- T1 → T2: revisores habilitados + CI/contratos conforme ADR-017;
+- T2 → T3: processo de inclusão oficial (arquitetura, segurança, ownership);
+- rebaixamento: responsável do módulo/distribuição ou segurança, com registro público do motivo.
+
+Nível de confiança **não** equivale a sandbox de sistema operacional.
 
 ---
 
@@ -843,7 +947,11 @@ O projeto poderá acompanhar:
 - dependência operacional do fundador;
 - incidentes de segurança e tempo de correção;
 - participação em documentação, testes e outras áreas não relacionadas a código;
-- satisfação de contribuidores e usuários-piloto.
+- satisfação de contribuidores e usuários-piloto;
+- documentação necessária para contribuir sem ajuda privada;
+- transferências de manutenção bem-sucedidas;
+- módulos sem substituto declarado;
+- contribuições ao Builder (perfis, triagem, catálogo) aceitas e revertidas por incompatibilidade.
 
 Metas não deverão incentivar aprovação superficial, competição destrutiva ou redução artificial do escopo de testes e revisão.
 
@@ -875,11 +983,49 @@ A adoção futura de CLA exigirá RFC, justificativa jurídica, análise de impa
 
 ---
 
-## 19. Alteração desta política
+## 19. Relação com o OpenCore Builder
+
+O OpenCore Builder é ferramenta/serviço auxiliar externo ao OpenCore Runtime. Contribuições ao Builder e aos artefatos que alimentam recomendações são contribuições de primeira classe nesta governança.
+
+### 19.1 Formas de contribuição reconhecidas
+
+Além das formas da seção 4.2, são explicitamente válidas:
+
+- perfis de negócio e variantes (ex.: Essencial, Completo, Multiestação);
+- textos de triagem e microcopy em linguagem não técnica;
+- entradas e mapeamentos do catálogo de capacidades;
+- validação com usuários leigos (roteiros, observações, relatórios);
+- traduções da triagem, preview e fichas;
+- acessibilidade do fluxo de descoberta e instalação;
+- templates de distribuição e configuração inicial;
+- dados de demonstração seguros e reversíveis.
+
+### 19.2 Revisão obrigatória de produto e compatibilidade
+
+Mudanças que afetem **recomendações**, composição sugerida, inclusão/exclusão de módulos em perfis, regras de compatibilidade, níveis de confiança padrão ou textos que alterem o significado de uma capacidade **não** podem ser mergeadas apenas com revisão editorial.
+
+Exigem, no mínimo:
+
+1. revisão de produto (clareza, honestidade, ausência de promessa falsa);
+2. revisão de compatibilidade (manifesto, conflitos, dependências, matriz ou regras equivalentes);
+3. alinhamento aos níveis de confiança (ADR-017) — módulos experimentais (T0) não entram no modo padrão.
+
+Alterações puramente ortográficas, de formatação ou de tradução fiel, sem mudança de sentido normativo, podem seguir o processo de mudanças triviais (seção 7.4).
+
+### 19.3 Limites
+
+- o Builder não concede autoridade sobre o OpenCore Runtime;
+- recomendações automatizadas ou assistidas por IA permanecem subordinadas a regras determinísticas;
+- contribuidores do Builder não podem contornar ownership de módulos ou de distribuições;
+- dados de triagem seguem minimização e privacidade do Plano Institucional e da especificação do Builder.
+
+---
+
+## 20. Alteração desta política
 
 Mudanças editoriais sem efeito normativo podem ser aprovadas como manutenção documental.
 
-Mudanças que alterem papéis, autoridade, votação, direitos de participação, independência, aplicação de conduta ou relação com patrocinadores exigem RFC.
+Mudanças que alterem papéis, autoridade, votação, direitos de participação, independência, aplicação de conduta, relação com o Builder ou relação com patrocinadores exigem RFC.
 
 Durante o Estágio F:
 
@@ -895,7 +1041,7 @@ Durante o Estágio C:
 
 ---
 
-## 20. Decisões iniciais desta versão
+## 21. Decisões iniciais desta versão
 
 Esta versão estabelece que:
 
@@ -913,11 +1059,14 @@ Esta versão estabelece que:
 12. segurança e conduta possuem canais privados, processo de revisão e registro proporcional;
 13. contribuições não relacionadas a código possuem legitimidade e reconhecimento equivalentes;
 14. o modelo inicial de contribuição utilizará DCO, sem CLA próprio;
-15. a criação de entidade independente ocorrerá quando houver necessidade institucional concreta e processo público.
+15. a criação de entidade independente ocorrerá quando houver necessidade institucional concreta e processo público;
+16. ownership de módulo/distribuição declara principal, substituto, canais, prazo e sucessão;
+17. níveis de confiança seguem ADR-017 (T0–T3); certificação comercial é atributo separado;
+18. contribuições ao OpenCore Builder (perfis, triagem, catálogo, a11y, demo data etc.) são válidas e mudanças de recomendação exigem revisão de produto e compatibilidade.
 
 ---
 
-## 21. Critério de aprovação da versão 1.0
+## 22. Critério de aprovação da versão 1.0
 
 Esta política estará pronta para ser marcada como **Aprovada** quando:
 
@@ -931,3 +1080,12 @@ Esta política estará pronta para ser marcada como **Aprovada** quando:
 - os documentos operacionais prioritários tiverem responsáveis e ordem de criação definidos.
 
 Após aprovação, o índice de versões deverá marcar **Comunidade e Governança v1.0** como canônico e a próxima entrega documental passará a ser o **Plano Institucional OpenCore v1.0**.
+
+---
+
+## 23. Histórico de alterações
+
+| Data | Mudança |
+|---|---|
+| 2026-07-23 | Versão 1.0 aprovada. |
+| 2026-07-24 | Atualização editorial: relação com o OpenCore Builder (§19); papéis de mantenedor em formação e responsável por distribuição; ladder de progressão; ownership explícito; alinhamento ADR-017; formas de contribuição (a11y, triagem, mentoria, demo data); aprovação de mudanças do Builder e de distribuições. Status permanece **Aprovado**. |
